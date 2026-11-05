@@ -22,6 +22,10 @@
   --gris-2: #5E4A3E;
   --gris-3: #7A6355;
   --linea: rgba(34, 20, 14, 0.16);
+  --oliva: #3E4A2B;         /* oliva laqueado: sección Lentes */
+  --oliva-profundo: #2B3520;/* oliva profundo: pie */
+  --oliva-aviso: #2F3A22;   /* barra de aviso */
+  --cromo: #DCE2D6;         /* filete de cromo */
 
   --serif: 'Instrument Serif', serif;
   --marca: 'Fraunces', serif;
@@ -95,7 +99,7 @@ h1, h2 { margin: 0; font-weight: 400; }
    01 · Barra de aviso + Portada
    ========================================================= */
 .aviso {
-  height: 34px; background: var(--choco); color: var(--marfil);
+  height: 34px; background: var(--oliva-aviso); color: var(--marfil);
   display: flex; align-items: center; justify-content: center; gap: 10px;
   font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
 }
@@ -249,7 +253,19 @@ h1, h2 { margin: 0; font-weight: 400; }
 /* =========================================================
    06 · Lentes
    ========================================================= */
-.lentes { padding: 60px 0; display: flex; flex-direction: column; gap: 18px; }
+.lentes {
+  position: relative; padding: 60px 0; display: flex; flex-direction: column; gap: 18px;
+  color: var(--marfil);
+  background: linear-gradient(162deg, #5B6A3F 0%, var(--oliva) 34%, #2E3820 58%, #3A4628 78%, #55643B 100%);
+}
+/* Filete de cromo arriba */
+.lentes::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #8E9884 0%, var(--cromo) 30%, #FFFFFF 50%, var(--cromo) 70%, #8E9884 100%);
+}
+.lentes .antetitulo { color: var(--dorado); }
+.lentes .tarjeta__pie { color: var(--marfil); }
+.lentes .btn--secundario { border-color: var(--marfil); color: var(--marfil); }
 .lentes .titulo { font-size: 46px; line-height: 0.95; }
 .lentes .carrusel { padding-top: 0; }
 .lentes .tarjeta { flex-basis: 300px; }
@@ -357,7 +373,7 @@ h1, h2 { margin: 0; font-weight: 400; }
 .dato__valor { font-size: 15px; font-weight: 600; }
 .encontranos .btn { margin-top: 18px; }
 
-.pie { background: var(--choco); color: var(--marfil); padding: 40px 20px 120px; display: flex; flex-direction: column; gap: 24px; }
+.pie { background: linear-gradient(180deg, #3A4628 0%, var(--oliva-profundo) 100%); color: var(--marfil); padding: 40px 20px 120px; display: flex; flex-direction: column; gap: 24px; }
 .pie__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-size: 14px; font-weight: 600; }
 .pie__links a { color: var(--marfil); text-decoration: none; min-height: 32px; }
 .pie__legal { font-size: 11px; line-height: 1.6; color: rgba(247, 242, 234, 0.65); }
@@ -537,7 +553,7 @@ h1, h2 { margin: 0; font-weight: 400; }
   .look__titulo { font-size: 96px; }
 
   /* Lentes */
-  .lentes { width: min(1200px, 100% - 80px); margin-inline: auto; padding: 100px 0; gap: 24px; }
+  .lentes { padding: 100px max(40px, calc((100% - 1200px) / 2)); gap: 24px; }
   .lentes .cabeza { padding: 0; }
   .lentes .titulo { font-size: 76px; }
   .lentes .carrusel { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; }

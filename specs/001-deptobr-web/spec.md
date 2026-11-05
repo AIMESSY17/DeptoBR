@@ -25,7 +25,7 @@ Panel admin para la clienta · login de compradoras · calendario de turnos prop
 
 ## 4. Identidad (cerrada, no reinterpretar)
 - **Logo:** el real de la marca: "depto" en serif bold dorado con **una llave arriba**, y "BEAUTY ROOM" debajo. Submarca de tienda: **dbrjoyas**.
-- **Paleta:** marfil `#F7F2EA` (fondo) · chocolate `#22140E` (texto y botón principal) · dorado `#E0B04A` / `#C8972F` (logo, acentos, etiquetas) · dorado oscuro para textos chicos `#9A6E18` · blush `#F1DFD8` (Beauty Room) · blanco `#FFFFFF` (fichas, botones sobre foto).
+- **Paleta:** marfil `#F7F2EA` (fondo) · chocolate `#22140E` (texto y botón principal) · dorado `#E0B04A` / `#C8972F` (logo, acentos, etiquetas) · dorado oscuro para textos chicos `#9A6E18` · blush `#F1DFD8` (Beauty Room) · blanco `#FFFFFF` (fichas, botones sobre foto) · verde oliva (referencia: auto clásico laqueado + cromo + oro): oliva laqueado `#3E4A2B` (sección Lentes, en degradé) · oliva profundo `#2B3520` (pie, barra de aviso `#2F3A22`) · cromo `#DCE2D6` (filete de 2px sobre Lentes).
 - **Tipografía:** *Instrument Serif* (títulos, con itálica para la segunda parte de cada frase) · *Fraunces 700* (solo el wordmark "depto") · *Manrope* (UI, precios, textos).
 - **Fotos:** las reales de la clienta, **nítidas**. PROHIBIDO grano, desenfoque, viñetas o filtros sobre las fotos.
 - **Botones:** un solo sistema. Principal = chocolate lleno, texto blanco, pill (alto 52–56 px). Secundario = borde chocolate 1.5 px. Sobre foto/video: principal blanco, secundario borde blanco.

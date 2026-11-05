@@ -16,8 +16,22 @@ body{margin:0}
 @keyframes brillo{0%,62%{transform:translateX(-130%)}90%,100%{transform:translateX(130%)}}
 .punto{animation:pulso 1.8s ease-out infinite}
 @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(255,255,255,0.85)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}
-.apagon{animation:prender 1.5s ease-out .4s forwards}
-@keyframes prender{0%{opacity:1}22%{opacity:.5}28%{opacity:.95}40%{opacity:.2}46%{opacity:.7}100%{opacity:0}}
+.cargador{animation:salir .45s ease-in 2.75s forwards}
+@keyframes salir{to{opacity:0;visibility:hidden}}
+.cerr{opacity:0;animation:verse .4s ease-out .05s forwards,irse .3s ease-in 1.65s forwards}
+@keyframes verse{to{opacity:1}}
+@keyframes irse{from{opacity:1}to{opacity:0}}
+.aro-oro{stroke-dasharray:290;stroke-dashoffset:290;animation:trazar .45s cubic-bezier(.4,0,.2,1) 1.2s forwards}
+@keyframes trazar{to{stroke-dashoffset:0}}
+.k-entra{transform-box:view-box;opacity:0;transform:translateX(-150px);animation:entraK .6s cubic-bezier(.2,.8,.2,1) .25s forwards}
+@keyframes entraK{to{opacity:1;transform:translateX(0)}}
+.k-mueve{transform-box:view-box;animation:mueveK .55s cubic-bezier(.6,0,.2,1) 1.75s forwards}
+@keyframes mueveK{to{transform:translate(39.5px,-22px)}}
+.k-gira{transform-box:view-box;transform-origin:0 380px;animation:giraK .38s cubic-bezier(.5,0,.3,1) .92s forwards}
+@keyframes giraK{to{transform:scaleY(-1)}}
+.k-vuelve{transform-box:view-box;transform-origin:0 380px;animation:giraK .45s cubic-bezier(.5,0,.3,1) 1.8s forwards}
+.marca-txt{opacity:0;transform:translateY(8px);animation:textoK .5s cubic-bezier(.2,.8,.2,1) 1.95s forwards}
+@keyframes textoK{to{opacity:1;transform:translateY(0)}}
 .colgar-a{animation:colgarA .8s ease-out}
 .colgar-b{animation:colgarB .8s ease-out}
 @keyframes colgarA{0%{transform:rotate(0)}25%{transform:rotate(-24deg)}55%{transform:rotate(14deg)}80%{transform:rotate(-6deg)}100%{transform:rotate(0)}}
@@ -28,12 +42,12 @@ body{margin:0}
 @keyframes aparece{from{opacity:0}to{opacity:1}}
 .scroller{scroll-behavior:smooth;scrollbar-width:none}
 .scroller::-webkit-scrollbar{display:none}
-@media (prefers-reduced-motion: reduce){.brillo::after,.punto,.colgar-a,.colgar-b,.sube,.aparece{animation:none}.apagon{animation:none;opacity:0}}
+@media (prefers-reduced-motion: reduce){.brillo::after,.punto,.colgar-a,.colgar-b,.sube,.aparece{animation:none}.cargador{display:none}}
 </style>
 </helmet>
 <div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FBF8F3; font-family: 'Manrope', sans-serif; color: #241510;">
   <div class="scroller" style="position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;">
-    <dc-import name="Contenido4" on-open="{{ abrir }}" on-add="{{ sumarRapido }}" hint-size="390px,8250px"></dc-import>
+    <dc-import name="Contenido4" on-open="{{ abrir }}" on-add="{{ sumarRapido }}" hint-size="390px,8300px"></dc-import>
   </div>
 
   <a href="#" aria-label="{{ carritoLabel }}" style="position: absolute; top: 44px; right: 14px; width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.16);">
@@ -125,7 +139,32 @@ body{margin:0}
     </div>
   </sc-if>
 
-  <div class="apagon" aria-hidden="true" style="position: absolute; inset: 0; background: #070302; pointer-events: none;"></div>
+  <div class="cargador" aria-hidden="true" style="position: absolute; inset: 0; z-index: 50; pointer-events: none; background: #F7F2EA; display: flex; align-items: center; justify-content: center;">
+    <svg width="390" height="844" viewBox="0 0 390 844" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+      <g class="cerr">
+        <circle cx="195" cy="380" r="46" fill="none" stroke="#22140E" stroke-opacity="0.22" stroke-width="1.5"></circle>
+        <path d="M195 369.5a6 6 0 0 1 3.4 10.9l2.1 13.6h-11l2.1-13.6a6 6 0 0 1 3.4-10.9Z" fill="#22140E" fill-opacity="0.85"></path>
+        <circle class="aro-oro" cx="195" cy="380" r="46" fill="none" stroke="#C8972F" stroke-width="2" stroke-linecap="round" transform="rotate(-90 195 380)"></circle>
+      </g>
+      <g class="k-mueve">
+        <g class="k-entra">
+          <g class="k-gira">
+            <g class="k-vuelve">
+              <g fill="none" stroke="#C8972F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="125" cy="380" r="9"></circle>
+                <circle cx="125" cy="380" r="3"></circle>
+                <path d="M134 380H195M183 380v8M190 380v6"></path>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <div class="marca-txt" style="position: absolute; left: 0; right: 0; top: 50%; margin-top: -18px; display: flex; flex-direction: column; align-items: center; line-height: 1; color: #22140E;">
+      <span style="font-family: 'Fraunces', serif; font-weight: 700; font-size: 62px; letter-spacing: -0.035em;">depto</span>
+      <span style="font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.55em; font-weight: 700; margin-top: 10px; color: #9A6E18;">BEAUTY ROOM</span>
+    </div>
+  </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>

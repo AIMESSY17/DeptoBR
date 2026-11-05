@@ -602,17 +602,22 @@
     vids.forEach(function (v) { io.observe(v); });
   }
 
-  function luz() {
-    var a = $('#apagon');
-    if (!a) return;
-    a.addEventListener('animationend', function () { a.remove(); });
-    if (reducido || document.documentElement.classList.contains('luz-prendida')) a.remove();
+  /* Pantalla de carga: se saca del DOM cuando termina "salir" (o enseguida
+     si ya se vio en esta sesión o hay reduced-motion). No frena la carga:
+     la página se arma por debajo. */
+  function cargador() {
+    var c = $('#cargador');
+    if (!c) return;
+    var quitar = function () { if (c.parentNode) c.remove(); };
+    if (reducido || document.documentElement.classList.contains('ya-cargo')) { quitar(); return; }
+    c.addEventListener('animationend', function (e) { if (e.target === c) quitar(); });
+    setTimeout(quitar, 4000); /* por si la animación no llega a terminar */
   }
 
   /* =========================================================
      Inicio
      ========================================================= */
-  luz();
+  cargador();
   videos();
   actualizarContador();
 

@@ -26,10 +26,10 @@ Marcar `[x]` al terminar. Una fase se cierra con su checklist + commit.
 - [x] T16 Carrito (panel) con cantidades, eliminar, total, persistencia; "Pagar" = Próximamente + `iniciarPago(carrito)` vacía.
 - [x] T17 Barra fija inferior contextual (carrito / Reservar turno).
 - [x] T18 Ficha de servicio con antes/después en Cejas, turno Mañana/Tarde/Sábado y mensaje de WhatsApp.
-- [x] T19 Efectos: prender la luz (1 vez por sesión), destello en joyas, pulso, scroll suave, reduced-motion.
+- [x] T19 Efectos: pantalla de carga "la llave del depto" (1 vez por sesión), destello en joyas, pulso, scroll suave, reduced-motion.
 
 ### Cierre F1
-- [x] T20 Versión escritorio (≥ 1024 px) coherente con el boceto.
+- [x] T20 Versión escritorio (≥ 1024 px) coherente con el boceto. Portada en grilla 50/50 (texto + wordmark a la izquierda, video a alto completo a la derecha).
 - [x] T21 SEO + Open Graph.
 - [ ] T22 Revisión 375/390/768/1280, celular real, Lighthouse, accesibilidad. _(Hecho: 375/390/768/1280 sin scroll horizontal, Lighthouse móvil 83–95 / acces. 96 / buenas prácticas 100 / SEO 100, teclado y reduced-motion. **Falta: prueba en celular real.**)_
 - [x] T23 Commit "Fase 1: DeptoBR v4 visual + compra en pantalla" + resumen y pendientes.

@@ -35,7 +35,7 @@ Panel admin para la clienta · login de compradoras · calendario de turnos prop
 Fondo oscuro de noche y transición noche→día con scroll · grano de película · fotos borrosas · ventana/arco recortando el video · loader con puerta · scrapbook, sellos, cinta en movimiento · scroll horizontal fijado · páginas que se apilan · caligrafía que se dibuja · luz que sigue el cursor · manifiesto con fotos dentro del texto · sección de Pedicura aparte (va dentro de La carta, grupo PIES).
 
 ## 5. Efectos aprobados (y solo estos)
-- **E1 Prender la luz:** al cargar, la pantalla arranca negra y "titila" como un tubo que se prende (≈1,5 s, una vez por sesión). Respeta `prefers-reduced-motion`.
+- **E1 Pantalla de carga "la llave del depto":** fondo marfil `#F7F2EA`; una cerradura (círculo fino chocolate + bocallave) con un aro dorado que se traza. La llave del logo (dorado `#C8972F`, trazo 3,4) entra, gira (scaleY a −1) y al final sube y vuelve a girar para quedar arriba de "depto" (Fraunces 700, chocolate) + "BEAUTY ROOM" (dorado accesible `#9A6E18`): la animación termina formando el logo. Fade out total a los ~3,2 s. Siempre centrada y del mismo tamaño (no se estira en escritorio). Una vez por sesión, se saltea con `prefers-reduced-motion`, no bloquea la carga y se elimina del DOM al terminar. SVG, textos y keyframes (`salir`, `verse`, `irse`, `trazar`, `entraK`, `mueveK`, `giraK`, `textoK`) copiados tal cual de `diseno/boceto-v4-interacciones.dc.html` (`.cargador`).
 - **E2 Destello:** un brillo de luz pasa cada tanto sobre las fotos de joyas.
 - **E3 Llave que se balancea:** al agregar al carrito, el ícono-llave del carrito se balancea y sube el contador; aparece un aviso "Agregado a tu carrito".
 - **E4 Scroll suave.**
@@ -43,7 +43,7 @@ Fondo oscuro de noche y transición noche→día con scroll · grano de películ
 
 ## 6. Secciones (en este orden, mobile first)
 1. **Barra de aviso:** "Retiro en el Dpto 319 · Envíos a coordinar".
-2. **Portada:** video a pantalla completa (manos con anillos al sol). Arriba "MENÚ" y carrito. Abajo: "BEAUTY ROOM · JOYAS · LENTES", título **"Tu ratito, tu estilo, *tu lugar.*"**, botones **Ver la tienda** y **Reservar turno**, y el wordmark "depto" gigante dorado con la llave.
+2. **Portada:** video a pantalla completa (manos con anillos al sol). Arriba "MENÚ" y carrito. Abajo: "BEAUTY ROOM · JOYAS · LENTES", título **"Tu ratito, tu estilo, *tu lugar.*"**, botones **Ver la tienda** y **Reservar turno**, y el wordmark "depto" gigante dorado con la llave. **En escritorio (≥ 1024 px):** grilla 50/50; a la izquierda el texto centrado en vertical y el wordmark entero (`clamp(110px, 11vw, 190px)`); a la derecha el video a alto completo.
 3. **Sumario:** lista tipográfica gigante 01 Joyas · 02 Lentes · 03 Uñas · 04 Pedicura · 05 Cejas · 06 Cursos, cada una con foto redonda; lleva a su sección (Uñas, Pedicura y Cejas llevan a `#beauty`).
 4. **Tienda · "Brillá sin *pedir permiso.*"** (DBRJOYAS · LO NUEVO): Pieza de la semana a ancho completo con nombre, precio y "Agregar"; debajo carrusel horizontal de tarjetas grandes (foto 4:5, etiqueta NUEVO / ÚLTIMAS N, "+" rápido, nombre y precio).
 5. **"Robale *el look.*"**: foto de modelo a pantalla completa con etiquetas "+ Aros", "+ Collar", "+ Reloj" sobre cada pieza; cada una abre la ficha del producto.

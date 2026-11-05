@@ -509,10 +509,25 @@ h1, h2 { margin: 0; font-weight: 400; }
 .punto { animation: pulso 1.8s ease-out infinite; }
 @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.85); } 100% { box-shadow: 0 0 0 16px rgba(255,255,255,0); } }
 
-/* E1 · Prender la luz */
-.apagon { position: fixed; inset: 0; z-index: 100; background: #070302; pointer-events: none; animation: prender 1.5s ease-out .4s forwards; }
-@keyframes prender { 0% { opacity: 1; } 22% { opacity: .5; } 28% { opacity: .95; } 40% { opacity: .2; } 46% { opacity: .7; } 100% { opacity: 0; } }
-.luz-prendida .apagon { display: none; }
+/* E1 · Pantalla de carga (boceto v4 interacciones, keyframes tal cual).
+   Termina formando el logo y se desvanece a los 3,2 s. */
+.cargador{animation:salir .45s ease-in 2.75s forwards}
+@keyframes salir{to{opacity:0;visibility:hidden}}
+.cerr{opacity:0;animation:verse .4s ease-out .05s forwards,irse .3s ease-in 1.65s forwards}
+@keyframes verse{to{opacity:1}}
+@keyframes irse{from{opacity:1}to{opacity:0}}
+.aro-oro{stroke-dasharray:290;stroke-dashoffset:290;animation:trazar .45s cubic-bezier(.4,0,.2,1) 1.2s forwards}
+@keyframes trazar{to{stroke-dashoffset:0}}
+.k-entra{transform-box:view-box;opacity:0;transform:translateX(-150px);animation:entraK .6s cubic-bezier(.2,.8,.2,1) .25s forwards}
+@keyframes entraK{to{opacity:1;transform:translateX(0)}}
+.k-mueve{transform-box:view-box;animation:mueveK .55s cubic-bezier(.6,0,.2,1) 1.75s forwards}
+@keyframes mueveK{to{transform:translate(39.5px,-22px)}}
+.k-gira{transform-box:view-box;transform-origin:0 380px;animation:giraK .38s cubic-bezier(.5,0,.3,1) .92s forwards}
+@keyframes giraK{to{transform:scaleY(-1)}}
+.k-vuelve{transform-box:view-box;transform-origin:0 380px;animation:giraK .45s cubic-bezier(.5,0,.3,1) 1.8s forwards}
+.marca-txt{opacity:0;transform:translateY(8px);animation:textoK .5s cubic-bezier(.2,.8,.2,1) 1.95s forwards}
+@keyframes textoK{to{opacity:1;transform:translateY(0)}}
+.ya-cargo .cargador { display: none !important; }
 
 /* E3 · Llave que se balancea (dos nombres para poder reiniciarla) */
 .colgar-a { animation: colgarA .8s ease-out; }
@@ -528,7 +543,7 @@ h1, h2 { margin: 0; font-weight: 400; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .brillo::after, .punto, .colgar-a, .colgar-b, .sube, .aparece { animation: none; }
-  .apagon { animation: none; opacity: 0; display: none; }
+  .cargador { display: none !important; }
 }
 
 /* =========================================================
@@ -550,13 +565,26 @@ h1, h2 { margin: 0; font-weight: 400; }
   :root { --lado: max(40px, calc((100% - 1200px) / 2)); }
 
   /* Portada: video vertical a la derecha (a su tamaño, nítido), texto y wordmark a la izquierda */
-  .portada { height: max(720px, 100vh); }
-  .portada__video { left: auto; width: min(52%, calc(max(720px, 100vh) * 0.5625)); }
-  .portada__header { padding: 0 32px; }
-  .portada__texto { top: auto; bottom: max(300px, 36vh); left: var(--lado); right: auto; width: 520px; }
+  /* Portada: grilla 50/50. Izquierda: texto y wordmark centrados en vertical;
+     derecha: video a alto completo. */
+  .portada {
+    height: max(720px, 100vh);
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 1fr auto auto 1fr; padding: 0;
+  }
+  .portada__header { position: absolute; top: 0; left: 0; right: 0; z-index: 2; padding: 0 32px; }
+  .portada__video { position: static; grid-column: 2; grid-row: 1 / -1; width: 100%; height: 100%; }
+  .portada__sombra { display: none; }
+  .portada__texto {
+    position: static; grid-column: 1; grid-row: 2;
+    width: min(632px, 100%); padding: 0 56px; justify-self: start;
+  }
   .portada__titulo { font-size: 76px; }
-  .portada .marca { left: var(--lado); right: auto; bottom: 24px; }
-  .portada .marca__palabra { font-size: min(240px, 19vw); }
+  .portada .marca {
+    position: static; grid-column: 1; grid-row: 3; justify-self: start;
+    padding: 0 56px; margin-top: 56px; color: var(--marfil);
+  }
+  .portada .marca__palabra { font-size: clamp(110px, 11vw, 190px); }
   .carrito-btn { right: 32px; }
 
   /* Sumario */

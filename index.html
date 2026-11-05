@@ -21,11 +21,11 @@
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322140E'/%3E%3Cg fill='none' stroke='%23E0B04A' stroke-width='4' stroke-linecap='round'%3E%3Ccircle cx='16' cy='32' r='8'/%3E%3Cpath d='M24 32h30M48 32v8M54 32v6'/%3E%3C/g%3E%3C/svg%3E">
 
-  <!-- Prender la luz: una sola vez por sesión (antes de pintar) -->
+  <!-- Pantalla de carga: una sola vez por sesión (antes de pintar) -->
   <script>
     try {
-      if (sessionStorage.getItem('dbr-luz')) document.documentElement.classList.add('luz-prendida');
-      else sessionStorage.setItem('dbr-luz', '1');
+      if (sessionStorage.getItem('dbr-carga')) document.documentElement.classList.add('ya-cargo');
+      else sessionStorage.setItem('dbr-carga', '1');
     } catch (e) {}
   </script>
 
@@ -238,8 +238,33 @@
     <div id="hoja-contenido"></div>
   </div>
 
-  <!-- E1 · Prender la luz -->
-  <div class="apagon" id="apagon" aria-hidden="true"></div>
+  <!-- E1 · Pantalla de carga: la llave abre la cerradura y forma el logo -->
+  <div class="cargador" id="cargador" aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none; background: #F7F2EA; display: flex; align-items: center; justify-content: center;">
+    <svg width="390" height="844" viewBox="0 0 390 844" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+      <g class="cerr">
+        <circle cx="195" cy="380" r="46" fill="none" stroke="#22140E" stroke-opacity="0.22" stroke-width="1.5"></circle>
+        <path d="M195 369.5a6 6 0 0 1 3.4 10.9l2.1 13.6h-11l2.1-13.6a6 6 0 0 1 3.4-10.9Z" fill="#22140E" fill-opacity="0.85"></path>
+        <circle class="aro-oro" cx="195" cy="380" r="46" fill="none" stroke="#C8972F" stroke-width="2" stroke-linecap="round" transform="rotate(-90 195 380)"></circle>
+      </g>
+      <g class="k-mueve">
+        <g class="k-entra">
+          <g class="k-gira">
+            <g class="k-vuelve">
+              <g fill="none" stroke="#C8972F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="125" cy="380" r="9"></circle>
+                <circle cx="125" cy="380" r="3"></circle>
+                <path d="M134 380H195M183 380v8M190 380v6"></path>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <div class="marca-txt" style="position: absolute; left: 0; right: 0; top: 50%; margin-top: -18px; display: flex; flex-direction: column; align-items: center; line-height: 1; color: #22140E;">
+      <span style="font-family: 'Fraunces', serif; font-weight: 700; font-size: 62px; letter-spacing: -0.035em;">depto</span>
+      <span style="font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.55em; font-weight: 700; margin-top: 10px; color: #9A6E18;">BEAUTY ROOM</span>
+    </div>
+  </div>
 
   <script src="js/carrito.js"></script>
   <script src="js/app.js"></script>

@@ -78,6 +78,18 @@ body{margin:0}
             <button onClick="{{ agregar }}" style="flex: 1; height: 54px; border-radius: 27px; border: 0; background: #241510; color: #FFFFFF; font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 800;">Agregar al carrito</button>
           </div>
           <a href="#" style="text-align: center; color: #241510; font-size: 14px; font-weight: 700; min-height: 44px; display: flex; align-items: center; justify-content: center;">Consultar por WhatsApp</a>
+          <div style="border-top: 1px solid rgba(36,21,16,0.12); margin-top: 6px; padding-top: 18px; display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'Instrument Serif', serif; font-size: 24px; line-height: 1;">También te puede <span style="font-style: italic;">gustar</span></span>
+            <div style="display: flex; gap: 10px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 4px; scrollbar-width: none;">
+              <sc-for list="{{ hoja.similares }}" as="q" hint-placeholder-count="4">
+                <button onClick="{{ q.open }}" style="flex: 0 0 132px; padding: 0; border: 0; background: none; text-align: left; display: flex; flex-direction: column; gap: 6px; color: #241510; font-family: 'Manrope', sans-serif;">
+                  <img src="{{ q.img }}" alt="{{ q.nombre }}" style="width: 132px; height: 164px; border-radius: 6px; object-fit: cover; display: block;">
+                  <span style="font-size: 13px; font-weight: 600; line-height: 1.25;">{{ q.nombre }}</span>
+                  <span style="font-size: 13px; font-weight: 800;">$ [precio]</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
         </div>
       </sc-if>
 
@@ -130,7 +142,7 @@ class Component extends DCLogic {
   }
   renderVals() {
     const st = this.state;
-    const h = st.hoja || { nombre: '', img: '', incluye: [], cat: '', desc: '', dur: '' };
+    const h = st.hoja || { nombre: '', img: '', incluye: [], cat: '', desc: '', dur: '', similares: [] };
     const turnos = ['Mañana', 'Tarde', 'Sábado'].map((u) => ({
       label: u,
       style: 'height: 48px; border-radius: 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; ' + (u === st.turno ? 'background: #241510; color: #FFFFFF; border: 1.5px solid #241510;' : 'background: #FFFFFF; color: #241510; border: 1.5px solid rgba(36,21,16,0.25);'),
@@ -144,7 +156,7 @@ class Component extends DCLogic {
       showToast: st.toast,
       showBar: st.count > 0 && !st.hoja,
       hayHoja: !!st.hoja,
-      hoja: Object.assign({}, h, { catMay: (h.cat || '').toUpperCase() }),
+      hoja: Object.assign({}, h, { catMay: (h.cat || '').toUpperCase(), similares: h.similares || [] }),
       esProducto: !!st.hoja && h.tipo === 'p',
       esServicio: !!st.hoja && h.tipo === 's',
       esCejas: h.id === 'cejas', noCejas: h.id !== 'cejas',

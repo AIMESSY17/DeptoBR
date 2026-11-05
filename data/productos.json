@@ -1,5 +1,5 @@
 {
-  "_ayuda": "Catálogo. precio: número sin puntos (ej. 15000) o null para mostrar '$ [precio]'. stock: unidades disponibles (0 = Agotado; 1 a 3 muestra 'ÚLTIMAS N'). lista: 'nuevo' (carrusel Lo nuevo), 'lentes' (carrusel Lentes) o 'look' (solo en Robale el look). destacado: true = Pieza de la semana (solo uno). badge: 'NUEVO' o vacío.",
+  "_ayuda": "Catálogo. precio: número sin puntos (ej. 15000) o null para mostrar '$ [precio]'. stock: unidades disponibles (0 = Agotado; 1 a 3 muestra 'ÚLTIMAS N'). lista: 'nuevo' (carrusel Lo nuevo), 'lentes' (carrusel Lentes) o 'look' (solo en Robale el look) o 'catalogo' (no va en ningún carrusel: aparece en \"También te puede gustar\" de las fichas). Las fichas sugieren 4 productos: primero de la misma cat, después el resto (nunca los de 'look'). destacado: true = Pieza de la semana (solo uno). badge: 'NUEVO' o vacío.",
   "productos": [
     { "id": "pulsera-trebol", "nombre": "Pulsera Trébol", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Pulsera con tréboles negros y borde dorado. La que más se pide.", "fotos": ["img/pulsera-trebol.webp"], "badge": "", "destacado": true, "lista": "semana" },
     { "id": "set-ysl", "nombre": "Set YSL collar y aros", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Collar con dije YSL y aros de cristal.", "fotos": ["img/set-ysl.webp"], "badge": "NUEVO", "destacado": false, "lista": "nuevo" },
@@ -11,6 +11,12 @@
     { "id": "lentes-retro-color", "nombre": "Lentes Retro Color", "cat": "Lentes", "precio": null, "stock": 5, "desc": "Hexagonales, en tres colores.", "fotos": ["img/lentes-retro-color.webp"], "badge": "", "destacado": false, "lista": "lentes" },
     { "id": "aros-argolla-doble", "nombre": "Aros Argolla Doble", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Argollas dobles.", "fotos": ["img/aros-duo.webp"], "badge": "", "destacado": false, "lista": "look" },
     { "id": "collar-perlas", "nombre": "Collar de Perlas", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Collar fino de perlas.", "fotos": ["img/collar-strass.webp"], "badge": "", "destacado": false, "lista": "look" },
-    { "id": "reloj-dorado-malla", "nombre": "Reloj Dorado Malla", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Reloj con malla tejida dorada.", "fotos": ["img/reloj-dorado.webp"], "badge": "", "destacado": false, "lista": "look" }
+    { "id": "reloj-dorado-malla", "nombre": "Reloj Dorado Malla", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Reloj con malla tejida dorada.", "fotos": ["img/reloj-dorado.webp"], "badge": "", "destacado": false, "lista": "look" },
+    { "id": "pulseras-stack", "nombre": "Pulseras Stack", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Pulseras con perlas y dorados para combinar.", "fotos": ["img/pulseras-stack.webp"], "badge": "", "destacado": false, "lista": "catalogo" },
+    { "id": "argolla-oval", "nombre": "Argolla Oval", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Argolla oval dorada.", "fotos": ["img/argolla-oval.webp"], "badge": "", "destacado": false, "lista": "catalogo" },
+    { "id": "reloj-dorado", "nombre": "Reloj Dorado", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Reloj dorado con malla metálica.", "fotos": ["img/reloj-dorado-pieza.webp"], "badge": "", "destacado": false, "lista": "catalogo" },
+    { "id": "anillos-ondas", "nombre": "Anillos Ondas", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Anillos orgánicos oro y plata.", "fotos": ["img/anillos-ondas.webp"], "badge": "", "destacado": false, "lista": "catalogo" },
+    { "id": "collar-corazon", "nombre": "Collar Corazón", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Collar con dije corazón dorado.", "fotos": ["img/collar-corazon.webp"], "badge": "", "destacado": false, "lista": "catalogo" },
+    { "id": "gargantilla-riviera", "nombre": "Gargantilla Riviera", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Gargantilla de strass.", "fotos": ["img/gargantilla-riviera.webp"], "badge": "", "destacado": false, "lista": "catalogo" }
   ]
 }

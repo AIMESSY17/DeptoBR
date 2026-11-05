@@ -292,7 +292,31 @@
             (sin ? 'Agotado' : resto <= 0 ? 'Ya tenés todo el stock' : 'Agregar al carrito') + '</button>' +
         '</div>' +
         '<a class="hoja__link" href="' + esc(wa('Hola! Quiero consultar por ' + p.nombre + '.')) + '" target="_blank" rel="noopener">Consultar por WhatsApp</a>' +
+        similares(p) +
       '</div>';
+  }
+
+  /* También te puede gustar: 4 productos, primero de la misma categoría.
+     Arranca después del producto abierto (así cada ficha sugiere otros).
+     Los de "Robale el look" solo se venden desde la foto, no se sugieren. */
+  function similares(p) {
+    var todos = datos.productos, i = todos.indexOf(p);
+    var lista = todos.slice(i + 1).concat(todos.slice(0, i))
+      .filter(function (q) { return q.lista !== 'look'; });
+    var misma = lista.filter(function (q) { return q.cat === p.cat; });
+    var resto = lista.filter(function (q) { return q.cat !== p.cat; });
+    var elegidos = misma.concat(resto).slice(0, 4);
+    if (!elegidos.length) return '';
+    return '<div class="similares">' +
+      '<span class="similares__titulo">También te puede <span class="it">gustar</span></span>' +
+      '<div class="similares__lista" role="list">' + elegidos.map(function (q) {
+        return '<button class="similar" type="button" role="listitem" data-abrir="' + esc(q.id) + '">' +
+          '<img src="' + esc(chica(q.fotos[0])) + '" width="132" height="164" loading="lazy" alt="' + esc(q.nombre) + '">' +
+          '<span class="similar__nombre">' + esc(q.nombre) + '</span>' +
+          '<span class="similar__precio">' + (agotado(q) ? 'Agotado' : esc(precio(q.precio))) + '</span>' +
+        '</button>';
+      }).join('') + '</div>' +
+    '</div>';
   }
 
   /* ---------- Ficha de servicio ---------- */

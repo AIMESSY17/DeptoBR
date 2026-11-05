@@ -18,7 +18,8 @@
     { "n": "01", "nombre": "Joyas", "img": "img/joyas-anillos.webp", "href": "#tienda" },
     { "n": "02", "nombre": "Lentes", "img": "img/lentes-miel.webp", "href": "#lentes" },
     { "n": "03", "nombre": "Uñas", "img": "img/unas-rosa-anillo.webp", "href": "#beauty" },
-    { "n": "04", "nombre": "Cejas", "img": "img/cejas-despues.webp", "href": "#beauty" },
-    { "n": "05", "nombre": "Cursos", "img": "img/espacio-mesa.webp", "href": "#cursos" }
+    { "n": "04", "nombre": "Pedicura", "img": "img/servicio-pedicura.webp", "href": "#beauty" },
+    { "n": "05", "nombre": "Cejas", "img": "img/cejas-despues.webp", "href": "#beauty" },
+    { "n": "06", "nombre": "Cursos", "img": "img/espacio-mesa.webp", "href": "#cursos" }
   ]
 }

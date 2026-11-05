@@ -1,0 +1,16 @@
+{
+  "_ayuda": "Catálogo. precio: número sin puntos (ej. 15000) o null para mostrar '$ [precio]'. stock: unidades disponibles (0 = Agotado; 1 a 3 muestra 'ÚLTIMAS N'). lista: 'nuevo' (carrusel Lo nuevo), 'lentes' (carrusel Lentes) o 'look' (solo en Robale el look). destacado: true = Pieza de la semana (solo uno). badge: 'NUEVO' o vacío.",
+  "productos": [
+    { "id": "pulsera-trebol", "nombre": "Pulsera Trébol", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Pulsera con tréboles negros y borde dorado. La que más se pide.", "fotos": ["img/pulsera-trebol.webp"], "badge": "", "destacado": true, "lista": "semana" },
+    { "id": "set-ysl", "nombre": "Set YSL collar y aros", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Collar con dije YSL y aros de cristal.", "fotos": ["img/set-ysl.webp"], "badge": "NUEVO", "destacado": false, "lista": "nuevo" },
+    { "id": "cadena-ysl", "nombre": "Cadena YSL", "cat": "Joyas", "precio": null, "stock": 2, "desc": "Cadena con dije YSL.", "fotos": ["img/cadena-ysl.webp"], "badge": "", "destacado": false, "lista": "nuevo" },
+    { "id": "esclavas-trebol", "nombre": "Esclavas Trébol", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Set de esclavas doradas y plateadas.", "fotos": ["img/esclavas-trebol.webp"], "badge": "", "destacado": false, "lista": "nuevo" },
+    { "id": "aros-duo", "nombre": "Aros Dúo", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Aros abultados oro y plata.", "fotos": ["img/aros-duo.webp"], "badge": "", "destacado": false, "lista": "nuevo" },
+    { "id": "argollas-gota", "nombre": "Argollas Gota", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Argollas gruesas, oro o plata.", "fotos": ["img/argollas-gota.webp"], "badge": "", "destacado": false, "lista": "nuevo" },
+    { "id": "lentes-miel", "nombre": "Lentes Miel", "cat": "Lentes", "precio": null, "stock": 5, "desc": "Armazón traslúcido color miel.", "fotos": ["img/lentes-miel.webp"], "badge": "", "destacado": false, "lista": "lentes" },
+    { "id": "lentes-retro-color", "nombre": "Lentes Retro Color", "cat": "Lentes", "precio": null, "stock": 5, "desc": "Hexagonales, en tres colores.", "fotos": ["img/lentes-retro-color.webp"], "badge": "", "destacado": false, "lista": "lentes" },
+    { "id": "aros-argolla-doble", "nombre": "Aros Argolla Doble", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Argollas dobles.", "fotos": ["img/aros-duo.webp"], "badge": "", "destacado": false, "lista": "look" },
+    { "id": "collar-perlas", "nombre": "Collar de Perlas", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Collar fino de perlas.", "fotos": ["img/collar-strass.webp"], "badge": "", "destacado": false, "lista": "look" },
+    { "id": "reloj-dorado-malla", "nombre": "Reloj Dorado Malla", "cat": "Joyas", "precio": null, "stock": 5, "desc": "Reloj con malla tejida dorada.", "fotos": ["img/reloj-dorado.webp"], "badge": "", "destacado": false, "lista": "look" }
+  ]
+}

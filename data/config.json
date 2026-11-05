@@ -1,0 +1,24 @@
+{
+  "_ayuda": "Datos de contacto y textos. Lo que está entre [corchetes] es un pendiente de la clienta.",
+  "whatsapp": "5490000000000",
+  "instagram": "deptobr",
+  "direccion": "Av. José Ingenieros 1205 · Edif. Jerárquicos · Dpto 319",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Av.+Jos%C3%A9+Ingenieros+1205",
+  "horarios": "[Días y horarios]",
+  "retiros": "Retiro en el depto · Envíos a coordinar",
+  "historia": "[Historia de la dueña en 2–3 líneas: cómo nació DeptoBR y por qué un depto.]",
+  "legales": {
+    "razonSocial": "[Razón social]",
+    "cuit": "[—]",
+    "defensaConsumidorUrl": "https://www.argentina.gob.ar/produccion/defensadelconsumidor",
+    "cambiosUrl": "#",
+    "arrepentimientoUrl": "#"
+  },
+  "sumario": [
+    { "n": "01", "nombre": "Joyas", "img": "img/joyas-anillos.webp", "href": "#tienda" },
+    { "n": "02", "nombre": "Lentes", "img": "img/lentes-miel.webp", "href": "#lentes" },
+    { "n": "03", "nombre": "Uñas", "img": "img/unas-rosa-anillo.webp", "href": "#beauty" },
+    { "n": "04", "nombre": "Cejas", "img": "img/cejas-despues.webp", "href": "#beauty" },
+    { "n": "05", "nombre": "Cursos", "img": "img/espacio-mesa.webp", "href": "#cursos" }
+  ]
+}

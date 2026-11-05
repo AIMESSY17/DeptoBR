@@ -1,0 +1,7 @@
+{
+  "_ayuda": "Capacitaciones. fecha: 'AAAA-MM-DD' o null para '[dd] [MES]'. cupos: lugares que quedan; cuposTotales: total del curso (null = '[n]'). barraEjemplo: % de la barra mientras no hay cupos cargados. acento: 'dorado' o 'blush'.",
+  "cursos": [
+    { "id": "curso-semi", "nombre": "Curso de semipermanente", "fecha": null, "modalidad": "Presencial · En el Dpto 319", "cupos": null, "cuposTotales": null, "barraEjemplo": 75, "img": "img/unas-butter-yellow.webp", "alt": "Uñas semipermanente butter yellow", "acento": "dorado" },
+    { "id": "curso-cejas", "nombre": "Perfilado de cejas", "fecha": null, "modalidad": "Presencial · En el Dpto 319", "cupos": null, "cuposTotales": null, "barraEjemplo": 40, "img": "img/cejas-despues.webp", "alt": "Cejas perfiladas", "acento": "blush" }
+  ]
+}

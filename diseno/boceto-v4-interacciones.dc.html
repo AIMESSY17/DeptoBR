@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>DeptoBR v4 — Celular para probar</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.brillo::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,0) 40%,rgba(255,255,255,0.45) 50%,rgba(255,255,255,0) 60%);transform:translateX(-130%);animation:brillo 6s ease-in-out infinite;pointer-events:none}
+@keyframes brillo{0%,62%{transform:translateX(-130%)}90%,100%{transform:translateX(130%)}}
+.punto{animation:pulso 1.8s ease-out infinite}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(255,255,255,0.85)}100%{box-shadow:0 0 0 16px rgba(255,255,255,0)}}
+.apagon{animation:prender 1.5s ease-out .4s forwards}
+@keyframes prender{0%{opacity:1}22%{opacity:.5}28%{opacity:.95}40%{opacity:.2}46%{opacity:.7}100%{opacity:0}}
+.colgar-a{animation:colgarA .8s ease-out}
+.colgar-b{animation:colgarB .8s ease-out}
+@keyframes colgarA{0%{transform:rotate(0)}25%{transform:rotate(-24deg)}55%{transform:rotate(14deg)}80%{transform:rotate(-6deg)}100%{transform:rotate(0)}}
+@keyframes colgarB{0%{transform:rotate(0)}25%{transform:rotate(-24deg)}55%{transform:rotate(14deg)}80%{transform:rotate(-6deg)}100%{transform:rotate(0)}}
+.sube{animation:sube .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes sube{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.aparece{animation:aparece .25s ease-out}
+@keyframes aparece{from{opacity:0}to{opacity:1}}
+.scroller{scroll-behavior:smooth;scrollbar-width:none}
+.scroller::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion: reduce){.brillo::after,.punto,.colgar-a,.colgar-b,.sube,.aparece{animation:none}.apagon{animation:none;opacity:0}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #FBF8F3; font-family: 'Manrope', sans-serif; color: #241510;">
+  <div class="scroller" style="position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;">
+    <dc-import name="Contenido4" on-open="{{ abrir }}" on-add="{{ sumarRapido }}" hint-size="390px,7900px"></dc-import>
+  </div>
+
+  <a href="#" aria-label="{{ carritoLabel }}" style="position: absolute; top: 44px; right: 14px; width: 44px; height: 44px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.16);">
+    <span class="{{ swing }}" style="display: flex; transform-origin: 4px 50%;">
+      <svg width="26" height="10" viewBox="0 0 64 20" aria-hidden="true" fill="none" stroke="#241510" stroke-width="3.4" stroke-linecap="round"><circle cx="9" cy="10" r="6.5"></circle><path d="M15.5 10H60M52 10v7M58 10v5"></path></svg>
+    </span>
+    <sc-if value="{{ hayItems }}" hint-placeholder-val="{{ false }}">
+      <span style="position: absolute; top: -2px; right: -2px; min-width: 20px; height: 20px; padding: 0 5px; box-sizing: border-box; border-radius: 10px; background: #D9A43A; color: #241510; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center;">{{ count }}</span>
+    </sc-if>
+  </a>
+
+  <sc-if value="{{ showToast }}" hint-placeholder-val="{{ false }}">
+    <div class="aparece" role="status" style="position: absolute; top: 100px; left: 50%; transform: translateX(-50%); background: #241510; color: #FFFFFF; font-size: 14px; font-weight: 700; padding: 12px 18px; border-radius: 24px; white-space: nowrap; box-shadow: 0 10px 30px rgba(0,0,0,0.25);">Agregado a tu carrito</div>
+  </sc-if>
+
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ false }}">
+    <a href="#" class="aparece" style="position: absolute; left: 14px; right: 14px; bottom: 16px; height: 58px; border-radius: 29px; background: #241510; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; box-shadow: 0 16px 36px rgba(0,0,0,0.3);">
+      <span style="font-size: 15px; font-weight: 800;">Ver carrito ({{ count }})</span>
+      <span style="font-size: 15px; font-weight: 800;">$ [total] →</span>
+    </a>
+  </sc-if>
+
+  <sc-if value="{{ hayHoja }}" hint-placeholder-val="{{ false }}">
+    <div class="aparece" onClick="{{ cerrar }}" aria-hidden="true" style="position: absolute; inset: 0; background: rgba(20,10,6,0.5);"></div>
+    <div class="sube" role="dialog" aria-label="{{ hoja.nombre }}" style="position: absolute; left: 0; right: 0; bottom: 0; max-height: 790px; overflow-y: auto; background: #FFFFFF; border-radius: 22px 22px 0 0;">
+      <button onClick="{{ cerrar }}" aria-label="Cerrar" style="position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #FFFFFF; color: #241510; font-size: 20px; line-height: 1; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">×</button>
+
+      <sc-if value="{{ esProducto }}" hint-placeholder-val="{{ true }}">
+        <img src="{{ hoja.img }}" alt="{{ hoja.nombre }}" style="width: 100%; height: 400px; object-fit: cover; display: block;">
+        <div style="padding: 20px 20px 26px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 12px; font-weight: 700; color: #9A6E18; letter-spacing: 0.14em;">{{ hoja.catMay }}</span>
+          <span style="font-family: 'Instrument Serif', serif; font-size: 32px; line-height: 1;">{{ hoja.nombre }}</span>
+          <span style="font-size: 22px; font-weight: 800;">$ [precio]</span>
+          <span style="font-size: 15px; line-height: 1.6; color: #5E4A3E;">{{ hoja.desc }}</span>
+          <span style="font-size: 13px; color: #7A6355;">Retiro en el Dpto 319 o envío a coordinar.</span>
+          <div style="display: flex; gap: 10px; align-items: center; margin-top: 4px;">
+            <div style="height: 54px; border-radius: 27px; border: 1.5px solid rgba(36,21,16,0.25); display: flex; align-items: center;">
+              <button onClick="{{ menos }}" aria-label="Restar" style="width: 48px; height: 52px; border: 0; background: none; font-size: 20px; color: #241510;">−</button>
+              <span style="width: 22px; text-align: center; font-size: 16px; font-weight: 800;">{{ qty }}</span>
+              <button onClick="{{ mas }}" aria-label="Sumar" style="width: 48px; height: 52px; border: 0; background: none; font-size: 20px; color: #241510;">+</button>
+            </div>
+            <button onClick="{{ agregar }}" style="flex: 1; height: 54px; border-radius: 27px; border: 0; background: #241510; color: #FFFFFF; font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 800;">Agregar al carrito</button>
+          </div>
+          <a href="#" style="text-align: center; color: #241510; font-size: 14px; font-weight: 700; min-height: 44px; display: flex; align-items: center; justify-content: center;">Consultar por WhatsApp</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ esServicio }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ esCejas }}" hint-placeholder-val="{{ false }}">
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); height: 240px;">
+            <div style="position: relative;"><img src="/_blob/e80e4a6f0c5ffdfe95ccc292d68aa406" alt="Cejas antes" style="width: 100%; height: 100%; object-fit: cover; display: block;"><span style="position: absolute; left: 10px; bottom: 10px; background: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; padding: 6px 9px; border-radius: 10px;">ANTES</span></div>
+            <div style="position: relative;"><img src="/_blob/d9c9ea06b3ebb7e60819a07054cef75f" alt="Cejas después" style="width: 100%; height: 100%; object-fit: cover; display: block;"><span style="position: absolute; left: 10px; bottom: 10px; background: #241510; color: #FFFFFF; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; padding: 6px 9px; border-radius: 10px;">DESPUÉS</span></div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noCejas }}" hint-placeholder-val="{{ true }}">
+          <img src="{{ hoja.img }}" alt="{{ hoja.nombre }}" style="width: 100%; height: 320px; object-fit: cover; display: block;">
+        </sc-if>
+        <div style="padding: 20px 20px 26px; display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-size: 12px; font-weight: 700; color: #9A6E18; letter-spacing: 0.14em;">BEAUTY ROOM</span>
+          <span style="font-family: 'Instrument Serif', serif; font-size: 32px; line-height: 1;">{{ hoja.nombre }}</span>
+          <span style="font-size: 15px; color: #7A6355;">{{ hoja.dur }} · <span style="color: #241510; font-weight: 800; font-size: 20px;">$ [precio]</span></span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <sc-for list="{{ hoja.incluye }}" as="i" hint-placeholder-count="3">
+              <span style="font-size: 15px; display: flex; gap: 10px; align-items: center;"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#9A6E18" stroke-width="2"><path d="M3 8.5l3 3 7-7"></path></svg>{{ i }}</span>
+            </sc-for>
+          </div>
+          <span style="font-size: 13px; font-weight: 800; margin-top: 4px;">¿Cuándo te queda mejor?</span>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+            <sc-for list="{{ turnos }}" as="u" hint-placeholder-count="3">
+              <button onClick="{{ u.pick }}" style="{{ u.style }}">{{ u.label }}</button>
+            </sc-for>
+          </div>
+          <a href="#" style="height: 56px; border-radius: 28px; display: flex; align-items: center; justify-content: center; background: #241510; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 800;">Reservar por WhatsApp</a>
+          <span style="font-size: 13px; line-height: 1.5; color: #7A6355; text-align: center;">Le llega a DeptoBR: “{{ mensaje }}”</span>
+        </div>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <div class="apagon" aria-hidden="true" style="position: absolute; inset: 0; background: #070302; pointer-events: none;"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0, pop: 0, hoja: null, qty: 1, turno: 'Tarde', toast: false };
+  }
+  componentWillUnmount() { clearTimeout(this.t); }
+  avisar(n) {
+    clearTimeout(this.t);
+    this.setState({ count: this.state.count + n, pop: this.state.pop + 1, toast: true });
+    this.t = setTimeout(() => this.setState({ toast: false }), 2000);
+  }
+  renderVals() {
+    const st = this.state;
+    const h = st.hoja || { nombre: '', img: '', incluye: [], cat: '', desc: '', dur: '' };
+    const turnos = ['Mañana', 'Tarde', 'Sábado'].map((u) => ({
+      label: u,
+      style: 'height: 48px; border-radius: 14px; font-family: Manrope, sans-serif; font-size: 14px; font-weight: 700; ' + (u === st.turno ? 'background: #241510; color: #FFFFFF; border: 1.5px solid #241510;' : 'background: #FFFFFF; color: #241510; border: 1.5px solid rgba(36,21,16,0.25);'),
+      pick: () => this.setState({ turno: u })
+    }));
+    return {
+      count: st.count,
+      hayItems: st.count > 0,
+      carritoLabel: 'Carrito, ' + st.count + ' productos',
+      swing: st.pop === 0 ? '' : (st.pop % 2 ? 'colgar-a' : 'colgar-b'),
+      showToast: st.toast,
+      showBar: st.count > 0 && !st.hoja,
+      hayHoja: !!st.hoja,
+      hoja: Object.assign({}, h, { catMay: (h.cat || '').toUpperCase() }),
+      esProducto: !!st.hoja && h.tipo === 'p',
+      esServicio: !!st.hoja && h.tipo === 's',
+      esCejas: h.id === 'cejas', noCejas: h.id !== 'cejas',
+      qty: st.qty,
+      menos: () => this.setState({ qty: Math.max(1, st.qty - 1) }),
+      mas: () => this.setState({ qty: st.qty + 1 }),
+      turnos,
+      mensaje: 'Hola! Quiero reservar ' + h.nombre + ' (' + h.dur + '), me queda mejor ' + st.turno.toLowerCase() + '.',
+      abrir: (o) => this.setState({ hoja: o, qty: 1 }),
+      cerrar: () => this.setState({ hoja: null }),
+      agregar: () => { const n = st.qty; this.setState({ hoja: null }); this.avisar(n); },
+      sumarRapido: () => this.avisar(1)
+    };
+  }
+}
+</script>
+</body>
+</html>

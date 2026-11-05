@@ -1,0 +1,11 @@
+{
+  "_ayuda": "Robale el look. top/left: posición de cada etiqueta medida sobre el boceto (390 x 620 px). La web la recalcula para cualquier pantalla.",
+  "foto": "img/look-modelo.webp",
+  "alt": "Modelo con aros, collar de perlas y reloj",
+  "encuadre": "50% 18%",
+  "puntos": [
+    { "productoId": "aros-argolla-doble", "etiqueta": "Aros", "top": "28%", "left": "58%" },
+    { "productoId": "collar-perlas", "etiqueta": "Collar", "top": "46%", "left": "40%" },
+    { "productoId": "reloj-dorado-malla", "etiqueta": "Reloj", "top": "84%", "left": "30%" }
+  ]
+}

@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DeptoBR · Beauty room, joyas y lentes en el Dpto 319</title>
+  <meta name="description" content="Tu ratito, tu estilo, tu lugar. Uñas, cejas y pedicura en el beauty room del Dpto 319, más joyas dbrjoyas y lentes para comprar online. Av. José Ingenieros 1205.">
+  <meta name="theme-color" content="#22140E">
+
+  <!-- Open Graph / redes -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="DeptoBR">
+  <meta property="og:title" content="DeptoBR · Tu ratito, tu estilo, tu lugar.">
+  <meta property="og:description" content="Beauty room, joyas y lentes en el Dpto 319. Comprá online y reservá tu turno por WhatsApp.">
+  <meta property="og:image" content="img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Uñas cromadas doradas frente al logo de depto">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322140E'/%3E%3Cg fill='none' stroke='%23E0B04A' stroke-width='4' stroke-linecap='round'%3E%3Ccircle cx='16' cy='32' r='8'/%3E%3Cpath d='M24 32h30M48 32v8M54 32v6'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Prender la luz: una sola vez por sesión (antes de pintar) -->
+  <script>
+    try {
+      if (sessionStorage.getItem('dbr-luz')) document.documentElement.classList.add('luz-prendida');
+      else sessionStorage.setItem('dbr-luz', '1');
+    } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Tipografías sin bloquear el render (el apagón de entrada tapa el cambio de fuente) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="image" href="video/portada-poster.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "DeptoBR",
+    "slogan": "Tu ratito, tu estilo, tu lugar.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319",
+      "addressCountry": "AR"
+    },
+    "sameAs": ["https://www.instagram.com/deptobr/"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Llave reutilizable (símbolos SVG) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="llave" viewBox="0 0 64 20"><circle cx="9" cy="10" r="6.5"/><path d="M15.5 10H60M52 10v7M58 10v5"/></symbol>
+    <symbol id="llave-marca" viewBox="0 0 64 20"><circle cx="9" cy="10" r="6.5"/><circle cx="9" cy="10" r="2.2"/><path d="M15.5 10H60M52 10v7M58 10v5M45 10v4"/></symbol>
+  </svg>
+
+  <!-- Barra de aviso -->
+  <div class="aviso">
+    <svg width="18" height="6" aria-hidden="true" fill="none" stroke="#C8972F" stroke-width="4" stroke-linecap="round"><use href="#llave"/></svg>
+    Retiro en el Dpto 319 · Envíos a coordinar
+  </div>
+
+  <main>
+    <!-- 01 · PORTADA -->
+    <section class="portada" aria-label="Portada">
+      <video class="portada__video" src="video/portada.mp4" poster="video/portada-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="Manos con anillos del depto al sol" data-video></video>
+      <div class="portada__sombra" aria-hidden="true"></div>
+      <header class="portada__header">
+        <a class="menu-btn" href="#sumario" aria-label="Menú: ir al sumario">
+          <svg width="20" height="10" viewBox="0 0 20 10" aria-hidden="true" fill="none" stroke="#FFFFFF" stroke-width="1.6"><path d="M0 1h20M0 9h20"/></svg>MENÚ
+        </a>
+      </header>
+      <div class="portada__texto">
+        <span class="antetitulo">BEAUTY ROOM · JOYAS · LENTES</span>
+        <h1 class="titulo portada__titulo">Tu ratito,<br>tu estilo,<br><span class="it">tu lugar.</span></h1>
+        <div class="portada__botones">
+          <a class="btn btn--foto" href="#tienda">Ver la tienda</a>
+          <a class="btn btn--foto-sec" href="#beauty">Reservar turno</a>
+        </div>
+      </div>
+      <div class="marca" aria-hidden="true">
+        <svg width="76" height="24" fill="none" stroke="#E0B04A" stroke-width="2.6" stroke-linecap="round"><use href="#llave-marca"/></svg>
+        <span class="marca__palabra">depto</span>
+      </div>
+      <span class="sr-only">DeptoBR · Beauty Room</span>
+    </section>
+
+    <!-- 03 · SUMARIO -->
+    <nav class="sumario" id="sumario" aria-label="Sumario">
+      <div id="sumario-lista"></div>
+      <span class="sumario__fin" aria-hidden="true"></span>
+    </nav>
+
+    <!-- 04 · TIENDA · LO NUEVO -->
+    <section class="tienda" id="tienda" aria-labelledby="t-tienda">
+      <div class="cabeza">
+        <span class="antetitulo">DBRJOYAS · LO NUEVO</span>
+        <h2 class="titulo" id="t-tienda">Brillá sin<br><span class="it">pedir permiso.</span></h2>
+      </div>
+      <div id="semana"></div>
+      <div class="carrusel" id="nuevos" role="list" aria-label="Lo nuevo"></div>
+    </section>
+
+    <!-- 05 · ROBALE EL LOOK -->
+    <section class="look" id="look" aria-labelledby="t-look">
+      <div class="look__marco" id="look-marco"></div>
+      <div class="look__sombra" aria-hidden="true"></div>
+      <div class="look__texto">
+        <span class="antetitulo">COMPRÁ EL LOOK</span>
+        <h2 class="titulo look__titulo" id="t-look">Robale<br><span class="it">el look.</span></h2>
+      </div>
+    </section>
+
+    <!-- 06 · LENTES -->
+    <section class="lentes" id="lentes" aria-labelledby="t-lentes">
+      <div class="cabeza">
+        <span class="antetitulo">LENTES</span>
+        <h2 class="titulo" id="t-lentes">Mirá la vida<br><span class="it">con otro filtro.</span></h2>
+      </div>
+      <div class="carrusel" id="lista-lentes" role="list" aria-label="Lentes"></div>
+      <div class="lentes__ver">
+        <a class="btn btn--secundario" href="#tienda">Ver toda la tienda →</a>
+      </div>
+    </section>
+
+    <!-- 07 · BEAUTY ROOM · LA CARTA -->
+    <section class="beauty" id="beauty" aria-labelledby="t-carta">
+      <div class="beauty__foto">
+        <img class="foto" src="img/unas-cromadas-doradas.webp" srcset="img/unas-cromadas-doradas-480.webp 480w, img/unas-cromadas-doradas.webp 900w" sizes="100vw" width="900" height="1200" loading="lazy" alt="Uñas cromadas doradas del depto">
+      </div>
+      <div class="carta">
+        <span class="antetitulo">BEAUTY ROOM</span>
+        <h2 class="titulo carta__titulo" id="t-carta">La <span class="it">carta</span></h2>
+        <span class="carta__bajada">Elegí, tocá y reservá en un minuto.</span>
+        <div id="servicios"></div>
+      </div>
+      <div class="hecho">
+        <span class="antetitulo">HECHO EN EL DEPTO</span>
+        <div class="hecho__fotos">
+          <img src="img/unas-butter-yellow-480.webp" srcset="img/unas-butter-yellow-480.webp 480w, img/unas-butter-yellow.webp 1024w" sizes="(min-width: 1024px) 330px, 33vw" width="480" height="320" loading="lazy" alt="Uñas butter yellow">
+          <img src="img/unas-animal-print-480.webp" srcset="img/unas-animal-print-480.webp 480w, img/unas-animal-print.webp 905w" sizes="(min-width: 1024px) 330px, 33vw" width="480" height="636" loading="lazy" alt="Uñas animal print">
+          <img src="img/unas-cristales-480.webp" srcset="img/unas-cristales-480.webp 480w, img/unas-cristales.webp 1084w" sizes="(min-width: 1024px) 330px, 33vw" width="480" height="359" loading="lazy" alt="Uñas con cristales">
+        </div>
+        <a class="btn btn--principal" href="#" data-wa-turno>Reservar mi turno</a>
+      </div>
+    </section>
+
+    <!-- 08 · EL DEPTO -->
+    <section class="depto" id="depto" aria-labelledby="t-depto">
+      <img class="foto" src="img/depto-bulldog.webp" srcset="img/depto-bulldog-480.webp 480w, img/depto-bulldog.webp 960w" sizes="100vw" width="960" height="960" loading="lazy" alt="Bulldog francés con buzo rosa frente al logo del depto">
+      <div class="depto__sombra" aria-hidden="true"></div>
+      <div class="depto__texto">
+        <span class="antetitulo">EL DEPTO</span>
+        <h2 class="titulo depto__titulo" id="t-depto">Pasá,<br><span class="it">estás en tu casa.</span></h2>
+        <span class="depto__frase">Se permiten bebés, perros y charlas largas.</span>
+      </div>
+    </section>
+    <section class="espacio" aria-label="El espacio">
+      <div class="espacio__fotos">
+        <img src="img/espacio-espejo-480.webp" srcset="img/espacio-espejo-480.webp 480w, img/espacio-espejo.webp 1200w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="480" loading="lazy" alt="Espejo dorado antiguo">
+        <img src="img/espacio-mesa-480.webp" srcset="img/espacio-mesa-480.webp 480w, img/espacio-mesa.webp 1200w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="480" loading="lazy" alt="Mesa de manicura holográfica">
+      </div>
+      <p class="espacio__historia" data-cfg="historia">[Historia de la dueña en 2–3 líneas: cómo nació DeptoBR y por qué un depto.]</p>
+    </section>
+
+    <!-- 09 · CAPACITACIONES -->
+    <section class="cursos" id="cursos" aria-labelledby="t-cursos">
+      <div class="cursos__video">
+        <video src="video/cursos.mp4" poster="video/cursos-poster.webp" muted loop playsinline preload="none" aria-label="Uñas violetas marmoladas hechas en el depto" data-video data-lazy-video></video>
+        <div class="cursos__sombra" aria-hidden="true"></div>
+        <span class="cupos-limitados">CUPOS LIMITADOS</span>
+        <div class="cursos__texto">
+          <span class="antetitulo">CAPACITACIONES</span>
+          <h2 class="titulo cursos__titulo" id="t-cursos">Aprendé lo que<br><span class="it">hacemos acá.</span></h2>
+          <span class="cursos__bajada">Del otro lado de la mesa: te llevás la técnica, los secretos y la confianza para arrancar.</span>
+        </div>
+      </div>
+      <div class="cursos__lista" id="lista-cursos"></div>
+    </section>
+
+    <!-- 10 · ENCONTRANOS -->
+    <section class="encontranos" id="encontranos" aria-labelledby="t-encontranos">
+      <span class="antetitulo">ENCONTRANOS</span>
+      <h2 class="titulo encontranos__titulo" id="t-encontranos">Tocá timbre<br><span class="it">en el 319.</span></h2>
+      <div class="dato"><span class="dato__label">Dirección</span><span class="dato__valor" data-cfg="direccion">Av. José Ingenieros 1205 · Edif. Jerárquicos · Dpto 319</span></div>
+      <div class="dato"><span class="dato__label">Horarios</span><span class="dato__valor" data-cfg="horarios">[Días y horarios]</span></div>
+      <div class="dato"><span class="dato__label">Retiros y envíos</span><span class="dato__valor" data-cfg="retiros">Retiro en el depto · Envíos a coordinar</span></div>
+      <a class="btn btn--principal" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Jos%C3%A9+Ingenieros+1205" target="_blank" rel="noopener" id="como-llegar">Cómo llegar</a>
+    </section>
+  </main>
+
+  <!-- 11 · PIE -->
+  <footer class="pie">
+    <nav class="pie__links" aria-label="Links del pie">
+      <a href="#tienda">Tienda</a>
+      <a href="#beauty">Beauty Room</a>
+      <a href="#cursos">Capacitaciones</a>
+      <a href="https://www.instagram.com/deptobr/" target="_blank" rel="noopener" id="link-ig">Instagram</a>
+      <a href="#" id="link-cambios">Cambios y devoluciones</a>
+      <a href="#" id="link-arrepentimiento">Botón de arrepentimiento</a>
+    </nav>
+    <span class="pie__legal" id="legales">[Razón social] · CUIT [—] · <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor" target="_blank" rel="noopener">Defensa del Consumidor</a></span>
+    <div class="marca" aria-hidden="true">
+      <svg width="76" height="24" fill="none" stroke="#E0B04A" stroke-width="2.6" stroke-linecap="round"><use href="#llave-marca"/></svg>
+      <span class="marca__palabra">depto</span>
+      <span class="marca__sub">BEAUTY ROOM</span>
+    </div>
+  </footer>
+
+  <!-- Carrito-llave (siempre a un toque) -->
+  <button class="carrito-btn" id="carrito-btn" type="button" aria-label="Carrito, 0 productos">
+    <span class="carrito-btn__llave" id="carrito-llave">
+      <svg width="26" height="10" aria-hidden="true" fill="none" stroke="#241510" stroke-width="3.4" stroke-linecap="round"><use href="#llave"/></svg>
+    </span>
+    <span class="carrito-btn__contador" id="carrito-contador" hidden>0</span>
+  </button>
+
+  <!-- Aviso "Agregado a tu carrito" -->
+  <div class="toast aparece" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Barra fija inferior (carrito / Reservar turno) -->
+  <button class="barra aparece" id="barra" type="button" hidden>
+    <span id="barra-izq"></span><span id="barra-der"></span>
+  </button>
+
+  <!-- Ficha (bottom sheet) -->
+  <div class="velo aparece" id="velo" hidden></div>
+  <div class="hoja sube" id="hoja" role="dialog" aria-modal="true" aria-label="" hidden>
+    <button class="hoja__cerrar" id="hoja-cerrar" type="button" aria-label="Cerrar">×</button>
+    <div id="hoja-contenido"></div>
+  </div>
+
+  <!-- E1 · Prender la luz -->
+  <div class="apagon" id="apagon" aria-hidden="true"></div>
+
+  <script src="js/carrito.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

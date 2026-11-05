@@ -1,0 +1,8 @@
+# Material de trabajo que no se publica ni se versiona
+referencias/
+node_modules/
+.env
+.env.*
+.vercel
+.DS_Store
+Thumbs.db

@@ -9,7 +9,7 @@
   var $ = function (sel, el) { return (el || document).querySelector(sel); };
   var reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var datos = { productos: [], servicios: [], cursos: [], look: null, config: {} };
+  var datos = { productos: [], servicios: [], grupos: [], cursos: [], look: null, config: {} };
   var porId = {};
 
   /* ---------- Utilidades ---------- */
@@ -162,20 +162,37 @@
   }
 
   /* ---------- La carta ---------- */
+  function servicioHTML(v) {
+    return '<button class="servicio" type="button" data-servicio="' + esc(v.id) + '">' +
+      '<span class="servicio__linea">' +
+        '<span class="servicio__nombre">' + esc(v.nombre) + '</span>' +
+        '<span class="servicio__puntos" aria-hidden="true"></span>' +
+        '<span class="servicio__precio">' + esc(precio(v.precio)) + '</span>' +
+      '</span>' +
+      '<span class="servicio__sub">' +
+        '<span>' + esc(v.dur) + (v.top ? ' · Lo más pedido' : '') + '</span>' +
+        '<span class="servicio__reservar">Reservar →</span>' +
+      '</span>' +
+    '</button>';
+  }
+  /* Agrupa por "grupo" (Manos, Pies, Cejas) en el orden de "grupos";
+     los servicios sin grupo conocido van al final, sin subtítulo. */
   function renderServicios() {
-    $('#servicios').innerHTML = datos.servicios.map(function (v) {
-      return '<button class="servicio" type="button" data-servicio="' + esc(v.id) + '">' +
-        '<span class="servicio__linea">' +
-          '<span class="servicio__nombre">' + esc(v.nombre) + '</span>' +
-          '<span class="servicio__puntos" aria-hidden="true"></span>' +
-          '<span class="servicio__precio">' + esc(precio(v.precio)) + '</span>' +
-        '</span>' +
-        '<span class="servicio__sub">' +
-          '<span>' + esc(v.dur) + (v.top ? ' · Lo más pedido' : '') + '</span>' +
-          '<span class="servicio__reservar">Reservar →</span>' +
-        '</span>' +
-      '</button>';
+    var usados = {};
+    var html = datos.grupos.map(function (g) {
+      var lista = datos.servicios.filter(function (v) { return v.grupo === g.id; });
+      if (!lista.length) return '';
+      usados[g.id] = true;
+      return '<div class="carta__grupo">' +
+        '<h3 class="carta__subtitulo">' +
+          (g.img ? '<img class="carta__subtitulo-img" src="' + esc(g.img) + '" alt="' + esc(g.alt || '') + '" width="28" height="28" loading="lazy">' : '') +
+          '<span>' + esc(g.nombre) + '</span>' +
+        '</h3>' +
+        lista.map(servicioHTML).join('') +
+      '</div>';
     }).join('');
+    html += datos.servicios.filter(function (v) { return !usados[v.grupo]; }).map(servicioHTML).join('');
+    $('#servicios').innerHTML = html;
   }
 
   /* ---------- Capacitaciones ---------- */
@@ -608,6 +625,7 @@
   ]).then(function (r) {
     datos.productos = r[0].productos || [];
     datos.servicios = r[1].servicios || [];
+    datos.grupos = r[1].grupos || [];
     datos.cursos = r[2].cursos || [];
     datos.look = r[3];
     datos.config = r[4];

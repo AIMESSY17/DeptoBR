@@ -32,7 +32,7 @@ Panel admin para la clienta · login de compradoras · calendario de turnos prop
 - **Títulos con onda** (son parte del diseño, no cambiar): ver sección 6.
 
 ### Descartado (no volver a proponer)
-Fondo oscuro de noche y transición noche→día con scroll · grano de película · fotos borrosas · ventana/arco recortando el video · loader con puerta · scrapbook, sellos, cinta en movimiento · scroll horizontal fijado · páginas que se apilan · caligrafía que se dibuja · luz que sigue el cursor · manifiesto con fotos dentro del texto.
+Fondo oscuro de noche y transición noche→día con scroll · grano de película · fotos borrosas · ventana/arco recortando el video · loader con puerta · scrapbook, sellos, cinta en movimiento · scroll horizontal fijado · páginas que se apilan · caligrafía que se dibuja · luz que sigue el cursor · manifiesto con fotos dentro del texto · sección de Pedicura aparte (va dentro de La carta, grupo PIES).
 
 ## 5. Efectos aprobados (y solo estos)
 - **E1 Prender la luz:** al cargar, la pantalla arranca negra y "titila" como un tubo que se prende (≈1,5 s, una vez por sesión). Respeta `prefers-reduced-motion`.
@@ -44,11 +44,11 @@ Fondo oscuro de noche y transición noche→día con scroll · grano de películ
 ## 6. Secciones (en este orden, mobile first)
 1. **Barra de aviso:** "Retiro en el Dpto 319 · Envíos a coordinar".
 2. **Portada:** video a pantalla completa (manos con anillos al sol). Arriba "MENÚ" y carrito. Abajo: "BEAUTY ROOM · JOYAS · LENTES", título **"Tu ratito, tu estilo, *tu lugar.*"**, botones **Ver la tienda** y **Reservar turno**, y el wordmark "depto" gigante dorado con la llave.
-3. **Sumario:** lista tipográfica gigante 01 Joyas · 02 Lentes · 03 Uñas · 04 Cejas · 05 Cursos, cada una con foto redonda; lleva a su sección.
+3. **Sumario:** lista tipográfica gigante 01 Joyas · 02 Lentes · 03 Uñas · 04 Pedicura · 05 Cejas · 06 Cursos, cada una con foto redonda; lleva a su sección (Uñas, Pedicura y Cejas llevan a `#beauty`).
 4. **Tienda · "Brillá sin *pedir permiso.*"** (DBRJOYAS · LO NUEVO): Pieza de la semana a ancho completo con nombre, precio y "Agregar"; debajo carrusel horizontal de tarjetas grandes (foto 4:5, etiqueta NUEVO / ÚLTIMAS N, "+" rápido, nombre y precio).
 5. **"Robale *el look.*"**: foto de modelo a pantalla completa con etiquetas "+ Aros", "+ Collar", "+ Reloj" sobre cada pieza; cada una abre la ficha del producto.
 6. **Lentes · "Mirá la vida *con otro filtro.*"**: carrusel de tarjetas aún más grandes + botón "Ver toda la tienda".
-7. **Beauty Room · "La *carta*"**: foto grande de uñas y encima una hoja tipo carta de restaurante: *Servicio ........ $precio*, duración, "Lo más pedido", "Reservar →". Debajo "Hecho en el depto" (3 fotos de trabajos) y botón "Reservar mi turno".
+7. **Beauty Room · "La *carta*"**: foto grande de uñas y encima una hoja tipo carta de restaurante: *Servicio ........ $precio*, duración, "Lo más pedido", "Reservar →". Los servicios van agrupados con subtítulos (Manrope 800, 11 px, espaciado 0.24em, dorado accesible #9A6E18, línea fina a la derecha): **MANOS** (Kapping gel, Semipermanente, Nail art) · **PIES** (con foto redonda de 28 px de la pedicura antes del texto: Pedicura completa) · **CEJAS** (Perfilado de cejas). El grupo sale del campo `grupo` de `data/servicios.json`, y el orden y la foto de cada subtítulo, de `grupos`. La pedicura **no** tiene sección aparte. Debajo "Hecho en el depto": grilla de 2 columnas con 4 fotos de 200 px de alto (butter yellow, animal print, cristales y pedicura; en escritorio, 4 en una fila) y botón "Reservar mi turno".
 8. **El depto · "Pasá, *estás en tu casa.*"**: foto del bulldog frente al logo a pantalla completa, "Se permiten bebés, perros y charlas largas.", 2 fotos del espacio y la historia `[A CONFIRMAR]`.
 9. **Capacitaciones · "Aprendé lo que *hacemos acá.*"**: video a pantalla completa (uñas violetas), etiqueta "CUPOS LIMITADOS", frase, y una tarjeta por curso con foto + fecha, "Presencial · En el Dpto 319", barra de cupos, botón "Quiero mi lugar" (WhatsApp con el curso).
 10. **Encontranos · "Tocá timbre *en el 319.*"**: dirección, horarios `[A CONFIRMAR]`, retiros y envíos, botón "Cómo llegar".

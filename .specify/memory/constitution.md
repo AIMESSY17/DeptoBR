@@ -2,8 +2,13 @@
 
 Principios que NO se negocian. Si algo los contradice, se frena y se consulta.
 
-## I. El boceto v4 manda
-La referencia visual es `diseno/boceto-v4-pagina.dc.html` y `diseno/boceto-v4-interacciones.dc.html`. Se respetan textos, orden, colores, tipografías, medidas y efectos. Nada de "mejoras" de diseño por cuenta propia; si algo no se puede, se avisa.
+## I. El boceto v5 manda
+La referencia visual es `diseno/boceto-v5-pagina.dc.html` y `diseno/boceto-v5-interacciones.dc.html` (la v4 quedó vieja). Se respetan textos, orden, colores, tipografías, medidas y efectos. Nada de "mejoras" de diseño por cuenta propia; si algo no se puede, se avisa.
+
+## I bis. La identidad es la de la marca real
+- **Logo:** siempre los SVG reales de `img/logos/` (copiados de `diseno/logos/`). Nunca redibujar el logo ni la llave, ni escribir "depto" con una tipografía.
+- **Tipografía:** solo Poppins (300/400/500/600). Títulos en 300 con la parte destacada en 500, sin itálica.
+- **Colores:** crema `#F3EBDD`, chocolate `#4A2A1E`, dorado del logo `#E0BD6C`, maíz `#E2C35A`, arena `#E9DFCF`, blush `#F1DFD8`, dorado texto `#8A6414`. Sin verde oliva.
 
 ## II. Fotos nítidas y protagonistas
 Las fotos y videos reales de la clienta son lo más importante. Sin grano, desenfoque ni filtros encima. Grandes, nunca amontonadas.

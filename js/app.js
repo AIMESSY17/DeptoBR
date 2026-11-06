@@ -1,5 +1,5 @@
 /* =========================================================
-   DeptoBR v4 · app
+   DeptoBR v5 · app
    Carga /data/*.json, arma las secciones, ficha (bottom sheet),
    carrito, barra fija inferior y efectos.
    ========================================================= */
@@ -111,6 +111,20 @@
     $('#lista-lentes').innerHTML = datos.productos
       .filter(function (p) { return p.lista === 'lentes'; })
       .map(function (p) { return tarjeta(p, '(min-width: 1024px) 590px, 300px'); }).join('');
+  }
+
+  /* ---------- Gift card: 3 montos, cada uno abre su ficha ---------- */
+  function renderGift() {
+    var montos = datos.productos.filter(function (p) { return p.lista === 'gift'; });
+    var foto = $('#gift-foto');
+    if (!montos.length) { foto.disabled = true; return; }
+    /* El del medio va resaltado (boceto) y es el que abre la foto */
+    var medio = montos[Math.floor((montos.length - 1) / 2)];
+    foto.setAttribute('data-abrir', medio.id);
+    $('#gift-montos').innerHTML = montos.map(function (p) {
+      var etiqueta = typeof p.precio === 'number' ? precio(p.precio) : '$ [monto]';
+      return '<button class="monto' + (p === medio ? ' monto--destacado' : '') + '" type="button" data-abrir="' + esc(p.id) + '" aria-label="Gift card de ' + esc(etiqueta) + '">' + esc(etiqueta) + '</button>';
+    }).join('');
   }
 
   /* ---------- Robale el look ---------- */
@@ -315,17 +329,18 @@
 
   /* También te puede gustar: 4 productos, primero de la misma categoría.
      Arranca después del producto abierto (así cada ficha sugiere otros).
-     Los de "Robale el look" solo se venden desde la foto, no se sugieren. */
+     Los de "Robale el look" solo se venden desde la foto y las gift cards
+     desde su sección: no se sugieren. */
   function similares(p) {
     var todos = datos.productos, i = todos.indexOf(p);
     var lista = todos.slice(i + 1).concat(todos.slice(0, i))
-      .filter(function (q) { return q.lista !== 'look'; });
+      .filter(function (q) { return q.lista !== 'look' && q.lista !== 'gift'; });
     var misma = lista.filter(function (q) { return q.cat === p.cat; });
     var resto = lista.filter(function (q) { return q.cat !== p.cat; });
     var elegidos = misma.concat(resto).slice(0, 4);
     if (!elegidos.length) return '';
     return '<div class="similares">' +
-      '<span class="similares__titulo">También te puede <span class="it">gustar</span></span>' +
+      '<span class="similares__titulo">También te puede <span class="fuerte">gustar</span></span>' +
       '<div class="similares__lista" role="list">' + elegidos.map(function (q) {
         return '<button class="similar" type="button" role="listitem" data-abrir="' + esc(q.id) + '">' +
           '<img src="' + esc(chica(q.fotos[0])) + '" width="132" height="164" loading="lazy" alt="' + esc(q.nombre) + '">' +
@@ -356,7 +371,7 @@
           '<div><img class="foto" src="' + esc(v.antesDespues.despues) + '" alt="' + esc(v.nombre) + ': después"><span class="despues">DESPUÉS</span></div>' +
         '</div>'
       : '<img class="hoja__img hoja__img--servicio" src="' + esc(v.img) + '" alt="' + esc(v.nombre) + '">';
-    var tilde = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#9A6E18" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>';
+    var tilde = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#8A6414" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>';
     contenido.innerHTML = foto +
       '<div class="hoja__cuerpo hoja__cuerpo--servicio">' +
         '<span class="hoja__cat">BEAUTY ROOM</span>' +
@@ -641,6 +656,7 @@
     renderSumario();
     renderTienda();
     renderLook();
+    renderGift();
     renderServicios();
     renderCursos();
     eventos();

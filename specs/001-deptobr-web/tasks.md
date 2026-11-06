@@ -1,4 +1,4 @@
-# Tareas — Spec 001 DeptoBR (v4)
+# Tareas — Spec 001 DeptoBR (v5)
 
 Marcar `[x]` al terminar. Una fase se cierra con su checklist + commit.
 
@@ -33,6 +33,9 @@ Marcar `[x]` al terminar. Una fase se cierra con su checklist + commit.
 - [x] T21 SEO + Open Graph.
 - [ ] T22 Revisión 375/390/768/1280, celular real, Lighthouse, accesibilidad. _(Hecho: 375/390/768/1280 sin scroll horizontal, Lighthouse móvil 83–95 / acces. 96 / buenas prácticas 100 / SEO 100, teclado y reduced-motion. **Falta: prueba en celular real.**)_
 - [x] T23 Commit "Fase 1: DeptoBR v4 visual + compra en pantalla" + resumen y pendientes.
+
+### Cambio a v5 (identidad nueva, 2026-11-06)
+- [x] T23b Logo real (SVG) en portada, pie, carga, tienda, carta, aviso, carrito y favicon; Poppins en todo; paleta crema/chocolate/dorado/maíz sin oliva; pantalla de carga v5; sección Gift card; foto nueva del espacio; WhatsApp real.
 
 ## FASE 2 — Venta real
 - [ ] T24 Supabase (`stock`, `pedidos`) · T25 `/api/stock` y "Agotado" real · T26 Checkout (entrega + datos) · T27 `/api/crear-pago` · T28 `/api/webhook-mp` · T29 Mails · T30 Página de resultado del pago · T31 Pruebas con credenciales de prueba.

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>DeptoBR · Beauty room, joyas y lentes en el Dpto 319</title>
   <meta name="description" content="Tu ratito, tu estilo, tu lugar. Uñas, cejas y pedicura en el beauty room del Dpto 319, más joyas dbrjoyas y lentes para comprar online. Av. José Ingenieros 1205.">
-  <meta name="theme-color" content="#22140E">
+  <meta name="theme-color" content="#4A2A1E">
 
   <!-- Open Graph / redes -->
   <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
   <meta property="og:image:alt" content="Uñas cromadas doradas frente al logo de depto">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322140E'/%3E%3Cg fill='none' stroke='%23E0B04A' stroke-width='4' stroke-linecap='round'%3E%3Ccircle cx='16' cy='32' r='8'/%3E%3Cpath d='M24 32h30M48 32v8M54 32v6'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 
   <!-- Pantalla de carga: una sola vez por sesión (antes de pintar) -->
   <script>
@@ -31,11 +31,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Tipografías sin bloquear el render (el apagón de entrada tapa el cambio de fuente) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <!-- Poppins sin bloquear el render (el apagón de entrada tapa el cambio de fuente) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
   <link rel="preload" as="image" href="video/portada-poster.webp" fetchpriority="high">
+  <!-- La llave y el logo de la pantalla de carga -->
+  <link rel="preload" as="image" href="img/logos/llave-oro.svg">
+  <link rel="preload" as="image" href="img/logos/logo-completo.svg">
   <link rel="stylesheet" href="css/styles.css">
 
   <script type="application/ld+json">
@@ -55,15 +58,10 @@
 </head>
 <body>
 
-  <!-- Llave reutilizable (símbolos SVG) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="llave" viewBox="0 0 64 20"><circle cx="9" cy="10" r="6.5"/><path d="M15.5 10H60M52 10v7M58 10v5"/></symbol>
-    <symbol id="llave-marca" viewBox="0 0 64 20"><circle cx="9" cy="10" r="6.5"/><circle cx="9" cy="10" r="2.2"/><path d="M15.5 10H60M52 10v7M58 10v5M45 10v4"/></symbol>
-  </svg>
 
   <!-- Barra de aviso -->
   <div class="aviso">
-    <svg width="18" height="6" aria-hidden="true" fill="none" stroke="#C8972F" stroke-width="4" stroke-linecap="round"><use href="#llave"/></svg>
+    <img src="img/logos/llave-oro.svg" alt="" width="24" height="9">
     Retiro en el Dpto 319 · Envíos a coordinar
   </div>
 
@@ -79,17 +77,15 @@
       </header>
       <div class="portada__texto">
         <span class="antetitulo">BEAUTY ROOM · JOYAS · LENTES</span>
-        <h1 class="titulo portada__titulo">Tu ratito,<br>tu estilo,<br><span class="it">tu lugar.</span></h1>
+        <h1 class="titulo portada__titulo">Tu ratito,<br>tu estilo,<br><span class="fuerte">tu lugar.</span></h1>
         <div class="portada__botones">
           <a class="btn btn--foto" href="#tienda">Ver la tienda</a>
           <a class="btn btn--foto-sec" href="#beauty">Reservar turno</a>
         </div>
       </div>
-      <div class="marca" aria-hidden="true">
-        <svg width="76" height="24" fill="none" stroke="#E0B04A" stroke-width="2.6" stroke-linecap="round"><use href="#llave-marca"/></svg>
-        <span class="marca__palabra">depto</span>
+      <div class="portada__logo">
+        <img src="img/logos/logo-crema.svg" alt="depto beauty room" width="300" height="127" fetchpriority="high">
       </div>
-      <span class="sr-only">DeptoBR · Beauty Room</span>
     </section>
 
     <!-- 03 · SUMARIO -->
@@ -101,8 +97,8 @@
     <!-- 04 · TIENDA · LO NUEVO -->
     <section class="tienda" id="tienda" aria-labelledby="t-tienda">
       <div class="cabeza">
-        <span class="antetitulo">DBRJOYAS · LO NUEVO</span>
-        <h2 class="titulo" id="t-tienda">Brillá sin<br><span class="it">pedir permiso.</span></h2>
+        <span class="cabeza__marca"><img src="img/logos/dbr-joyas.svg" alt="dbr joyas" width="64" height="40"><span class="antetitulo">LO NUEVO</span></span>
+        <h2 class="titulo" id="t-tienda">Brillá sin<br><span class="fuerte">pedir permiso.</span></h2>
       </div>
       <div id="semana"></div>
       <div class="carrusel" id="nuevos" role="list" aria-label="Lo nuevo"></div>
@@ -114,7 +110,7 @@
       <div class="look__sombra" aria-hidden="true"></div>
       <div class="look__texto">
         <span class="antetitulo">COMPRÁ EL LOOK</span>
-        <h2 class="titulo look__titulo" id="t-look">Robale<br><span class="it">el look.</span></h2>
+        <h2 class="titulo look__titulo" id="t-look">Robale<br><span class="fuerte">el look.</span></h2>
       </div>
     </section>
 
@@ -122,7 +118,7 @@
     <section class="lentes" id="lentes" aria-labelledby="t-lentes">
       <div class="cabeza">
         <span class="antetitulo">LENTES · DE LA HORA PICO A LA HORA DORADA</span>
-        <h2 class="titulo" id="t-lentes">Mirá la vida<br><span class="it">con otro filtro.</span></h2>
+        <h2 class="titulo" id="t-lentes">Mirá la vida<br><span class="fuerte">con otro filtro.</span></h2>
       </div>
       <div class="carrusel" id="lista-lentes" role="list" aria-label="Lentes"></div>
       <div class="lentes__ver">
@@ -136,8 +132,8 @@
         <img class="foto" src="img/unas-cromadas-doradas.webp" srcset="img/unas-cromadas-doradas-480.webp 480w, img/unas-cromadas-doradas.webp 900w" sizes="100vw" width="900" height="1200" loading="lazy" alt="Uñas cromadas doradas del depto">
       </div>
       <div class="carta">
-        <span class="antetitulo">BEAUTY ROOM</span>
-        <h2 class="titulo carta__titulo" id="t-carta">La <span class="it">carta</span></h2>
+        <img class="carta__marca" src="img/logos/dbr-unas.svg" alt="dbr uñas" width="79" height="48" loading="lazy">
+        <h2 class="titulo carta__titulo" id="t-carta">La <span class="fuerte">carta</span></h2>
         <span class="carta__bajada">Elegí, tocá y reservá en un minuto.</span>
         <div id="servicios"></div>
       </div>
@@ -147,10 +143,23 @@
           <img src="img/unas-butter-yellow-480.webp" srcset="img/unas-butter-yellow-480.webp 480w, img/unas-butter-yellow.webp 1024w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="320" loading="lazy" alt="Uñas butter yellow">
           <img src="img/unas-animal-print-480.webp" srcset="img/unas-animal-print-480.webp 480w, img/unas-animal-print.webp 905w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="636" loading="lazy" alt="Uñas animal print">
           <img src="img/unas-cristales-480.webp" srcset="img/unas-cristales-480.webp 480w, img/unas-cristales.webp 1084w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="359" loading="lazy" alt="Uñas con cristales">
-          <img src="img/servicio-pedicura-480.webp" srcset="img/servicio-pedicura-480.webp 480w, img/servicio-pedicura.webp 900w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="640" loading="lazy" alt="Pedicura hecha en el depto">
+          <img src="img/servicio-pedicura-480.webp" srcset="img/servicio-pedicura-480.webp 480w, img/servicio-pedicura.webp 900w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="640" loading="lazy" alt="Pedicura semipermanente">
         </div>
         <a class="btn btn--principal" href="#" data-wa-turno>Reservar mi turno</a>
       </div>
+    </section>
+
+    <!-- 07c · GIFT CARD -->
+    <section class="gift" id="giftcard" aria-labelledby="t-gift">
+      <div class="gift__cabeza">
+        <span class="antetitulo">GIFT CARD</span>
+        <h2 class="titulo gift__titulo" id="t-gift">Regalá un<br><span class="fuerte">ratito en el depto.</span></h2>
+      </div>
+      <button class="gift__foto" type="button" id="gift-foto" aria-label="Ver Gift Card">
+        <img class="foto" src="img/giftcard.webp" srcset="img/giftcard-480.webp 480w, img/giftcard.webp 1024w" sizes="(min-width: 1024px) 560px, 100vw" width="1024" height="1024" loading="lazy" alt="Gift card de DeptoBR con sobre dorado">
+      </button>
+      <div class="gift__montos" id="gift-montos" role="group" aria-label="Montos de la gift card"></div>
+      <span class="gift__bajada">Para servicios o productos. Te la mandamos lista para regalar.</span>
     </section>
 
     <!-- 08 · EL DEPTO -->
@@ -159,13 +168,13 @@
       <div class="depto__sombra" aria-hidden="true"></div>
       <div class="depto__texto">
         <span class="antetitulo">EL DEPTO</span>
-        <h2 class="titulo depto__titulo" id="t-depto">Pasá,<br><span class="it">estás en tu casa.</span></h2>
+        <h2 class="titulo depto__titulo" id="t-depto">Pasá,<br><span class="fuerte">estás en tu casa.</span></h2>
         <span class="depto__frase">Se permiten bebés, perros y charlas largas.</span>
       </div>
     </section>
     <section class="espacio" aria-label="El espacio">
       <div class="espacio__fotos">
-        <img src="img/espacio-espejo-480.webp" srcset="img/espacio-espejo-480.webp 480w, img/espacio-espejo.webp 1200w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="480" loading="lazy" alt="Espejo dorado antiguo">
+        <img src="img/espacio-sabado-480.webp" srcset="img/espacio-sabado-480.webp 480w, img/espacio-sabado.webp 900w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="853" loading="lazy" alt="Sillón y cuadros del depto con luz de tarde">
         <img src="img/espacio-mesa-480.webp" srcset="img/espacio-mesa-480.webp 480w, img/espacio-mesa.webp 1200w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="480" loading="lazy" alt="Mesa de manicura holográfica">
       </div>
       <p class="espacio__historia" data-cfg="historia">[Historia de la dueña en 2–3 líneas: cómo nació DeptoBR y por qué un depto.]</p>
@@ -179,7 +188,7 @@
         <span class="cupos-limitados">CUPOS LIMITADOS</span>
         <div class="cursos__texto">
           <span class="antetitulo">CAPACITACIONES</span>
-          <h2 class="titulo cursos__titulo" id="t-cursos">Aprendé lo que<br><span class="it">hacemos acá.</span></h2>
+          <h2 class="titulo cursos__titulo" id="t-cursos">Aprendé lo que<br><span class="fuerte">hacemos acá.</span></h2>
           <span class="cursos__bajada">Del otro lado de la mesa: te llevás la técnica, los secretos y la confianza para arrancar.</span>
         </div>
       </div>
@@ -189,7 +198,7 @@
     <!-- 10 · ENCONTRANOS -->
     <section class="encontranos" id="encontranos" aria-labelledby="t-encontranos">
       <span class="antetitulo">ENCONTRANOS</span>
-      <h2 class="titulo encontranos__titulo" id="t-encontranos">Tocá timbre<br><span class="it">en el 319.</span></h2>
+      <h2 class="titulo encontranos__titulo" id="t-encontranos">Tocá timbre<br><span class="fuerte">en el 319.</span></h2>
       <div class="dato"><span class="dato__label">Dirección</span><span class="dato__valor" data-cfg="direccion">Av. José Ingenieros 1205 · Edif. Jerárquicos · Dpto 319</span></div>
       <div class="dato"><span class="dato__label">Horarios</span><span class="dato__valor" data-cfg="horarios">[Días y horarios]</span></div>
       <div class="dato"><span class="dato__label">Retiros y envíos</span><span class="dato__valor" data-cfg="retiros">Retiro en el depto · Envíos a coordinar</span></div>
@@ -208,17 +217,15 @@
       <a href="#" id="link-arrepentimiento">Botón de arrepentimiento</a>
     </nav>
     <span class="pie__legal" id="legales">[Razón social] · CUIT [—] · <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor" target="_blank" rel="noopener">Defensa del Consumidor</a></span>
-    <div class="marca" aria-hidden="true">
-      <svg width="76" height="24" fill="none" stroke="#E0B04A" stroke-width="2.6" stroke-linecap="round"><use href="#llave-marca"/></svg>
-      <span class="marca__palabra">depto</span>
-      <span class="marca__sub">BEAUTY ROOM</span>
+    <div class="pie__logo">
+      <img src="img/logos/logo-oro.svg" alt="depto beauty room" width="280" height="119" loading="lazy">
     </div>
   </footer>
 
   <!-- Carrito-llave (siempre a un toque) -->
   <button class="carrito-btn" id="carrito-btn" type="button" aria-label="Carrito, 0 productos">
     <span class="carrito-btn__llave" id="carrito-llave">
-      <svg width="26" height="10" aria-hidden="true" fill="none" stroke="#241510" stroke-width="3.4" stroke-linecap="round"><use href="#llave"/></svg>
+      <img src="img/logos/llave-oro.svg" alt="" width="28" height="11">
     </span>
     <span class="carrito-btn__contador" id="carrito-contador" hidden>0</span>
   </button>
@@ -238,31 +245,20 @@
     <div id="hoja-contenido"></div>
   </div>
 
-  <!-- E1 · Pantalla de carga: la llave abre la cerradura y forma el logo -->
-  <div class="cargador" id="cargador" aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none; background: #F7F2EA; display: flex; align-items: center; justify-content: center;">
-    <svg width="390" height="844" viewBox="0 0 390 844" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
-      <g class="cerr">
-        <circle cx="195" cy="380" r="46" fill="none" stroke="#22140E" stroke-opacity="0.22" stroke-width="1.5"></circle>
-        <path d="M195 369.5a6 6 0 0 1 3.4 10.9l2.1 13.6h-11l2.1-13.6a6 6 0 0 1 3.4-10.9Z" fill="#22140E" fill-opacity="0.85"></path>
-        <circle class="aro-oro" cx="195" cy="380" r="46" fill="none" stroke="#C8972F" stroke-width="2" stroke-linecap="round" transform="rotate(-90 195 380)"></circle>
-      </g>
-      <g class="k-mueve">
-        <g class="k-entra">
-          <g class="k-gira">
-            <g class="k-vuelve">
-              <g fill="none" stroke="#C8972F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="125" cy="380" r="9"></circle>
-                <circle cx="125" cy="380" r="3"></circle>
-                <path d="M134 380H195M183 380v8M190 380v6"></path>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </svg>
-    <div class="marca-txt" style="position: absolute; left: 0; right: 0; top: 50%; margin-top: -18px; display: flex; flex-direction: column; align-items: center; line-height: 1; color: #22140E;">
-      <span style="font-family: 'Fraunces', serif; font-weight: 700; font-size: 62px; letter-spacing: -0.035em;">depto</span>
-      <span style="font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.55em; font-weight: 700; margin-top: 10px; color: #9A6E18;">BEAUTY ROOM</span>
+  <!-- E1 · Pantalla de carga: la llave del logo entra, gira, se traza el aro y aparece el logo -->
+  <div class="cargador" id="cargador" aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none; background: #F3EBDD;">
+    <div style="position: absolute; left: 50%; top: 50%; width: 390px; height: 260px; margin: -130px 0 0 -195px;">
+      <svg class="cerr" width="390" height="260" viewBox="0 0 390 260" style="position: absolute; inset: 0;">
+        <circle cx="195" cy="130" r="46" fill="none" stroke="#4A2A1E" stroke-opacity="0.2" stroke-width="1.5"></circle>
+        <path d="M195 119.5a6 6 0 0 1 3.4 10.9l2.1 13.6h-11l2.1-13.6a6 6 0 0 1 3.4-10.9Z" fill="#4A2A1E" fill-opacity="0.85"></path>
+        <circle class="aro-oro" cx="195" cy="130" r="46" fill="none" stroke="#E0BD6C" stroke-width="2.5" stroke-linecap="round" transform="rotate(-90 195 130)"></circle>
+      </svg>
+      <div class="k-entra" style="position: absolute; left: 193px; top: 109px; width: 112px; height: 42px;">
+        <img class="k-gira" src="img/logos/llave-oro.svg" alt="" width="112" height="42" style="width: 112px; height: 42px; display: block;">
+      </div>
+      <div class="marca-txt" style="position: absolute; left: 0; right: 0; top: 70px; display: flex; justify-content: center;">
+        <img src="img/logos/logo-completo.svg" alt="" width="250" height="106" style="width: 250px; height: auto; display: block;">
+      </div>
     </div>
   </div>
 

@@ -39,3 +39,15 @@ En los archivos de `diseno/`, las imágenes aparecen como `/_blob/<id>`. Esta ta
 | f24ae8fd583524475287b28351127cbe | deptobr_3931192925488947263's2026-11-5-0.34.601 story.jpg |
 | fdd581cb690c83d4b2e8050e2e0c6311 | deptobr_3809602833331631562's2026-11-5-0.36.607 story.jpg |
 | fff41e4f911e62d3a76f977ae535217d | deptobr_3822384306224492253's2026-11-5-0.36.316 story.jpg |
+
+## Agregadas en v5 (logos reales vectorizados y fotos de la clienta)
+| id en el boceto | archivo |
+|---|---|
+| 326bdd85554b3557731c1aa6edde3e05 | diseno/logos/logo-completo.svg (depto dorado + BEAUTY ROOM chocolate) |
+| baa6b25062492bb9b2b8a9b2196fe305 | diseno/logos/logo-crema.svg (sobre video/fondos oscuros) |
+| ebcac3d613b72ee4756a510fdde51cbc | diseno/logos/logo-oro.svg (pie) |
+| be2ae8bb6fdaca36a32bd8ab237fd9db | diseno/logos/llave-oro.svg (la llave del logo: pantalla de carga, aviso, ícono carrito) |
+| 3d7d24a9f34afb57bbb7196aff8fd5d3 | diseno/logos/dbr-unas.svg |
+| a8a923331cb1822921010a0af1e43c29 | diseno/logos/dbr-joyas.svg |
+| 049d6468c528370e67c4828be679f2ae | referencias/clienta/giftcard.jpg |
+| 32a77aa4cc090e4589ddd8109f10bb41 | referencias/clienta/espacio-sabado.jpg |

@@ -112,8 +112,11 @@
 
     <!-- BEAUTY ROOM -->
     <section class="bloque bloque--foto" id="beauty" aria-labelledby="t-beauty">
-      <div class="bloque__foto">
-        <img src="img/unas-french-amarillo.webp" srcset="img/unas-french-amarillo-480.webp 480w, img/unas-french-amarillo.webp 685w" sizes="(min-width: 1024px) 50vw, 100vw" width="685" height="722" loading="lazy" alt="Uñas french amarillo con flores hechas en el depto">
+      <div class="bloque__foto carrusel" id="beauty-carrusel" role="region" aria-roledescription="carrusel" aria-label="Fotos del Beauty Room">
+        <div class="carrusel__pista" id="beauty-pista"></div>
+        <button class="carrusel__flecha carrusel__flecha--ant" type="button" aria-label="Foto anterior" hidden>&#8249;</button>
+        <button class="carrusel__flecha carrusel__flecha--sig" type="button" aria-label="Foto siguiente" hidden>&#8250;</button>
+        <div class="carrusel__puntos" id="beauty-puntos"></div>
       </div>
       <div class="bloque__contenido">
         <h2 class="titulo" id="t-beauty">Beauty Room</h2>
@@ -124,7 +127,13 @@
 
     <!-- CAPACITACIONES -->
     <section class="bloque cursos" id="cursos" aria-labelledby="t-cursos">
-      <video class="cursos__video" src="video/cursos.mp4" poster="video/cursos-poster.webp" muted loop playsinline preload="none" aria-label="Uñas violetas marmoladas hechas en el depto" data-video></video>
+      <div class="cursos__media">
+        <picture>
+          <source media="(min-width: 768px)" srcset="video/cursos-horizontal-poster.webp" width="1280" height="720">
+          <img class="cursos__video" src="video/cursos-vertical-poster.webp" width="720" height="898" loading="lazy" alt="">
+        </picture>
+        <video class="cursos__video" muted loop playsinline preload="metadata" data-video data-h="video/cursos-horizontal.mp4" data-v="video/cursos-vertical.mp4" aria-label="Clase de capacitación en el depto"></video>
+      </div>
       <div class="bloque__contenido">
         <h2 class="titulo" id="t-cursos">Capacitaciones</h2>
         <span class="bajada">Cursos presenciales en el Dpto 319 · Cupos limitados</span>

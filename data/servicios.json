@@ -10,6 +10,6 @@
     { "id": "semi", "grupo": "manos", "nombre": "Semipermanente", "dur": "1 h", "precio": null, "img": "img/servicio-semipermanente.webp", "incluye": ["Limado y cutículas", "Esmaltado semipermanente", "Dura hasta 3 semanas"] },
     { "id": "nailart", "grupo": "manos", "nombre": "Nail art", "dur": "+ 30 min", "precio": null, "img": "img/unas-french-amarillo.webp", "incluye": ["Diseño a mano alzada", "Piedras, cromados o stickers", "Se suma a cualquier servicio"] },
     { "id": "pedi", "grupo": "pies", "nombre": "Pedicura completa", "dur": "1 h", "precio": null, "img": "img/pedicura-violeta.webp", "incluye": ["Limpieza y limado", "Esmaltado semipermanente", "Hidratación"] },
-    { "id": "cejas", "grupo": "cejas", "nombre": "Perfilado de cejas", "dur": "45 min", "precio": null, "img": "img/camilla-cejas.webp", "incluye": ["Diseño según tu rostro", "Perfilado y limpieza", "Opcional: laminado"], "antesDespues": { "antes": "img/cejas-antes.webp", "despues": "img/cejas-despues.webp" } }
+    { "id": "cejas", "grupo": "cejas", "nombre": "Perfilado de cejas", "dur": "45 min", "precio": null, "img": "img/cejas-diseno.webp", "incluye": ["Diseño según tu rostro", "Perfilado y limpieza", "Opcional: laminado"] }
   ]
 }

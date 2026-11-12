@@ -622,14 +622,69 @@
   function videos() {
     var vids = document.querySelectorAll('[data-video]');
     if (reducido || !('IntersectionObserver' in window)) return; /* queda el poster */
+    var mq = window.matchMedia('(min-width: 768px)');
+    function fuente(v) { return mq.matches ? v.getAttribute('data-h') : v.getAttribute('data-v'); }
+    function reproducir(v) {
+      var src = fuente(v);
+      if (src && v.getAttribute('src') !== src) { v.src = src; v.load(); }
+      var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+    }
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (x) {
         var v = x.target;
-        if (x.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
-        else v.pause();
+        if (x.isIntersecting) reproducir(v); else v.pause();
       });
     }, { rootMargin: '200px 0px' });
     vids.forEach(function (v) { io.observe(v); });
+    /* si se rota o redimensiona, cambia a la otra versión (solo si ya se cargó una) */
+    var cambio = function () { vids.forEach(function (v) { if (v.getAttribute('src') && v.getAttribute('src') !== fuente(v)) reproducir(v); }); };
+    if (mq.addEventListener) mq.addEventListener('change', cambio); else mq.addListener(cambio);
+  }
+
+  /* =========================================================
+     Carrusel de Beauty Room (fotos desde config.beautyCarrusel)
+     ========================================================= */
+  function carrusel() {
+    var fotos = (datos.config && datos.config.beautyCarrusel) || [];
+    var caja = $('#beauty-carrusel'); if (!caja) return;
+    var pista = $('#beauty-pista'), puntos = $('#beauty-puntos');
+    if (!fotos.length) { caja.hidden = true; return; }
+    pista.innerHTML = fotos.map(function (f, i) {
+      var set = f.img480 ? ' srcset="' + esc(f.img480) + ' 480w, ' + esc(f.img) + ' 960w" sizes="(min-width: 1024px) 50vw, 100vw"' : '';
+      return '<div class="carrusel__slide" role="group" aria-roledescription="foto" aria-label="' + (i + 1) + ' de ' + fotos.length + '">' +
+        '<img src="' + esc(f.img) + '"' + set + (i ? ' loading="lazy"' : '') + ' alt="' + esc(f.alt || 'Beauty Room') + '"></div>';
+    }).join('');
+    if (fotos.length < 2) return;
+    puntos.innerHTML = fotos.map(function (f, i) {
+      return '<button type="button" class="carrusel__punto" data-i="' + i + '" aria-label="Ir a la foto ' + (i + 1) + '"></button>';
+    }).join('');
+    var ant = caja.querySelector('.carrusel__flecha--ant'), sig = caja.querySelector('.carrusel__flecha--sig');
+    ant.hidden = sig.hidden = false;
+    var n = fotos.length, actual = 0;
+    function ir(i) {
+      i = (i + n) % n;
+      pista.scrollTo({ left: i * pista.clientWidth, behavior: reducido ? 'auto' : 'smooth' });
+    }
+    function marcar() {
+      actual = Math.round(pista.scrollLeft / Math.max(1, pista.clientWidth));
+      Array.prototype.forEach.call(puntos.children, function (b, i) { b.setAttribute('aria-current', i === actual ? 'true' : 'false'); });
+    }
+    pista.addEventListener('scroll', function () { window.requestAnimationFrame(marcar); }, { passive: true });
+    puntos.addEventListener('click', function (e) { var b = e.target.closest('[data-i]'); if (b) ir(+b.getAttribute('data-i')); });
+    ant.addEventListener('click', function () { ir(actual - 1); });
+    sig.addEventListener('click', function () { ir(actual + 1); });
+    marcar();
+    /* Autoplay lento (5 s): solo con la sección a la vista, se pausa al tocar o pasar el mouse
+       y no corre con reduced-motion */
+    if (reducido || !('IntersectionObserver' in window)) return;
+    var timer = null, visible = false, quieto = false;
+    function parar() { clearInterval(timer); timer = null; }
+    function seguir() { if (!timer && visible && !quieto) timer = setInterval(function () { ir(actual + 1); }, 5000); }
+    new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) seguir(); else parar(); }, { threshold: 0.5 }).observe(caja);
+    caja.addEventListener('pointerdown', function () { quieto = true; parar(); }); /* al tocar, queda pausado */
+    caja.addEventListener('mouseenter', function () { quieto = true; parar(); });
+    caja.addEventListener('mouseleave', function () { quieto = false; seguir(); });
+    caja.addEventListener('focusin', function () { quieto = true; parar(); });
   }
 
   /* Pantalla de carga: se saca del DOM cuando termina "salir" (o enseguida
@@ -667,6 +722,7 @@
     Carrito.limpiar(Object.keys(porId));
     renderConfig();
     renderCategorias();
+    carrusel();
     renderTienda();
     renderServicios();
     renderCursos();

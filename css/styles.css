@@ -202,7 +202,29 @@ button:disabled { cursor: not-allowed; }
 .servicio__precio { font-size: 13px; font-weight: 600; }
 
 /* Capacitaciones */
-.cursos__video { margin-top: 36px; width: 100%; height: 470px; object-fit: cover; background: var(--linea); }
+.cursos__media { position: relative; margin-top: 36px; width: 100%; aspect-ratio: 4 / 5; max-height: 560px; overflow: hidden; background: var(--linea); }
+.cursos__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Carrusel de Beauty Room */
+.carrusel { position: relative; }
+.carrusel__pista {
+  display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+}
+.carrusel__pista::-webkit-scrollbar { display: none; }
+.carrusel__slide { flex: 0 0 100%; height: 100%; scroll-snap-align: center; scroll-snap-stop: always; }
+.carrusel__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carrusel__puntos { position: absolute; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; gap: 8px; pointer-events: none; }
+.carrusel__punto { pointer-events: auto; width: 7px; height: 7px; padding: 0; border-radius: 50%; border: 1px solid var(--blanco); background: transparent; opacity: .9; }
+.carrusel__punto[aria-current="true"] { background: var(--blanco); }
+.carrusel__flecha {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px;
+  border: 0; border-radius: 50%; background: rgba(255, 255, 255, .85); color: var(--choco);
+  font-size: 26px; line-height: 1; padding: 0 0 3px; font-weight: 200;
+}
+.carrusel__flecha--ant { left: 14px; }
+.carrusel__flecha--sig { right: 14px; }
+@media (hover: none) { .carrusel__flecha { display: none !important; } }
 .curso {
   text-decoration: none; color: var(--choco);
   display: flex; align-items: center; gap: 14px;
@@ -443,7 +465,7 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
   .hoja, .colgar-a, .colgar-b, .aparece { animation: none; }
   .wa, .cat__fila svg, .prod__foto img { transition: none; }
   .cargador { display: none !important; }
-  .hero__video { display: none; }
+  .hero__video, .cursos__media video { display: none; }
 }
 
 /* =========================================================
@@ -508,7 +530,7 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
 
   /* Capacitaciones: video a ancho completo + lista centrada */
   .cursos { padding-bottom: 64px; }
-  .cursos__video { margin-top: 0; height: 70vh; max-height: 640px; }
+  .cursos__media { margin-top: 0; aspect-ratio: 16 / 9; max-height: 640px; }
   .cursos .bloque__contenido { width: 100%; max-width: 720px; margin: 0 auto; padding-top: 40px; }
 
   .pie { padding: 56px 40px 64px; }

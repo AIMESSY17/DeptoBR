@@ -205,7 +205,7 @@ button:disabled { cursor: not-allowed; }
 .cursos__media { position: relative; margin-top: 36px; width: 100%; aspect-ratio: 4 / 5; max-height: 560px; overflow: hidden; background: var(--linea); }
 .cursos__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-/* Carrusel de Beauty Room */
+/* Carrusel de El depto */
 .carrusel { position: relative; }
 .carrusel__pista {
   display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory;
@@ -432,22 +432,6 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
 /* =========================================================
    Animaciones (solo transform/opacity)
    ========================================================= */
-/* Pantalla de carga: copiada tal cual del boceto (.cargador) */
-.cargador{animation:salir .5s ease-in 2.8s forwards}
-@keyframes salir{to{opacity:0;visibility:hidden}}
-.cerr{opacity:0;animation:verse .4s ease-out .05s forwards,irse .35s ease-in 1.75s forwards}
-@keyframes verse{to{opacity:1}}
-@keyframes irse{from{opacity:1}to{opacity:0}}
-.aro-oro{stroke-dasharray:290;stroke-dashoffset:290;animation:trazar .5s cubic-bezier(.4,0,.2,1) 1.25s forwards}
-@keyframes trazar{to{stroke-dashoffset:0}}
-.k-entra{opacity:0;transform:translateX(150px);animation:entraK .65s cubic-bezier(.2,.8,.2,1) .25s forwards,irse .35s ease-in 1.75s forwards}
-@keyframes entraK{0%{opacity:0;transform:translateX(150px)}30%{opacity:1}100%{opacity:1;transform:translateX(0)}}
-.k-gira{transform-origin:50% 50%;animation:giraK .42s cubic-bezier(.5,0,.3,1) .95s forwards}
-@keyframes giraK{to{transform:scaleY(-1)}}
-.marca-txt{opacity:0;transform:scale(.94);animation:textoK .6s cubic-bezier(.2,.8,.2,1) 1.95s forwards}
-@keyframes textoK{to{opacity:1;transform:scale(1)}}
-.ya-cargo .cargador { display: none !important; }
-
 /* La bolsa se balancea al agregar */
 .colgar-a { animation: colgarA .8s ease-out; }
 .colgar-b { animation: colgarB .8s ease-out; }
@@ -464,7 +448,6 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
   html { scroll-behavior: auto; }
   .hoja, .colgar-a, .colgar-b, .aparece { animation: none; }
   .wa, .cat__fila svg, .prod__foto img { transition: none; }
-  .cargador { display: none !important; }
   .hero__video, .cursos__media video { display: none; }
 }
 

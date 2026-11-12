@@ -34,7 +34,8 @@
 - **Barra fija inferior:** visible si hay ítems o si el usuario está en Beauty Room (IntersectionObserver sobre la sección); oculta con ficha abierta.
 - **WhatsApp:** `https://wa.me/{numero}?text={encodeURIComponent(mensaje)}`.
 - **Precios:** `Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 })`.
-- **Pantalla de carga:** `#cargador` fijo sobre la página (`pointer-events: none`, la página se arma debajo), caja de 390×260 centrada sin escalar (cerradura SVG + `llave-oro.svg` + `logo-completo.svg`, precargados en el `<head>`). `sessionStorage` (`dbr-carga`, try/catch) pone `.ya-cargo` en `<html>` antes de pintar para verla una vez por sesión; `app.js` la saca del DOM al terminar `salir` (respaldo a los 4 s) o enseguida con reduced-motion.
+- **Sin pantalla de carga:** la página arranca directo en el hero (sin `sessionStorage`).
+- **Carrusel de El depto:** `#depto-carrusel`, `scroll-snap` + flechas + puntos + autoplay 5 s; fotos desde `deptoCarrusel` en `data/config.json`.
 
 ## Fase 2 (sin cambios respecto de la versión anterior)
 `/api/crear-pago` valida precios y stock en servidor y crea la preferencia; `/api/webhook-mp` es idempotente, descuenta stock y manda mails. Variables: `MP_ACCESS_TOKEN`, `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `RESEND_API_KEY`, `MAIL_DUENA`.

@@ -1,9 +1,9 @@
 {
   "_ayuda": "Datos de contacto, textos y banners de categorías. Lo que está entre [corchetes] es un pendiente de la clienta. categorias: banners de la portada, en orden. img = foto grande; img480 = versión chica (opcional); pos = encuadre (object-position); filtro = categoría de productos que muestra la grilla (Joyas, Lentes); abrir = id de producto cuya ficha abre (Gift card); si no, va a href.",
-  "beautyCarrusel": [
+  "deptoCarrusel": [
     { "img": "img/beauty-room-trabajando.webp", "img480": "img/beauty-room-trabajando-480.webp", "alt": "Trabajando en el Beauty Room del depto" },
-    { "img": "img/unas-french-amarillo.webp", "img480": "img/unas-french-amarillo-480.webp", "alt": "Uñas french amarillo con flores hechas en el depto" },
-    { "img": "img/pedicura-violeta.webp", "img480": "img/pedicura-violeta-480.webp", "alt": "Pedicura semipermanente violeta" }
+    { "img": "img/camilla-cejas.webp", "img480": "img/camilla-cejas-480.webp", "alt": "Camilla y lámpara del espacio de trabajo del depto" },
+    { "img": "img/espacio-sabado.webp", "img480": "img/espacio-sabado-480.webp", "alt": "El espacio del depto un sábado de turnos" }
   ],
   "whatsapp": "5492974058183",
   "instagram": "deptobr",

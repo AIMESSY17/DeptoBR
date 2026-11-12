@@ -642,17 +642,17 @@
   }
 
   /* =========================================================
-     Carrusel de Beauty Room (fotos desde config.beautyCarrusel)
+     Carrusel de El depto (fotos desde config.deptoCarrusel)
      ========================================================= */
   function carrusel() {
-    var fotos = (datos.config && datos.config.beautyCarrusel) || [];
-    var caja = $('#beauty-carrusel'); if (!caja) return;
-    var pista = $('#beauty-pista'), puntos = $('#beauty-puntos');
+    var fotos = (datos.config && datos.config.deptoCarrusel) || [];
+    var caja = $('#depto-carrusel'); if (!caja) return;
+    var pista = $('#depto-pista'), puntos = $('#depto-puntos');
     if (!fotos.length) { caja.hidden = true; return; }
     pista.innerHTML = fotos.map(function (f, i) {
       var set = f.img480 ? ' srcset="' + esc(f.img480) + ' 480w, ' + esc(f.img) + ' 960w" sizes="(min-width: 1024px) 50vw, 100vw"' : '';
       return '<div class="carrusel__slide" role="group" aria-roledescription="foto" aria-label="' + (i + 1) + ' de ' + fotos.length + '">' +
-        '<img src="' + esc(f.img) + '"' + set + (i ? ' loading="lazy"' : '') + ' alt="' + esc(f.alt || 'Beauty Room') + '"></div>';
+        '<img src="' + esc(f.img) + '"' + set + (i ? ' loading="lazy"' : '') + ' alt="' + esc(f.alt || 'El depto') + '"></div>';
     }).join('');
     if (fotos.length < 2) return;
     puntos.innerHTML = fotos.map(function (f, i) {
@@ -687,21 +687,9 @@
     caja.addEventListener('focusin', function () { quieto = true; parar(); });
   }
 
-  /* Pantalla de carga: se saca del DOM cuando termina "salir" (o enseguida
-     si ya se vio en esta sesión o hay reduced-motion). No frena la carga. */
-  function cargador() {
-    var c = $('#cargador');
-    if (!c) return;
-    var quitar = function () { if (c.parentNode) c.remove(); };
-    if (reducido || document.documentElement.classList.contains('ya-cargo')) { quitar(); return; }
-    c.addEventListener('animationend', function (e) { if (e.target === c) quitar(); });
-    setTimeout(quitar, 4000); /* por si la animación no llega a terminar */
-  }
-
   /* =========================================================
      Inicio
      ========================================================= */
-  cargador();
   heroVideo();
   videos();
   actualizarContador();

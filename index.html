@@ -21,24 +21,15 @@
 
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 
-  <!-- Pantalla de carga: una sola vez por sesión (antes de pintar) -->
-  <script>
-    try {
-      if (sessionStorage.getItem('dbr-carga')) document.documentElement.classList.add('ya-cargo');
-      else sessionStorage.setItem('dbr-carga', '1');
-    } catch (e) {}
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Poppins sin bloquear el render (la pantalla de carga tapa el cambio de fuente) -->
+  <!-- Poppins sin bloquear el render -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
   <link rel="preload" as="image" href="img/portada-depto-horizontal-poster.webp" media="(min-width: 768px)" fetchpriority="high">
   <link rel="preload" as="image" href="img/portada-depto-vertical-poster.webp" media="(max-width: 767px)" fetchpriority="high">
   <link rel="preload" as="image" href="img/logos/logo-completo.svg">
-  <link rel="preload" as="image" href="img/logos/llave-oro.svg">
   <link rel="stylesheet" href="css/styles.css">
 
   <script type="application/ld+json">
@@ -112,11 +103,8 @@
 
     <!-- BEAUTY ROOM -->
     <section class="bloque bloque--foto" id="beauty" aria-labelledby="t-beauty">
-      <div class="bloque__foto carrusel" id="beauty-carrusel" role="region" aria-roledescription="carrusel" aria-label="Fotos del Beauty Room">
-        <div class="carrusel__pista" id="beauty-pista"></div>
-        <button class="carrusel__flecha carrusel__flecha--ant" type="button" aria-label="Foto anterior" hidden>&#8249;</button>
-        <button class="carrusel__flecha carrusel__flecha--sig" type="button" aria-label="Foto siguiente" hidden>&#8250;</button>
-        <div class="carrusel__puntos" id="beauty-puntos"></div>
+      <div class="bloque__foto">
+        <img src="img/unas-french-amarillo.webp" srcset="img/unas-french-amarillo-480.webp 480w, img/unas-french-amarillo.webp 685w" sizes="(min-width: 1024px) 50vw, 100vw" width="685" height="722" loading="lazy" alt="Uñas french amarillo con flores hechas en el depto">
       </div>
       <div class="bloque__contenido">
         <h2 class="titulo" id="t-beauty">Beauty Room</h2>
@@ -143,8 +131,11 @@
 
     <!-- EL DEPTO -->
     <section class="bloque bloque--foto depto" id="depto" aria-labelledby="t-depto">
-      <div class="bloque__foto">
-        <img src="img/camilla-cejas.webp" srcset="img/camilla-cejas-480.webp 480w, img/camilla-cejas.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw" width="1600" height="1200" loading="lazy" alt="Camilla y lámpara del espacio de trabajo del depto">
+      <div class="bloque__foto carrusel" id="depto-carrusel" role="region" aria-roledescription="carrusel" aria-label="Fotos del depto">
+        <div class="carrusel__pista" id="depto-pista"></div>
+        <button class="carrusel__flecha carrusel__flecha--ant" type="button" aria-label="Foto anterior" hidden>&#8249;</button>
+        <button class="carrusel__flecha carrusel__flecha--sig" type="button" aria-label="Foto siguiente" hidden>&#8250;</button>
+        <div class="carrusel__puntos" id="depto-puntos"></div>
       </div>
       <div class="bloque__contenido depto__contenido">
         <h2 class="titulo" id="t-depto">El depto</h2>
@@ -187,23 +178,6 @@
   <div class="hoja" id="hoja" role="dialog" aria-modal="true" aria-label="" hidden>
     <button class="hoja__cerrar" id="hoja-cerrar" type="button" aria-label="Cerrar">×</button>
     <div id="hoja-contenido"></div>
-  </div>
-
-  <!-- Pantalla de carga: la llave del logo entra, gira, se traza el aro y aparece el logo -->
-  <div class="cargador" id="cargador" aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none; background: #F3EBDD;">
-    <div style="position: absolute; left: 50%; top: 50%; width: 390px; height: 260px; margin: -130px 0 0 -195px;">
-      <svg class="cerr" width="390" height="260" viewBox="0 0 390 260" style="position: absolute; inset: 0;">
-        <circle cx="195" cy="130" r="46" fill="none" stroke="#4A2A1E" stroke-opacity="0.2" stroke-width="1.5"></circle>
-        <path d="M195 119.5a6 6 0 0 1 3.4 10.9l2.1 13.6h-11l2.1-13.6a6 6 0 0 1 3.4-10.9Z" fill="#4A2A1E" fill-opacity="0.85"></path>
-        <circle class="aro-oro" cx="195" cy="130" r="46" fill="none" stroke="#E0BD6C" stroke-width="2.5" stroke-linecap="round" transform="rotate(-90 195 130)"></circle>
-      </svg>
-      <div class="k-entra" style="position: absolute; left: 193px; top: 109px; width: 112px; height: 42px;">
-        <img class="k-gira" src="img/logos/llave-oro.svg" alt="" width="112" height="42" style="width: 112px; height: 42px; display: block;">
-      </div>
-      <div class="marca-txt" style="position: absolute; left: 0; right: 0; top: 70px; display: flex; justify-content: center;">
-        <img src="img/logos/logo-completo.svg" alt="" width="250" height="106" style="width: 250px; height: auto; display: block;">
-      </div>
-    </div>
   </div>
 
   <script src="js/carrito.js"></script>

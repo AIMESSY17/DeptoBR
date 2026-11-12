@@ -10,7 +10,6 @@
   --linea: #E9DFCF;
   --crema: #F3EBDD;
   --oro-logo: #E0BD6C;     /* solo en el logo (pantalla de carga) */
-  --dorado-txt: #8A6414;   /* etiqueta chica de la ficha */
   --gris: #7A6355;         /* textos secundarios */
   --gris-osc: #5E4A3E;     /* párrafos */
   --wa: #25D366;
@@ -295,7 +294,7 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
 .hoja__cuerpo { padding: 20px 20px 26px; display: flex; flex-direction: column; gap: 12px; }
 .hoja__cuerpo--servicio { gap: 14px; }
 .hoja__cuerpo--sin-foto { padding-top: 64px; }
-.hoja__cat { font-size: 12px; font-weight: 600; color: var(--dorado-txt); letter-spacing: 0.14em; }
+.hoja__cat { font-size: 12px; font-weight: 600; color: var(--choco); letter-spacing: 0.14em; }
 .hoja__nombre { font-weight: 300; font-size: 24px; line-height: 1.1; }
 .hoja__precio { font-size: 22px; font-weight: 600; }
 .hoja__desc { font-size: 15px; line-height: 1.6; color: var(--gris-osc); }

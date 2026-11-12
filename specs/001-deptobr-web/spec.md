@@ -1,6 +1,6 @@
 # Spec 001 — Web DeptoBR · "Estilo Posh" (v6)
 
-**Estado:** Aprobada para construir · **Versión:** 4 · **Fecha:** 2026-11-11 (rediseño completo pedido por la clienta: estilo poshjoyas.com.ar, fondo blanco, fotos grandes, Poppins)
+**Estado:** Aprobada para construir · **Versión:** 4.1 · **Fecha:** 2026-11-12 (v6 aprobada: dorado solo en el logo y limpieza de imágenes de la v5; antes, 2026-11-11, rediseño completo estilo poshjoyas.com.ar)
 **Equipo:** Javier (desarrollo) · Papadog (cliente/comercial)
 **Clienta:** DeptoBR — beauty room (uñas, cejas, pedicura) + dbrjoyas (joyas, relojes) + lentes. IG @deptobr. Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319.
 
@@ -26,13 +26,13 @@ Panel admin para la clienta · login de compradoras · calendario de turnos prop
 ## 4. Identidad (cerrada, no reinterpretar)
 - **Estilo:** el de poshjoyas.com.ar. Fondo blanco, fotos muy grandes, títulos de sección chicos (16 px, 400) y centrados, textos chicos, etiquetas en mayúsculas espaciadas.
 - **Logo:** el real de la marca, vectorizado en `diseno/logos/` y publicado en `img/logos/`. Se usa `logo-completo.svg` en el header (34 px de alto; 44 px en escritorio), el pie (150 px), el menú y la pantalla de carga; `llave-oro.svg` en la pantalla de carga y el favicon. Nunca se redibuja ni se escribe con una tipografía.
-- **Paleta:** blanco `#FFFFFF` (fondo) · chocolate `#4A2A1E` (texto, botones, etiquetas sobre foto) · líneas `#E9DFCF` · crema `#F3EBDD` solo en la barra de aviso, el pie y la pantalla de carga · dorado del logo `#E0BD6C` solo en el logo · grises cálidos `#7A6355` / `#5E4A3E` para textos secundarios · dorado texto `#8A6414` solo en la etiqueta chica y los tildes de la ficha (como el boceto) · verde WhatsApp `#25D366` solo en el botón flotante.
+- **Paleta:** blanco `#FFFFFF` (fondo) · chocolate `#4A2A1E` (texto, botones, etiquetas sobre foto) · líneas `#E9DFCF` · crema `#F3EBDD` solo en la barra de aviso, el pie y la pantalla de carga · dorado del logo `#E0BD6C` **solo en el logo** (la etiqueta chica y los tildes de las fichas van en chocolate) · grises cálidos `#7A6355` / `#5E4A3E` para textos secundarios · verde WhatsApp `#25D366` solo en el botón flotante.
 - **Tipografía:** solo *Poppins* (Google Fonts 300/400/500/600).
 - **Botones:** rectangulares, **sin redondeo**. Principal = chocolate lleno con texto blanco ("COMPRAR", "RESERVAR", "Agregar al carrito", "Reservar por WhatsApp"). Secundario = borde chocolate 1 px ("VER TODOS LOS PRODUCTOS", "CONSULTAR", "CÓMO LLEGAR").
-- **Fotos:** las reales de la clienta, nítidas, sin filtros. Nunca con marca de agua de otras tiendas. WebP (máx. 1600 px de ancho, calidad 80) con versión `-480` para celular; lazy-load salvo el hero.
+- **Fotos:** las reales de la clienta, nítidas, sin filtros. Nunca con marca de agua de otras tiendas. WebP (máx. 1600 px de ancho, calidad 80) con versión `-480` para celular; lazy-load salvo el hero. En `img/` y `video/` solo hay archivos que la página usa; los originales quedan en `referencias/` (no se versiona) y los logos fuente, en `diseno/logos/`.
 
 ### Descartado (no volver a proponer)
-**(de la v5)** estética "revista boutique" · títulos gigantes con onda · sumario tipográfico · "Robale el look" · carruseles horizontales · Pieza de la semana · secciones con fondo de color (maíz, blush, arena, chocolate) · destello sobre las joyas · pulso de los "+" · "+" rápido sobre la foto · carrito-llave flotante · barra "Reservar turno" en el Beauty Room · botones pill · video en la portada.
+**(de la v5)** dorado `#8A6414` en textos · estética "revista boutique" · títulos gigantes con onda · sumario tipográfico · "Robale el look" · carruseles horizontales · Pieza de la semana · secciones con fondo de color (maíz, blush, arena, chocolate) · destello sobre las joyas · pulso de los "+" · "+" rápido sobre la foto · carrito-llave flotante · barra "Reservar turno" en el Beauty Room · botones pill · video en la portada.
 **(anteriores)** fondo oscuro y transición noche→día · grano de película · fotos borrosas · ventana/arco recortando el video · loader con puerta · scrapbook, sellos, cinta · scroll horizontal fijado · páginas que se apilan · caligrafía que se dibuja · luz que sigue el cursor · verde oliva · filete de cromo · Instrument Serif, Fraunces, Manrope · wordmark "depto" escrito con tipografía.
 
 ## 5. Efectos (solo estos)

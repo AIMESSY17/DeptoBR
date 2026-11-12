@@ -301,7 +301,7 @@
           '<div><img src="' + esc(v.antesDespues.despues) + '" alt="' + esc(v.nombre) + ': después"><span class="despues">DESPUÉS</span></div>' +
         '</div>'
       : '<img class="hoja__img hoja__img--servicio" src="' + esc(v.img) + '" alt="' + esc(v.nombre) + '">';
-    var tilde = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#8A6414" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>';
+    var tilde = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#4A2A1E" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>';
     contenido.innerHTML = foto +
       '<div class="hoja__cuerpo hoja__cuerpo--servicio">' +
         '<span class="hoja__cat">BEAUTY ROOM</span>' +

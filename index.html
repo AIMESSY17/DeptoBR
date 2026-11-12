@@ -35,7 +35,7 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="img/portada-depto-poster.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/portada-depto-v2-poster.webp" fetchpriority="high">
   <link rel="preload" as="image" href="img/logos/logo-completo.svg">
   <link rel="preload" as="image" href="img/logos/llave-oro.svg">
   <link rel="stylesheet" href="css/styles.css">
@@ -83,9 +83,13 @@
   <main id="inicio">
     <!-- HERO -->
     <section class="hero" aria-labelledby="t-hero">
-      <img class="hero__foto hero__poster" src="img/portada-depto-poster.webp" width="576" height="1024" fetchpriority="high" alt="">
-      <video class="hero__foto hero__video" autoplay muted loop playsinline preload="metadata" poster="img/portada-depto-poster.webp" aria-label="Entrada al depto, con el logo dorado en la pared"><source src="video/portada-depto.mp4" type="video/mp4"></video>
-      <div class="hero__sombra" aria-hidden="true"></div>
+      <img class="hero__lateral hero__izq" src="img/joyas-manos-blazer.webp" srcset="img/joyas-manos-blazer-480.webp 480w, img/joyas-manos-blazer.webp 1086w" sizes="34vw" width="1086" height="1448" alt="Manos con anillos dorados, collar trébol y blazer gris">
+      <div class="hero__centro">
+        <img class="hero__foto hero__poster" src="img/portada-depto-v2-poster.webp" width="576" height="1024" fetchpriority="high" alt="">
+        <video class="hero__foto hero__video" autoplay muted loop playsinline preload="metadata" poster="img/portada-depto-v2-poster.webp" aria-label="Pasillo del depto con el logo dorado en la pared"><source src="video/portada-depto-v2.mp4" type="video/mp4"></video>
+        <div class="hero__sombra" aria-hidden="true"></div>
+      </div>
+      <img class="hero__lateral hero__der" src="img/lentes-modelo.webp" width="800" height="1000" alt="Modelo con lentes">
       <h1 class="hero__texto" id="t-hero">
         <span class="hero__linea1"><span class="fuerte">TU RATITO,</span> TU ESTILO</span>
         <span class="hero__linea2">TU LUGAR</span>
@@ -144,7 +148,7 @@
 
   <!-- PIE -->
   <footer class="pie">
-    <img class="pie__logo" src="img/logos/logo-completo.svg" alt="depto beauty room" width="250" height="106" loading="lazy">
+    <img class="pie__logo" src="img/logos/logo-completo.svg" alt="depto beauty room" width="250" height="106">
     <a class="icono-btn" id="link-ig" href="https://www.instagram.com/deptobr/" target="_blank" rel="noopener" aria-label="Instagram de DeptoBR">
       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
     </a>

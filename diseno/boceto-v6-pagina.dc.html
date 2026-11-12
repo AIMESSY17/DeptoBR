@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>DeptoBR v6 — Página completa (celular)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 7400px; box-sizing: border-box; background: #FFFFFF; color: #4A2A1E; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column; overflow: hidden;">
+
+  <!-- espacio para la barra + header fijos -->
+  <div style="height: 88px; flex-shrink: 0;"></div>
+
+  <!-- HERO -->
+  <section style="position: relative; height: 560px; flex-shrink: 0; overflow: hidden; background: #E9DFCF;">
+    <video src="/_blob/16f580b3c086b91e33ab946ad166db07" poster="/_blob/a73d4cfd83aa5aa58a099bd2b2507242" autoplay="" muted="" loop="" playsinline="" aria-label="Manos con anillos del depto al sol" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(0,0,0,0.12);"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 46%; display: flex; flex-direction: column; align-items: center; gap: 6px; color: #FFFFFF; text-align: center;">
+      <span style="font-size: 20px; letter-spacing: 0.18em;"><span style="font-weight: 600;">TU RATITO,</span> TU ESTILO</span>
+      <span style="font-size: 10px; letter-spacing: 0.22em; font-weight: 600;">TU LUGAR</span>
+    </div>
+    <div style="position: absolute; left: 20px; bottom: 56px; padding-left: 10px; border-left: 1px solid #FFFFFF; color: #FFFFFF; display: flex; flex-direction: column; gap: 10px; font-size: 9px; letter-spacing: 0.18em; line-height: 1.5;">
+      <span>TURNOS POR WHATSAPP<br>RETIRO EN EL DPTO 319</span>
+      <span><span style="font-weight: 600;">BEAUTY ROOM</span> · JOYAS<br>LENTES · CURSOS</span>
+    </div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 18px; display: flex; justify-content: center; gap: 6px;">
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF;"></span>
+      <span style="width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5);"></span>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS: banners grandes -->
+  <section style="display: flex; flex-direction: column; padding-top: 36px;">
+    <sc-for list="{{ categorias }}" as="c" hint-placeholder-count="7">
+      <a href="{{ c.href }}" style="display: flex; flex-direction: column; text-decoration: none; color: #4A2A1E; margin-bottom: 28px;">
+        <img src="{{ c.img }}" alt="{{ c.nombre }}" style="width: 100%; height: 470px; object-fit: cover; display: block;">
+        <span style="display: flex; justify-content: space-between; align-items: center; height: 56px; padding: 0 16px; border-bottom: 1px solid #E9DFCF; font-size: 14px; letter-spacing: 0.04em;">{{ c.nombre }}<svg width="16" height="10" viewBox="0 0 16 10" aria-hidden="true" fill="none" stroke="#4A2A1E" stroke-width="1.2"><path d="M0 5h15M11 1l4 4-4 4"></path></svg></span>
+      </a>
+    </sc-for>
+  </section>
+
+  <!-- DESTACADOS -->
+  <section id="tienda" style="padding: 24px 16px 40px; display: flex; flex-direction: column; gap: 22px;">
+    <h2 style="margin: 0; text-align: center; font-size: 16px; font-weight: 400;">Destacados</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 14px;">
+      <sc-for list="{{ productos }}" as="p" hint-placeholder-count="8">
+        <article style="display: flex; flex-direction: column; gap: 6px;">
+          <button onClick="{{ p.open }}" aria-label="Ver {{ p.nombre }}" style="position: relative; padding: 0; border: 0; background: #FFFFFF; height: 200px; overflow: hidden; cursor: pointer;">
+            <img src="{{ p.img }}" alt="{{ p.nombre }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+            <sc-if value="{{ p.hayBadge }}" hint-placeholder-val="{{ false }}">
+              <span style="position: absolute; top: 8px; left: 8px; background: #4A2A1E; color: #FFFFFF; font-size: 9px; letter-spacing: 0.12em; padding: 4px 7px;">{{ p.badge }}</span>
+            </sc-if>
+          </button>
+          <span style="font-size: 13px; margin-top: 6px;">{{ p.nombre }}</span>
+          <span style="font-size: 13px; font-weight: 600;">$ [precio]</span>
+          <span style="font-size: 11px; color: #7A6355; line-height: 1.4;">Retiro en el depto o envío a coordinar</span>
+          <button onClick="{{ p.add }}" style="align-self: flex-start; margin-top: 6px; height: 30px; padding: 0 12px; border: 0; background: #4A2A1E; color: #FFFFFF; font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.08em;">COMPRAR</button>
+        </article>
+      </sc-for>
+    </div>
+    <a href="#" style="align-self: center; margin-top: 6px; height: 40px; padding: 0 22px; border: 1px solid #4A2A1E; color: #4A2A1E; text-decoration: none; display: flex; align-items: center; font-size: 11px; font-weight: 500; letter-spacing: 0.12em;">VER TODOS LOS PRODUCTOS</a>
+  </section>
+
+  <!-- BEAUTY ROOM -->
+  <section id="beauty" style="display: flex; flex-direction: column; padding-bottom: 40px; border-top: 1px solid #E9DFCF;">
+    <img src="/_blob/c2911cf78d6677d69bbb9c503a826224" alt="Uñas cromadas doradas del depto" style="width: 100%; height: 470px; object-fit: cover; display: block; margin-top: 36px;">
+    <div style="padding: 26px 16px 0; display: flex; flex-direction: column; gap: 4px;">
+      <h2 style="margin: 0 0 8px; text-align: center; font-size: 16px; font-weight: 400;">Beauty Room</h2>
+      <span style="text-align: center; font-size: 12px; color: #7A6355; margin-bottom: 12px;">Uñas, pies y cejas · Turnos por WhatsApp</span>
+      <sc-for list="{{ servicios }}" as="v" hint-placeholder-count="5">
+        <button onClick="{{ v.open }}" style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border: 0; border-top: 1px solid #E9DFCF; background: none; text-align: left; font-family: 'Poppins', sans-serif; color: #4A2A1E; cursor: pointer;">
+          <img src="{{ v.img }}" alt="{{ v.nombre }}" style="width: 64px; height: 64px; object-fit: cover; display: block; flex-shrink: 0;">
+          <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 13px;">{{ v.nombre }}</span>
+            <span style="font-size: 11px; color: #7A6355;">{{ v.grupo }} · {{ v.dur }}</span>
+            <span style="font-size: 13px; font-weight: 600;">$ [precio]</span>
+          </span>
+          <span style="height: 30px; padding: 0 12px; background: #4A2A1E; color: #FFFFFF; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; display: flex; align-items: center;">RESERVAR</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CURSOS -->
+  <section id="cursos" style="display: flex; flex-direction: column; padding-bottom: 40px; border-top: 1px solid #E9DFCF;">
+    <video src="/_blob/b7b4311d2aec12928287e2e743a7eb67" poster="/_blob/251472d22280c20c90bf3a3735952dd5" autoplay="" muted="" loop="" playsinline="" aria-label="Uñas violetas marmoladas" style="width: 100%; height: 470px; object-fit: cover; display: block; margin-top: 36px;"></video>
+    <div style="padding: 26px 16px 0; display: flex; flex-direction: column;">
+      <h2 style="margin: 0 0 8px; text-align: center; font-size: 16px; font-weight: 400;">Capacitaciones</h2>
+      <span style="text-align: center; font-size: 12px; color: #7A6355; margin-bottom: 12px;">Cursos presenciales en el Dpto 319 · Cupos limitados</span>
+      <a href="#" style="text-decoration: none; color: #4A2A1E; display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #E9DFCF;">
+        <span style="width: 44px; display: flex; flex-direction: column; align-items: center; line-height: 1.1;"><span style="font-size: 20px; font-weight: 500;">14</span><span style="font-size: 9px; letter-spacing: 0.12em;">DIC</span></span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13px;">Curso de semipermanente</span><span style="font-size: 11px; color: #7A6355;">Quedan [n] lugares</span></span>
+        <span style="height: 30px; padding: 0 12px; border: 1px solid #4A2A1E; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; display: flex; align-items: center;">CONSULTAR</span>
+      </a>
+      <a href="#" style="text-decoration: none; color: #4A2A1E; display: flex; align-items: center; gap: 14px; padding: 14px 0; border-top: 1px solid #E9DFCF; border-bottom: 1px solid #E9DFCF;">
+        <span style="width: 44px; display: flex; flex-direction: column; align-items: center; line-height: 1.1;"><span style="font-size: 20px; font-weight: 500;">21</span><span style="font-size: 9px; letter-spacing: 0.12em;">DIC</span></span>
+        <span style="flex: 1; display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 13px;">Perfilado de cejas</span><span style="font-size: 11px; color: #7A6355;">Quedan [n] lugares</span></span>
+        <span style="height: 30px; padding: 0 12px; border: 1px solid #4A2A1E; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; display: flex; align-items: center;">CONSULTAR</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- EL DEPTO -->
+  <section style="display: flex; flex-direction: column; padding-bottom: 44px; border-top: 1px solid #E9DFCF;">
+    <img src="/_blob/32a77aa4cc090e4589ddd8109f10bb41" alt="Sillón y cuadros del depto con luz de tarde" style="width: 100%; height: 470px; object-fit: cover; display: block; margin-top: 36px;">
+    <div style="padding: 26px 24px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 400;">El depto</h2>
+      <p style="margin: 0; font-size: 13px; line-height: 1.7; color: #5E4A3E;">Un depto de verdad en Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319. Baby &amp; pet friendly.</p>
+      <span style="font-size: 12px; color: #7A6355;">[Días y horarios] · Retiro en el depto · Envíos a coordinar</span>
+      <a href="#" style="margin-top: 6px; height: 40px; padding: 0 22px; border: 1px solid #4A2A1E; color: #4A2A1E; text-decoration: none; display: flex; align-items: center; font-size: 11px; font-weight: 500; letter-spacing: 0.12em;">CÓMO LLEGAR</a>
+    </div>
+  </section>
+
+  <!-- PIE -->
+  <footer style="flex: 1; border-top: 1px solid #E9DFCF; padding: 40px 20px 110px; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; background: #F3EBDD;">
+    <img src="/_blob/326bdd85554b3557731c1aa6edde3e05" alt="depto beauty room" style="width: 150px; height: auto; display: block;">
+    <a href="#" aria-label="Instagram de DeptoBR" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#4A2A1E" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.8" fill="#4A2A1E"></circle></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
+      <a href="#" style="color: #4A2A1E; text-decoration: none;">Cambios y devoluciones</a>
+      <a href="#" style="color: #4A2A1E; text-decoration: none;">Preguntas frecuentes</a>
+      <a href="#" style="color: #4A2A1E; text-decoration: none; font-weight: 600;">Botón de arrepentimiento</a>
+    </div>
+    <span style="font-size: 11px; line-height: 1.7; color: #5E4A3E;">Copyright DeptoBR - [CUIT] - 2026. Todos los derechos reservados.<br>Defensa de las y los consumidores. Para reclamos <span style="font-weight: 600;">ingresá acá</span>.</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"onOpen":{"editor":null},"onAdd":{"editor":null},"$preview":{"width":390,"height":7400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const sumar = (o) => () => { if (this.props.onAdd) this.props.onAdd(o); };
+    let catalogo = [];
+    const conSim = (o) => Object.assign({}, o, { similares: catalogo.filter((q) => q.nombre !== o.nombre).sort((a, b) => (b.cat === o.cat) - (a.cat === o.cat)).slice(0, 4).map((q) => ({ nombre: q.nombre, img: q.img, open: () => { if (this.props.onOpen) this.props.onOpen(conSim(Object.assign({ tipo: 'p' }, q))); } })) });
+    const prod = (p) => { const o = Object.assign({ tipo: 'p' }, p); return Object.assign({}, o, { hayBadge: !!p.badge, open: () => { if (this.props.onOpen) this.props.onOpen(conSim(o)); }, add: sumar(o) }); };
+    const productos = [
+      { nombre: 'Set YSL collar y aros', cat: 'Joyas', img: '/_blob/55bc301acbcffb50c2e4f8b0338dca61', badge: 'NUEVO', desc: 'Collar con dije YSL y aros de cristal.' },
+      { nombre: 'Pulsera Trébol', cat: 'Joyas', img: '/_blob/105b2b09364036fa433fd8d6f5c866f2', badge: '', desc: 'Pulsera con tréboles negros y borde dorado.' },
+      { nombre: 'Cadena YSL', cat: 'Joyas', img: '/_blob/d31920ebdc1daa1c80e3aaccb0daf0e1', badge: 'ÚLTIMAS 2', desc: 'Cadena con dije YSL.' },
+      { nombre: 'Esclavas Trébol', cat: 'Joyas', img: '/_blob/4af293d1a0c4bfa32546c1495e5429f5', badge: '', desc: 'Set de esclavas doradas y plateadas.' },
+      { nombre: 'Aros Dúo', cat: 'Joyas', img: '/_blob/d824e6798bde92c3dc2e858ce07c5574', badge: '', desc: 'Aros abultados oro y plata.' },
+      { nombre: 'Argollas Gota', cat: 'Joyas', img: '/_blob/5c5b32d4a4f12dd4814e822b0d4aa0b2', badge: '', desc: 'Argollas gruesas, oro o plata.' },
+      { nombre: 'Lentes Miel', cat: 'Lentes', img: '/_blob/d7ab5409307c88826d99776a0d34d9c9', badge: 'NUEVO', desc: 'Armazón traslúcido color miel.' },
+      { nombre: 'Lentes Retro Color', cat: 'Lentes', img: '/_blob/9bda357e33ae8dbd56c8cdaa6a4bee44', badge: '', desc: 'Hexagonales, en tres colores.' }
+    ].map(prod);
+    catalogo = productos.concat([
+      { nombre: 'Pulseras Stack', cat: 'Joyas', img: '/_blob/355cebff79c96232115d44adf239258d', desc: 'Pulseras con perlas y dorados.' },
+      { nombre: 'Reloj Dorado', cat: 'Joyas', img: '/_blob/fff41e4f911e62d3a76f977ae535217d', desc: 'Reloj dorado con malla metálica.' },
+      { nombre: 'Collar Corazón', cat: 'Joyas', img: '/_blob/526d4b6b82e880d28762dba29578f5f3', desc: 'Collar con dije corazón dorado.' }
+    ]);
+    const serv = (v) => Object.assign({}, v, { open: () => { if (this.props.onOpen) this.props.onOpen(Object.assign({ tipo: 's' }, v)); } });
+    const servicios = [
+      { id: 'kapping', grupo: 'Manos', nombre: 'Kapping gel', dur: '1 h 30 min', img: '/_blob/c2911cf78d6677d69bbb9c503a826224', incluye: ['Retiro del esmaltado anterior', 'Kapping de gel sobre uña natural', 'Color o cromado a elección'] },
+      { id: 'semi', grupo: 'Manos', nombre: 'Semipermanente', dur: '1 h', img: '/_blob/f24ae8fd583524475287b28351127cbe', incluye: ['Limado y cutículas', 'Esmaltado semipermanente', 'Dura hasta 3 semanas'] },
+      { id: 'nailart', grupo: 'Manos', nombre: 'Nail art', dur: '+ 30 min', img: '/_blob/d57b144e69d107a558f33d14aefda39d', incluye: ['Diseño a mano alzada', 'Piedras, cromados o stickers', 'Se suma a cualquier servicio'] },
+      { id: 'pedi', grupo: 'Pies', nombre: 'Pedicura completa', dur: '1 h', img: '/_blob/48f5ccf862c79402a4559982f1adfe92', incluye: ['Limpieza y limado', 'Esmaltado semipermanente', 'Hidratación'] },
+      { id: 'cejas', grupo: 'Cejas', nombre: 'Perfilado de cejas', dur: '45 min', img: '/_blob/d9c9ea06b3ebb7e60819a07054cef75f', incluye: ['Diseño según tu rostro', 'Perfilado y limpieza', 'Opcional: laminado'] }
+    ].map(serv);
+    const categorias = [
+      { nombre: 'JOYAS', img: '/_blob/1efb07a4b9efa74497363f8961bfb4af', href: '#tienda' },
+      { nombre: 'LENTES', img: '/_blob/9bda357e33ae8dbd56c8cdaa6a4bee44', href: '#tienda' },
+      { nombre: 'UÑAS', img: '/_blob/fdd581cb690c83d4b2e8050e2e0c6311', href: '#beauty' },
+      { nombre: 'PEDICURA', img: '/_blob/48f5ccf862c79402a4559982f1adfe92', href: '#beauty' },
+      { nombre: 'CEJAS', img: '/_blob/d9c9ea06b3ebb7e60819a07054cef75f', href: '#beauty' },
+      { nombre: 'GIFT CARD', img: '/_blob/049d6468c528370e67c4828be679f2ae', href: '#tienda' }
+    ];
+    return { productos, servicios, categorias };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
-  "_ayuda": "Capacitaciones. fecha: 'AAAA-MM-DD' o null para '[dd] [MES]'. cupos: lugares que quedan; cuposTotales: total del curso (null = '[n]'). barraEjemplo: % de la barra mientras no hay cupos cargados. acento: 'dorado' o 'blush'.",
+  "_ayuda": "Capacitaciones. fecha: 'AAAA-MM-DD' o null para '[dd] [MES]'. cupos: lugares que quedan (null = 'Quedan [n] lugares'; 0 = 'Cupo completo'). CONSULTAR abre WhatsApp con el nombre del curso.",
   "cursos": [
-    { "id": "curso-semi", "nombre": "Curso de semipermanente", "fecha": "2026-12-14", "modalidad": "Presencial · En el Dpto 319", "cupos": null, "cuposTotales": null, "barraEjemplo": 75, "img": "img/unas-butter-yellow.webp", "alt": "Uñas semipermanente butter yellow", "acento": "dorado" },
-    { "id": "curso-cejas", "nombre": "Perfilado de cejas", "fecha": "2026-12-21", "modalidad": "Presencial · En el Dpto 319", "cupos": null, "cuposTotales": null, "barraEjemplo": 40, "img": "img/cejas-despues.webp", "alt": "Cejas perfiladas", "acento": "blush" }
+    { "id": "curso-semi", "nombre": "Curso de semipermanente", "fecha": "2026-12-14", "modalidad": "Presencial · En el Dpto 319", "cupos": null },
+    { "id": "curso-cejas", "nombre": "Perfilado de cejas", "fecha": "2026-12-21", "modalidad": "Presencial · En el Dpto 319", "cupos": null }
   ]
 }

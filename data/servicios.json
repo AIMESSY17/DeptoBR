@@ -1,15 +1,15 @@
 {
-  "_ayuda": "Servicios de La carta. grupo: id de 'grupos' bajo el que aparece (manos, pies o cejas). precio: número o null para '$ [precio]'. top: true agrega ' · Lo más pedido'. antesDespues: fotos para la ficha (solo Cejas). En 'grupos', img (opcional) es la foto redonda que va antes del subtítulo.",
+  "_ayuda": "Servicios del Beauty Room. grupo: id de 'grupos' (manos, pies o cejas); la lista sigue el orden de 'grupos'. img: foto de la ficha y de la miniatura (miniatura = versión -480). precio: número o null para '$ [precio]'. antesDespues: fotos para la ficha (solo Cejas).",
   "grupos": [
     { "id": "manos", "nombre": "Manos" },
-    { "id": "pies", "nombre": "Pies", "img": "img/servicio-pedicura-480.webp", "alt": "Pedicura hecha en el depto" },
+    { "id": "pies", "nombre": "Pies" },
     { "id": "cejas", "nombre": "Cejas" }
   ],
   "servicios": [
-    { "id": "kapping", "grupo": "manos", "nombre": "Kapping gel", "dur": "1 h 30 min", "precio": null, "top": true, "img": "img/unas-cromadas-doradas.webp", "incluye": ["Retiro del esmaltado anterior", "Kapping de gel sobre uña natural", "Color o cromado a elección"] },
-    { "id": "semi", "grupo": "manos", "nombre": "Semipermanente", "dur": "1 h", "precio": null, "top": false, "img": "img/servicio-semipermanente.webp", "incluye": ["Limado y cutículas", "Esmaltado semipermanente", "Dura hasta 3 semanas"] },
-    { "id": "nailart", "grupo": "manos", "nombre": "Nail art", "dur": "+ 30 min", "precio": null, "top": false, "img": "img/unas-cristales.webp", "incluye": ["Diseño a mano alzada", "Piedras, cromados o stickers", "Se suma a cualquier servicio"] },
-    { "id": "pedi", "grupo": "pies", "nombre": "Pedicura completa", "dur": "1 h", "precio": null, "top": false, "img": "img/servicio-pedicura.webp", "incluye": ["Limpieza y limado", "Esmaltado semipermanente", "Hidratación"] },
-    { "id": "cejas", "grupo": "cejas", "nombre": "Perfilado de cejas", "dur": "45 min", "precio": null, "top": false, "img": "img/cejas-despues.webp", "incluye": ["Diseño según tu rostro", "Perfilado y limpieza", "Opcional: laminado"], "antesDespues": { "antes": "img/cejas-antes.webp", "despues": "img/cejas-despues.webp" } }
+    { "id": "kapping", "grupo": "manos", "nombre": "Kapping gel", "dur": "1 h 30 min", "precio": null, "img": "img/unas-cromadas-doradas.webp", "incluye": ["Retiro del esmaltado anterior", "Kapping de gel sobre uña natural", "Color o cromado a elección"] },
+    { "id": "semi", "grupo": "manos", "nombre": "Semipermanente", "dur": "1 h", "precio": null, "img": "img/servicio-semipermanente.webp", "incluye": ["Limado y cutículas", "Esmaltado semipermanente", "Dura hasta 3 semanas"] },
+    { "id": "nailart", "grupo": "manos", "nombre": "Nail art", "dur": "+ 30 min", "precio": null, "img": "img/unas-french-amarillo.webp", "incluye": ["Diseño a mano alzada", "Piedras, cromados o stickers", "Se suma a cualquier servicio"] },
+    { "id": "pedi", "grupo": "pies", "nombre": "Pedicura completa", "dur": "1 h", "precio": null, "img": "img/pedicura-violeta.webp", "incluye": ["Limpieza y limado", "Esmaltado semipermanente", "Hidratación"] },
+    { "id": "cejas", "grupo": "cejas", "nombre": "Perfilado de cejas", "dur": "45 min", "precio": null, "img": "img/camilla-cejas.webp", "incluye": ["Diseño según tu rostro", "Perfilado y limpieza", "Opcional: laminado"], "antesDespues": { "antes": "img/cejas-antes.webp", "despues": "img/cejas-despues.webp" } }
   ]
 }

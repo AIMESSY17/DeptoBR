@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>DeptoBR · Beauty room, joyas y lentes en el Dpto 319</title>
-  <meta name="description" content="Tu ratito, tu estilo, tu lugar. Uñas, cejas y pedicura en el beauty room del Dpto 319, más joyas dbrjoyas y lentes para comprar online. Av. José Ingenieros 1205.">
-  <meta name="theme-color" content="#4A2A1E">
+  <meta name="description" content="Tu ratito, tu estilo, tu lugar. Uñas, cejas y pedicura en el beauty room del Dpto 319, más joyas y lentes para comprar online. Av. José Ingenieros 1205.">
+  <meta name="theme-color" content="#FFFFFF">
 
   <!-- Open Graph / redes -->
   <meta property="og:type" content="website">
@@ -31,14 +31,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Poppins sin bloquear el render (el apagón de entrada tapa el cambio de fuente) -->
+  <!-- Poppins sin bloquear el render (la pantalla de carga tapa el cambio de fuente) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="video/portada-poster.webp" fetchpriority="high">
-  <!-- La llave y el logo de la pantalla de carga -->
-  <link rel="preload" as="image" href="img/logos/llave-oro.svg">
+  <link rel="preload" as="image" href="img/joyas-manos-blazer.webp" imagesrcset="img/joyas-manos-blazer-480.webp 480w, img/joyas-manos-blazer.webp 1086w" imagesizes="100vw" fetchpriority="high">
   <link rel="preload" as="image" href="img/logos/logo-completo.svg">
+  <link rel="preload" as="image" href="img/logos/llave-oro.svg">
   <link rel="stylesheet" href="css/styles.css">
 
   <script type="application/ld+json">
@@ -47,6 +46,7 @@
     "@type": "BeautySalon",
     "name": "DeptoBR",
     "slogan": "Tu ratito, tu estilo, tu lugar.",
+    "telephone": "+5492974058183",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319",
@@ -58,194 +58,124 @@
 </head>
 <body>
 
-
-  <!-- Barra de aviso -->
-  <div class="aviso">
-    <img src="img/logos/llave-oro.svg" alt="" width="24" height="9">
-    Retiro en el Dpto 319 · Envíos a coordinar
+  <!-- Barra de aviso + header (fijos) -->
+  <div class="arriba" id="arriba">
+    <div class="aviso"><span>RETIRO EN EL DPTO 319 – ENVÍOS A COORDINAR – TURNOS POR WHATSAPP</span></div>
+    <header class="header">
+      <div class="header__izq">
+        <button class="icono-btn" type="button" id="menu-btn" aria-label="Abrir menú" aria-haspopup="dialog">
+          <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h22M0 8h22M0 15h22"/></svg>
+        </button>
+        <button class="icono-btn" type="button" id="buscar-btn" aria-label="Buscar" aria-haspopup="dialog">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8.5" cy="8.5" r="7"/><path d="M13.5 13.5L19 19"/></svg>
+        </button>
+      </div>
+      <a class="header__logo" href="#" aria-label="DeptoBR, ir al inicio">
+        <img src="img/logos/logo-completo.svg" alt="depto beauty room" width="250" height="106">
+      </a>
+      <button class="icono-btn header__bolsa" type="button" id="carrito-btn" aria-label="Carrito, 0 productos">
+        <span class="bolsa" id="bolsa"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h14l-1 13H5z"/><path d="M8 7V5a3 3 0 0 1 6 0v2"/></svg></span>
+        <span class="contador" id="carrito-contador" hidden>0</span>
+      </button>
+    </header>
   </div>
 
-  <main>
-    <!-- 01 · PORTADA -->
-    <section class="portada" aria-label="Portada">
-      <video class="portada__video" src="video/portada.mp4" poster="video/portada-poster.webp" autoplay muted loop playsinline preload="auto" aria-label="Manos con anillos del depto al sol" data-video></video>
-      <div class="portada__sombra" aria-hidden="true"></div>
-      <header class="portada__header">
-        <a class="menu-btn" href="#sumario" aria-label="Menú: ir al sumario">
-          <svg width="20" height="10" viewBox="0 0 20 10" aria-hidden="true" fill="none" stroke="#FFFFFF" stroke-width="1.6"><path d="M0 1h20M0 9h20"/></svg>MENÚ
-        </a>
-      </header>
-      <div class="portada__texto">
-        <span class="antetitulo">BEAUTY ROOM · JOYAS · LENTES</span>
-        <h1 class="titulo portada__titulo">Tu ratito,<br>tu estilo,<br><span class="fuerte">tu lugar.</span></h1>
-        <div class="portada__botones">
-          <a class="btn btn--foto" href="#tienda">Ver la tienda</a>
-          <a class="btn btn--foto-sec" href="#beauty">Reservar turno</a>
-        </div>
-      </div>
-      <div class="portada__logo">
-        <img src="img/logos/logo-crema.svg" alt="depto beauty room" width="300" height="127" fetchpriority="high">
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="t-hero">
+      <img class="hero__foto" src="img/joyas-manos-blazer.webp" srcset="img/joyas-manos-blazer-480.webp 480w, img/joyas-manos-blazer.webp 1086w" sizes="100vw" width="1086" height="1448" fetchpriority="high" alt="Manos con anillos dorados, collar trébol y blazer gris">
+      <div class="hero__sombra" aria-hidden="true"></div>
+      <h1 class="hero__texto" id="t-hero">
+        <span class="hero__linea1"><span class="fuerte">TU RATITO,</span> TU ESTILO</span>
+        <span class="hero__linea2">TU LUGAR</span>
+      </h1>
+      <div class="hero__lado">
+        <span>TURNOS POR WHATSAPP<br>RETIRO EN EL DPTO 319</span>
+        <span><span class="fuerte">BEAUTY ROOM</span> · JOYAS<br>LENTES · CURSOS</span>
       </div>
     </section>
 
-    <!-- 03 · SUMARIO -->
-    <nav class="sumario" id="sumario" aria-label="Sumario">
-      <div id="sumario-lista"></div>
-      <span class="sumario__fin" aria-hidden="true"></span>
-    </nav>
+    <!-- CATEGORÍAS: banners grandes -->
+    <nav class="categorias" id="categorias" aria-label="Categorías"></nav>
 
-    <!-- 04 · TIENDA · LO NUEVO -->
+    <!-- DESTACADOS -->
     <section class="tienda" id="tienda" aria-labelledby="t-tienda">
-      <div class="cabeza">
-        <span class="cabeza__marca"><img src="img/logos/dbr-joyas.svg" alt="dbr joyas" width="64" height="40"><span class="antetitulo">LO NUEVO</span></span>
-        <h2 class="titulo" id="t-tienda">Brillá sin<br><span class="fuerte">pedir permiso.</span></h2>
-      </div>
-      <div id="semana"></div>
-      <div class="carrusel" id="nuevos" role="list" aria-label="Lo nuevo"></div>
+      <h2 class="titulo" id="t-tienda">Destacados</h2>
+      <div class="grilla" id="grilla" role="list"></div>
+      <button class="btn btn--sec tienda__todos" type="button" id="ver-todos" data-filtro="todos">VER TODOS LOS PRODUCTOS</button>
     </section>
 
-    <!-- 05 · ROBALE EL LOOK -->
-    <section class="look" id="look" aria-labelledby="t-look">
-      <div class="look__marco" id="look-marco"></div>
-      <div class="look__sombra" aria-hidden="true"></div>
-      <div class="look__texto">
-        <span class="antetitulo">COMPRÁ EL LOOK</span>
-        <h2 class="titulo look__titulo" id="t-look">Robale<br><span class="fuerte">el look.</span></h2>
+    <!-- BEAUTY ROOM -->
+    <section class="bloque bloque--foto" id="beauty" aria-labelledby="t-beauty">
+      <div class="bloque__foto">
+        <img src="img/unas-french-amarillo.webp" srcset="img/unas-french-amarillo-480.webp 480w, img/unas-french-amarillo.webp 685w" sizes="(min-width: 1024px) 50vw, 100vw" width="685" height="722" loading="lazy" alt="Uñas french amarillo con flores hechas en el depto">
       </div>
-    </section>
-
-    <!-- 06 · LENTES -->
-    <section class="lentes" id="lentes" aria-labelledby="t-lentes">
-      <div class="cabeza">
-        <span class="antetitulo">LENTES · DE LA HORA PICO A LA HORA DORADA</span>
-        <h2 class="titulo" id="t-lentes">Mirá la vida<br><span class="fuerte">con otro filtro.</span></h2>
-      </div>
-      <div class="carrusel" id="lista-lentes" role="list" aria-label="Lentes"></div>
-      <div class="lentes__ver">
-        <a class="btn btn--secundario" href="#tienda">Ver toda la tienda →</a>
+      <div class="bloque__contenido">
+        <h2 class="titulo" id="t-beauty">Beauty Room</h2>
+        <span class="bajada">Uñas, pies y cejas · Turnos por WhatsApp</span>
+        <div class="servicios" id="servicios"></div>
       </div>
     </section>
 
-    <!-- 07 · BEAUTY ROOM · LA CARTA -->
-    <section class="beauty" id="beauty" aria-labelledby="t-carta">
-      <div class="beauty__foto">
-        <img class="foto" src="img/unas-cromadas-doradas.webp" srcset="img/unas-cromadas-doradas-480.webp 480w, img/unas-cromadas-doradas.webp 900w" sizes="100vw" width="900" height="1200" loading="lazy" alt="Uñas cromadas doradas del depto">
-      </div>
-      <div class="carta">
-        <img class="carta__marca" src="img/logos/dbr-unas.svg" alt="dbr uñas" width="79" height="48" loading="lazy">
-        <h2 class="titulo carta__titulo" id="t-carta">La <span class="fuerte">carta</span></h2>
-        <span class="carta__bajada">Elegí, tocá y reservá en un minuto.</span>
-        <div id="servicios"></div>
-      </div>
-      <div class="hecho">
-        <span class="antetitulo">HECHO EN EL DEPTO</span>
-        <div class="hecho__fotos">
-          <img src="img/unas-butter-yellow-480.webp" srcset="img/unas-butter-yellow-480.webp 480w, img/unas-butter-yellow.webp 1024w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="320" loading="lazy" alt="Uñas butter yellow">
-          <img src="img/unas-animal-print-480.webp" srcset="img/unas-animal-print-480.webp 480w, img/unas-animal-print.webp 905w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="636" loading="lazy" alt="Uñas animal print">
-          <img src="img/unas-cristales-480.webp" srcset="img/unas-cristales-480.webp 480w, img/unas-cristales.webp 1084w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="359" loading="lazy" alt="Uñas con cristales">
-          <img src="img/servicio-pedicura-480.webp" srcset="img/servicio-pedicura-480.webp 480w, img/servicio-pedicura.webp 900w" sizes="(min-width: 1024px) 290px, 50vw" width="480" height="640" loading="lazy" alt="Pedicura semipermanente">
-        </div>
-        <a class="btn btn--principal" href="#" data-wa-turno>Reservar mi turno</a>
+    <!-- CAPACITACIONES -->
+    <section class="bloque cursos" id="cursos" aria-labelledby="t-cursos">
+      <video class="cursos__video" src="video/cursos.mp4" poster="video/cursos-poster.webp" muted loop playsinline preload="none" aria-label="Uñas violetas marmoladas hechas en el depto" data-video></video>
+      <div class="bloque__contenido">
+        <h2 class="titulo" id="t-cursos">Capacitaciones</h2>
+        <span class="bajada">Cursos presenciales en el Dpto 319 · Cupos limitados</span>
+        <div class="lista-cursos" id="lista-cursos"></div>
       </div>
     </section>
 
-    <!-- 07c · GIFT CARD -->
-    <section class="gift" id="giftcard" aria-labelledby="t-gift">
-      <div class="gift__cabeza">
-        <span class="antetitulo">GIFT CARD</span>
-        <h2 class="titulo gift__titulo" id="t-gift">Regalá un<br><span class="fuerte">ratito en el depto.</span></h2>
+    <!-- EL DEPTO -->
+    <section class="bloque bloque--foto depto" id="depto" aria-labelledby="t-depto">
+      <div class="bloque__foto">
+        <img src="img/camilla-cejas.webp" srcset="img/camilla-cejas-480.webp 480w, img/camilla-cejas.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw" width="1600" height="1200" loading="lazy" alt="Camilla y lámpara del espacio de trabajo del depto">
       </div>
-      <button class="gift__foto" type="button" id="gift-foto" aria-label="Ver Gift Card">
-        <img class="foto" src="img/giftcard.webp" srcset="img/giftcard-480.webp 480w, img/giftcard.webp 1024w" sizes="(min-width: 1024px) 560px, 100vw" width="1024" height="1024" loading="lazy" alt="Gift card de DeptoBR con sobre dorado">
-      </button>
-      <div class="gift__montos" id="gift-montos" role="group" aria-label="Montos de la gift card"></div>
-      <span class="gift__bajada">Para servicios o productos. Te la mandamos lista para regalar.</span>
-    </section>
-
-    <!-- 08 · EL DEPTO -->
-    <section class="depto" id="depto" aria-labelledby="t-depto">
-      <img class="foto" src="img/depto-bulldog.webp" srcset="img/depto-bulldog-480.webp 480w, img/depto-bulldog.webp 960w" sizes="100vw" width="960" height="960" loading="lazy" alt="Bulldog francés con buzo rosa frente al logo del depto">
-      <div class="depto__sombra" aria-hidden="true"></div>
-      <div class="depto__texto">
-        <span class="antetitulo">EL DEPTO</span>
-        <h2 class="titulo depto__titulo" id="t-depto">Pasá,<br><span class="fuerte">estás en tu casa.</span></h2>
-        <span class="depto__frase">Se permiten bebés, perros y charlas largas.</span>
+      <div class="bloque__contenido depto__contenido">
+        <h2 class="titulo" id="t-depto">El depto</h2>
+        <p class="depto__texto" data-cfg="direccion">Un depto de verdad en Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319. Baby &amp; pet friendly.</p>
+        <span class="depto__datos"><span data-cfg="horarios">[Días y horarios]</span> · <span data-cfg="retiros">Retiro en el depto · Envíos a coordinar</span></span>
+        <a class="btn btn--sec" id="como-llegar" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Jos%C3%A9+Ingenieros+1205" target="_blank" rel="noopener">CÓMO LLEGAR</a>
       </div>
-    </section>
-    <section class="espacio" aria-label="El espacio">
-      <div class="espacio__fotos">
-        <img src="img/espacio-sabado-480.webp" srcset="img/espacio-sabado-480.webp 480w, img/espacio-sabado.webp 900w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="853" loading="lazy" alt="Sillón y cuadros del depto con luz de tarde">
-        <img src="img/espacio-mesa-480.webp" srcset="img/espacio-mesa-480.webp 480w, img/espacio-mesa.webp 1200w" sizes="(min-width: 1024px) 500px, 50vw" width="480" height="480" loading="lazy" alt="Mesa de manicura holográfica">
-      </div>
-      <p class="espacio__historia" data-cfg="historia">[Historia de la dueña en 2–3 líneas: cómo nació DeptoBR y por qué un depto.]</p>
-    </section>
-
-    <!-- 09 · CAPACITACIONES -->
-    <section class="cursos" id="cursos" aria-labelledby="t-cursos">
-      <div class="cursos__video">
-        <video src="video/cursos.mp4" poster="video/cursos-poster.webp" muted loop playsinline preload="none" aria-label="Uñas violetas marmoladas hechas en el depto" data-video data-lazy-video></video>
-        <div class="cursos__sombra" aria-hidden="true"></div>
-        <span class="cupos-limitados">CUPOS LIMITADOS</span>
-        <div class="cursos__texto">
-          <span class="antetitulo">CAPACITACIONES</span>
-          <h2 class="titulo cursos__titulo" id="t-cursos">Aprendé lo que<br><span class="fuerte">hacemos acá.</span></h2>
-          <span class="cursos__bajada">Del otro lado de la mesa: te llevás la técnica, los secretos y la confianza para arrancar.</span>
-        </div>
-      </div>
-      <div class="cursos__lista" id="lista-cursos"></div>
-    </section>
-
-    <!-- 10 · ENCONTRANOS -->
-    <section class="encontranos" id="encontranos" aria-labelledby="t-encontranos">
-      <span class="antetitulo">ENCONTRANOS</span>
-      <h2 class="titulo encontranos__titulo" id="t-encontranos">Tocá timbre<br><span class="fuerte">en el 319.</span></h2>
-      <div class="dato"><span class="dato__label">Dirección</span><span class="dato__valor" data-cfg="direccion">Av. José Ingenieros 1205 · Edif. Jerárquicos · Dpto 319</span></div>
-      <div class="dato"><span class="dato__label">Horarios</span><span class="dato__valor" data-cfg="horarios">[Días y horarios]</span></div>
-      <div class="dato"><span class="dato__label">Retiros y envíos</span><span class="dato__valor" data-cfg="retiros">Retiro en el depto · Envíos a coordinar</span></div>
-      <a class="btn btn--principal" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Jos%C3%A9+Ingenieros+1205" target="_blank" rel="noopener" id="como-llegar">Cómo llegar</a>
     </section>
   </main>
 
-  <!-- 11 · PIE -->
+  <!-- PIE -->
   <footer class="pie">
-    <nav class="pie__links" aria-label="Links del pie">
-      <a href="#tienda">Tienda</a>
-      <a href="#beauty">Beauty Room</a>
-      <a href="#cursos">Capacitaciones</a>
-      <a href="https://www.instagram.com/deptobr/" target="_blank" rel="noopener" id="link-ig">Instagram</a>
+    <img class="pie__logo" src="img/logos/logo-completo.svg" alt="depto beauty room" width="250" height="106" loading="lazy">
+    <a class="icono-btn" id="link-ig" href="https://www.instagram.com/deptobr/" target="_blank" rel="noopener" aria-label="Instagram de DeptoBR">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+    </a>
+    <nav class="pie__links" aria-label="Información">
       <a href="#" id="link-cambios">Cambios y devoluciones</a>
-      <a href="#" id="link-arrepentimiento">Botón de arrepentimiento</a>
+      <a href="#" id="link-preguntas">Preguntas frecuentes</a>
+      <a href="#" id="link-arrepentimiento" class="fuerte">Botón de arrepentimiento</a>
     </nav>
-    <span class="pie__legal" id="legales">[Razón social] · CUIT [—] · <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor" target="_blank" rel="noopener">Defensa del Consumidor</a></span>
-    <div class="pie__logo">
-      <img src="img/logos/logo-oro.svg" alt="depto beauty room" width="280" height="119" loading="lazy">
-    </div>
+    <p class="pie__legal" id="legales">Copyright DeptoBR - [CUIT] - 2026. Todos los derechos reservados.<br>Defensa de las y los consumidores. Para reclamos <a class="fuerte" href="https://www.argentina.gob.ar/produccion/defensadelconsumidor" target="_blank" rel="noopener">ingresá acá</a>.</p>
   </footer>
 
-  <!-- Carrito-llave (siempre a un toque) -->
-  <button class="carrito-btn" id="carrito-btn" type="button" aria-label="Carrito, 0 productos">
-    <span class="carrito-btn__llave" id="carrito-llave">
-      <img src="img/logos/llave-oro.svg" alt="" width="28" height="11">
-    </span>
-    <span class="carrito-btn__contador" id="carrito-contador" hidden>0</span>
-  </button>
+  <!-- WhatsApp flotante -->
+  <a class="wa" id="wa" href="https://wa.me/5492974058183" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#FFFFFF" stroke-width="1.8"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7L4 20z"/></svg>
+  </a>
 
   <!-- Aviso "Agregado a tu carrito" -->
   <div class="toast aparece" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <!-- Barra fija inferior (carrito / Reservar turno) -->
+  <!-- Barra del carrito -->
   <button class="barra aparece" id="barra" type="button" hidden>
     <span id="barra-izq"></span><span id="barra-der"></span>
   </button>
 
-  <!-- Ficha (bottom sheet) -->
+  <!-- Panel: ficha, carrito, menú y búsqueda -->
   <div class="velo aparece" id="velo" hidden></div>
-  <div class="hoja sube" id="hoja" role="dialog" aria-modal="true" aria-label="" hidden>
+  <div class="hoja" id="hoja" role="dialog" aria-modal="true" aria-label="" hidden>
     <button class="hoja__cerrar" id="hoja-cerrar" type="button" aria-label="Cerrar">×</button>
     <div id="hoja-contenido"></div>
   </div>
 
-  <!-- E1 · Pantalla de carga: la llave del logo entra, gira, se traza el aro y aparece el logo -->
+  <!-- Pantalla de carga: la llave del logo entra, gira, se traza el aro y aparece el logo -->
   <div class="cargador" id="cargador" aria-hidden="true" style="position: fixed; inset: 0; z-index: 100; overflow: hidden; pointer-events: none; background: #F3EBDD;">
     <div style="position: absolute; left: 50%; top: 50%; width: 390px; height: 260px; margin: -130px 0 0 -195px;">
       <svg class="cerr" width="390" height="260" viewBox="0 0 390 260" style="position: absolute; inset: 0;">

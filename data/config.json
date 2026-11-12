@@ -1,25 +1,26 @@
 {
-  "_ayuda": "Datos de contacto y textos. Lo que está entre [corchetes] es un pendiente de la clienta.",
+  "_ayuda": "Datos de contacto, textos y banners de categorías. Lo que está entre [corchetes] es un pendiente de la clienta. categorias: banners de la portada, en orden. img = foto grande; img480 = versión chica (opcional); pos = encuadre (object-position); filtro = categoría de productos que muestra la grilla (Joyas, Lentes); abrir = id de producto cuya ficha abre (Gift card); si no, va a href.",
   "whatsapp": "5492974058183",
   "instagram": "deptobr",
-  "direccion": "Av. José Ingenieros 1205 · Edif. Jerárquicos · Dpto 319",
+  "direccion": "Un depto de verdad en Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319. Baby & pet friendly.",
   "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Av.+Jos%C3%A9+Ingenieros+1205",
   "horarios": "[Días y horarios]",
   "retiros": "Retiro en el depto · Envíos a coordinar",
-  "historia": "[Historia de la dueña en 2–3 líneas: cómo nació DeptoBR y por qué un depto.]",
   "legales": {
-    "razonSocial": "[Razón social]",
-    "cuit": "[—]",
+    "razonSocial": "DeptoBR",
+    "cuit": "[CUIT]",
+    "anio": "2026",
     "defensaConsumidorUrl": "https://www.argentina.gob.ar/produccion/defensadelconsumidor",
     "cambiosUrl": "#",
+    "preguntasUrl": "#",
     "arrepentimientoUrl": "#"
   },
-  "sumario": [
-    { "n": "01", "nombre": "Joyas", "img": "img/joyas-anillos.webp", "href": "#tienda" },
-    { "n": "02", "nombre": "Lentes", "img": "img/lentes-miel.webp", "href": "#lentes" },
-    { "n": "03", "nombre": "Uñas", "img": "img/unas-rosa-anillo.webp", "href": "#beauty" },
-    { "n": "04", "nombre": "Pedicura", "img": "img/servicio-pedicura.webp", "href": "#beauty" },
-    { "n": "05", "nombre": "Cejas", "img": "img/cejas-despues.webp", "href": "#beauty" },
-    { "n": "06", "nombre": "Cursos", "img": "img/espacio-mesa.webp", "href": "#cursos" }
+  "categorias": [
+    { "nombre": "JOYAS", "img": "img/aros-crochet.webp", "img480": "img/aros-crochet-480.webp", "alt": "Anillos dorados sobre tejido crochet", "pos": "50% 50%", "href": "#tienda", "filtro": "Joyas" },
+    { "nombre": "LENTES", "img": "img/lentes-modelo.webp", "alt": "Modelo con lentes de armazón carey", "pos": "32% 50%", "href": "#tienda", "filtro": "Lentes" },
+    { "nombre": "UÑAS", "img": "img/unas-french-amarillo.webp", "img480": "img/unas-french-amarillo-480.webp", "alt": "Uñas french amarillo con flores", "pos": "50% 50%", "href": "#beauty" },
+    { "nombre": "PEDICURA", "img": "img/pedicura-violeta.webp", "img480": "img/pedicura-violeta-480.webp", "alt": "Pedicura semipermanente violeta", "pos": "50% 60%", "href": "#beauty" },
+    { "nombre": "CEJAS", "img": "img/cejas-despues.webp", "img480": "img/cejas-despues-480.webp", "alt": "Cejas perfiladas en el depto", "pos": "50% 50%", "href": "#beauty" },
+    { "nombre": "GIFT CARD", "img": "img/giftcard.webp", "img480": "img/giftcard-480.webp", "alt": "Gift card de DeptoBR con sobre dorado", "pos": "50% 50%", "href": "#tienda", "abrir": "gift-1" }
   ]
 }

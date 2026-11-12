@@ -1,4 +1,4 @@
-# Tareas — Spec 001 DeptoBR (v5)
+# Tareas — Spec 001 DeptoBR (v6)
 
 Marcar `[x]` al terminar. Una fase se cierra con su checklist + commit.
 
@@ -45,3 +45,6 @@ Marcar `[x]` al terminar. Una fase se cierra con su checklist + commit.
 
 ## FASE 4 — Lanzamiento
 - [ ] T35 Dominio + MP producción + compra real · T36 Entrega.
+
+### Cambio a v6 (estilo Posh, 2026-11-11)
+- [x] T24 Rediseño completo según `boceto-v6`: fondo blanco, Poppins, botones rectos; barra de aviso, header fijo con menú, búsqueda y bolsa; hero con foto; banners de categorías; Destacados con COMPRAR y VER TODOS; Beauty Room; Capacitaciones; El depto; pie crema; WhatsApp flotante. Fotos nuevas de la clienta en WebP. Se quitan Sumario, Robale el look (`look.json`), carruseles, destello y pulso.

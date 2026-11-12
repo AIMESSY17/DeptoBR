@@ -35,7 +35,8 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="img/portada-depto-v2-poster.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="img/portada-depto-horizontal-poster.webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="img/portada-depto-vertical-poster.webp" media="(max-width: 767px)" fetchpriority="high">
   <link rel="preload" as="image" href="img/logos/logo-completo.svg">
   <link rel="preload" as="image" href="img/logos/llave-oro.svg">
   <link rel="stylesheet" href="css/styles.css">
@@ -83,13 +84,12 @@
   <main id="inicio">
     <!-- HERO -->
     <section class="hero" aria-labelledby="t-hero">
-      <img class="hero__lateral hero__izq" src="img/joyas-manos-blazer.webp" srcset="img/joyas-manos-blazer-480.webp 480w, img/joyas-manos-blazer.webp 1086w" sizes="34vw" width="1086" height="1448" alt="Manos con anillos dorados, collar trébol y blazer gris">
-      <div class="hero__centro">
-        <img class="hero__foto hero__poster" src="img/portada-depto-v2-poster.webp" width="576" height="1024" fetchpriority="high" alt="">
-        <video class="hero__foto hero__video" autoplay muted loop playsinline preload="metadata" poster="img/portada-depto-v2-poster.webp" aria-label="Pasillo del depto con el logo dorado en la pared"><source src="video/portada-depto-v2.mp4" type="video/mp4"></video>
-        <div class="hero__sombra" aria-hidden="true"></div>
-      </div>
-      <img class="hero__lateral hero__der" src="img/lentes-modelo.webp" width="800" height="1000" alt="Modelo con lentes">
+      <picture class="hero__poster">
+        <source media="(min-width: 768px)" srcset="img/portada-depto-horizontal-poster.webp" width="1280" height="720">
+        <img class="hero__foto" src="img/portada-depto-vertical-poster.webp" width="576" height="1024" fetchpriority="high" alt="">
+      </picture>
+      <video class="hero__foto hero__video" id="hero-video" muted loop playsinline autoplay preload="metadata" data-h="video/portada-depto-horizontal.mp4" data-v="video/portada-depto-vertical.mp4" aria-label="Pasillo del depto con el logo dorado en la pared"></video>
+      <div class="hero__sombra" aria-hidden="true"></div>
       <h1 class="hero__texto" id="t-hero">
         <span class="hero__linea1"><span class="fuerte">TU RATITO,</span> TU ESTILO</span>
         <span class="hero__linea2">TU LUGAR</span>

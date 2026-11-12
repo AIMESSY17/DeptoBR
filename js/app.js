@@ -601,6 +601,24 @@
   /* =========================================================
      Video de cursos: solo se reproduce en pantalla
      ========================================================= */
+  /* Video del hero: cada pantalla descarga solo su versión (horizontal / vertical) */
+  function heroVideo() {
+    var v = document.getElementById('hero-video');
+    if (!v || reducido) { if (v) v.remove(); return; }
+    var mq = window.matchMedia('(min-width: 768px)');
+    var actual = '';
+    function poner() {
+      var src = mq.matches ? v.getAttribute('data-h') : v.getAttribute('data-v');
+      if (src === actual) return;
+      actual = src;
+      v.src = src;
+      v.load();
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    }
+    poner();
+    if (mq.addEventListener) mq.addEventListener('change', poner); else mq.addListener(poner);
+  }
+
   function videos() {
     var vids = document.querySelectorAll('[data-video]');
     if (reducido || !('IntersectionObserver' in window)) return; /* queda el poster */
@@ -629,6 +647,7 @@
      Inicio
      ========================================================= */
   cargador();
+  heroVideo();
   videos();
   actualizarContador();
 

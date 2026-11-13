@@ -1,17 +1,17 @@
 {
-  "_ayuda": "Servicios del Beauty Room. grupo: id de 'grupos' (manicuria, cejas o pedicuria); la lista sigue el orden de 'grupos'. img: foto de la ficha y de la miniatura (miniatura = versión -480). precio: número sin puntos (39000 se muestra $39.000) o null para '$ [precio]'. dur: texto tal cual se muestra.",
+  "_ayuda": "Servicios del Beauty Room. grupo: id de 'grupos' (manicuria, cejas o pedicuria); la lista sigue el orden de 'grupos'. img: foto de la ficha y de la miniatura (miniatura = versión -480). precio: número sin puntos (39000 se muestra $39.000) o null para '$ [precio]'. dur: texto tal cual se muestra. tags: palabras clave solo para la búsqueda (no se muestran).",
   "grupos": [
     { "id": "manicuria", "nombre": "Manicuría" },
     { "id": "cejas", "nombre": "Cejas" },
     { "id": "pedicuria", "nombre": "Pedicuría" }
   ],
   "servicios": [
-    { "id": "mani-capping", "grupo": "manicuria", "nombre": "Manicuría + Capping", "dur": "1h30'", "precio": 39000, "img": "img/unas-french-amarillo.webp" },
-    { "id": "soft-gel", "grupo": "manicuria", "nombre": "Extensión soft gel", "dur": "2h a 2h30'", "precio": 48000, "img": "img/unas-french-amarillo.webp" },
-    { "id": "cejas-perfilado", "grupo": "cejas", "nombre": "Perfilado de cejas", "dur": "30'", "precio": 22000, "img": "img/cejas-diseno-calido-1600.webp" },
-    { "id": "cejas-laminado", "grupo": "cejas", "nombre": "Laminado", "dur": "1h", "precio": 38000, "img": "img/cejas-diseno-calido-1600.webp" },
-    { "id": "cejas-henna", "grupo": "cejas", "nombre": "Henna y perfilado", "dur": "1h", "precio": 35000, "img": "img/cejas-diseno-calido-1600.webp" },
-    { "id": "pedi-semi", "grupo": "pedicuria", "nombre": "Pedicuría con semi", "dur": "1h 20'", "precio": 43000, "img": "img/pedicura-violeta.webp" },
-    { "id": "pedi-sin-semi", "grupo": "pedicuria", "nombre": "Pedicuría sin semi", "dur": "1h", "precio": 30000, "img": "img/pedicura-violeta.webp" }
+    { "id": "mani-capping", "grupo": "manicuria", "nombre": "Manicuría + Capping", "dur": "1h30'", "precio": 39000, "img": "img/unas-french-amarillo.webp", "tags": "uñas, manos, kapping, capping, gel, esmaltado" },
+    { "id": "soft-gel", "grupo": "manicuria", "nombre": "Extensión soft gel", "dur": "2h a 2h30'", "precio": 48000, "img": "img/unas-french-amarillo.webp", "tags": "uñas, manos, kapping, capping, gel, esmaltado" },
+    { "id": "cejas-perfilado", "grupo": "cejas", "nombre": "Perfilado de cejas", "dur": "30'", "precio": 22000, "img": "img/cejas-diseno-calido-1600.webp", "tags": "cejas, cejas perfiladas, henna, laminado" },
+    { "id": "cejas-laminado", "grupo": "cejas", "nombre": "Laminado", "dur": "1h", "precio": 38000, "img": "img/cejas-diseno-calido-1600.webp", "tags": "cejas, cejas perfiladas, henna, laminado" },
+    { "id": "cejas-henna", "grupo": "cejas", "nombre": "Henna y perfilado", "dur": "1h", "precio": 35000, "img": "img/cejas-diseno-calido-1600.webp", "tags": "cejas, cejas perfiladas, henna, laminado" },
+    { "id": "pedi-semi", "grupo": "pedicuria", "nombre": "Pedicuría con semi", "dur": "1h 20'", "precio": 43000, "img": "img/pedicura-violeta.webp", "tags": "pies, uñas de los pies, pedicura, pedicure, semi" },
+    { "id": "pedi-sin-semi", "grupo": "pedicuria", "nombre": "Pedicuría sin semi", "dur": "1h", "precio": 30000, "img": "img/pedicura-violeta.webp", "tags": "pies, uñas de los pies, pedicura, pedicure, semi" }
   ]
 }

@@ -446,6 +446,10 @@
 
   /* ---------- Búsqueda ---------- */
   function sinTildes(t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function grupoNombre(id) {
+    var g = datos.grupos.filter(function (x) { return x.id === id; })[0];
+    return g ? g.nombre : '';
+  }
   function abrirBuscar() {
     contenido.innerHTML =
       '<div class="hoja__cuerpo hoja__cuerpo--sin-foto">' +
@@ -463,7 +467,7 @@
       return !t || sinTildes(p.nombre + ' ' + p.cat + ' ' + p.desc).indexOf(t) !== -1;
     });
     var servs = datos.servicios.filter(function (v) {
-      return t && sinTildes(v.nombre + ' ' + v.grupo).indexOf(t) !== -1;
+      return t && sinTildes(v.nombre + ' ' + v.grupo + ' ' + grupoNombre(v.grupo) + ' ' + (v.tags || '')).indexOf(t) !== -1;
     });
     if (!t) prods = prods.filter(function (p) { return p.destacado; });
     var html = servs.map(function (v) {

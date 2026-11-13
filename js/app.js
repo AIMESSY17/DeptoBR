@@ -119,6 +119,20 @@
   /* =========================================================
      Beauty Room
      ========================================================= */
+  function iconoServicio(id) {
+    var dibujos = {
+      'mani-capping': '<path d="M22 53V28a10 10 0 0 1 20 0v25M27 29v-7a5 5 0 0 1 10 0v7"/><path d="M32 13v8m-4-4h8"/>',
+      'soft-gel': '<path d="M22 53V28a10 10 0 0 1 20 0v25M27 28V18a5 5 0 0 1 10 0v10"/><path d="M28 18q4-4 8 0"/>',
+      'cejas-perfilado': '<path d="M12 37q20-22 40 0"/><path d="M14 37q18-17 36 0" opacity=".35"/>',
+      'cejas-laminado': '<path d="M12 33q20-20 40 0"/><path d="M13 39q19 15 38 0q-19 22-38 0Z"/><path d="M20 42l-4 5m10-4-2 6m12-6 2 6m6-7 4 5"/>',
+      'cejas-henna': '<path d="M13 38q19 15 38 0l-5 9q-14 10-28 0Z"/><path d="m31 39 13-19m-9 16 12-18m-20 21 7-10"/>',
+      'pedi-semi': '<g><path d="M20 56c-6-2-9-9-8-16 1-5 0-10-2-14-2-5 1-9 5-8 3 1 4 6 5 9 1-5 4-8 7-7 4 1 3 6 2 10-1 6 2 11 2 16 0 7-5 12-11 10Z"/><path d="M11 23q2-2 4 0m1-3q3-2 5 1m1 2q3-2 5 1"/></g><g transform="translate(64 0) scale(-1 1)"><path d="M20 56c-6-2-9-9-8-16 1-5 0-10-2-14-2-5 1-9 5-8 3 1 4 6 5 9 1-5 4-8 7-7 4 1 3 6 2 10-1 6 2 11 2 16 0 7-5 12-11 10Z"/><path d="M11 23q2-2 4 0m1-3q3-2 5 1m1 2q3-2 5 1"/></g>',
+      'pedi-sin-semi': '<g><path d="M20 56c-6-2-9-9-8-16 1-5 0-10-2-14-2-5 1-9 5-8 3 1 4 6 5 9 1-5 4-8 7-7 4 1 3 6 2 10-1 6 2 11 2 16 0 7-5 12-11 10Z"/><path d="M11 23q2-2 4 0m1-3q3-2 5 1m1 2q3-2 5 1"/></g><g transform="translate(64 0) scale(-1 1)"><path d="M20 56c-6-2-9-9-8-16 1-5 0-10-2-14-2-5 1-9 5-8 3 1 4 6 5 9 1-5 4-8 7-7 4 1 3 6 2 10-1 6 2 11 2 16 0 7-5 12-11 10Z"/><path d="M11 23q2-2 4 0m1-3q3-2 5 1m1 2q3-2 5 1"/></g>'
+    };
+    var dibujo = dibujos[id] || '<path d="M32 12v40M12 32h40M18 18l28 28m0-28L18 46"/>';
+    return '<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' + dibujo + '</svg>';
+  }
+
   function renderServicios() {
     var orden = datos.grupos.map(function (g) { return g.id; });
     var nombreGrupo = {};
@@ -132,7 +146,7 @@
       var antes = '';
       if (v.grupo === 'cejas' && !cejasVistas) { cejasVistas = true; antes = bloqueCejas(); }
       return antes + '<button class="servicio" type="button" data-servicio="' + esc(v.id) + '">' +
-        '<img src="' + esc(chica(v.img)) + '" width="64" height="64" loading="lazy" alt="">' +
+        '<span class="servicio__icono">' + iconoServicio(v.id) + '</span>' +
         '<span class="servicio__datos">' +
           '<span class="servicio__nombre">' + esc(v.nombre) + '</span>' +
           '<span class="servicio__sub">' + esc(nombreGrupo[v.grupo] || '') + (nombreGrupo[v.grupo] ? ' · ' : '') + esc(v.dur) + '</span>' +

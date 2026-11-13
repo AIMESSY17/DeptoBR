@@ -23,9 +23,9 @@
   "categorias": [
     { "nombre": "JOYAS", "img": "img/joyas-manos-blazer.webp", "img480": "img/joyas-manos-blazer-480.webp", "alt": "Manos con anillos dorados, collar trébol y blazer gris", "pos": "50% 50%", "href": "#tienda", "filtro": "Joyas" },
     { "nombre": "LENTES", "img": "img/lentes-modelo.webp", "alt": "Modelo con lentes de armazón carey", "pos": "32% 50%", "href": "#tienda", "filtro": "Lentes" },
-    { "nombre": "UÑAS", "img": "img/unas-french-amarillo.webp", "img480": "img/unas-french-amarillo-480.webp", "alt": "Uñas french amarillo con flores", "pos": "50% 50%", "href": "#beauty" },
-    { "nombre": "PEDICURA", "img": "img/pedicura-violeta.webp", "img480": "img/pedicura-violeta-480.webp", "alt": "Pedicura semipermanente violeta", "pos": "50% 60%", "href": "#beauty" },
-    { "nombre": "CEJAS", "img": "img/cejas-diseno.webp", "img480": "img/cejas-diseno-480.webp", "alt": "Diseño de cejas hecho en el depto", "pos": "50% 50%", "href": "#beauty" },
+    { "nombre": "MANICURÍA", "img": "img/unas-french-amarillo.webp", "img480": "img/unas-french-amarillo-480.webp", "alt": "Uñas french amarillo con flores", "pos": "50% 50%", "href": "#beauty" },
+    { "nombre": "PEDICURÍA", "img": "img/pedicura-violeta.webp", "img480": "img/pedicura-violeta-480.webp", "alt": "Pedicura semipermanente violeta", "pos": "50% 60%", "href": "#beauty" },
+    { "nombre": "CEJAS", "img": "img/cejas-diseno-calido-1600.webp", "img480": "img/cejas-diseno-calido-480.webp", "alt": "Diseño de cejas hecho en el depto", "pos": "50% 50%", "href": "#beauty" },
     { "nombre": "GIFT CARD", "img": "img/giftcard.webp", "img480": "img/giftcard-480.webp", "alt": "Gift card de DeptoBR con sobre dorado", "pos": "50% 50%", "href": "#tienda", "abrir": "gift-1" }
   ]
 }

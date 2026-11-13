@@ -49,3 +49,7 @@ Marcar `[x]` al terminar. Una fase se cierra con su checklist + commit.
 ### Cambio a v6 (estilo Posh, 2026-11-11)
 - [x] T24 Rediseño completo según `boceto-v6`: fondo blanco, Poppins, botones rectos; barra de aviso, header fijo con menú, búsqueda y bolsa; hero con foto; banners de categorías; Destacados con COMPRAR y VER TODOS; Beauty Room; Capacitaciones; El depto; pie crema; WhatsApp flotante. Fotos nuevas de la clienta en WebP. Se quitan Sumario, Robale el look (`look.json`), carruseles, destello y pulso.
 - [x] T25 Pantalla de carga eliminada por completo; carrusel en El depto (`deptoCarrusel`: beauty-room-trabajando, camilla-cejas, espacio-sabado); Beauty Room vuelve a la foto fija `unas-french-amarillo`; cejas-diseno en Cejas; video de Capacitaciones en dos versiones.
+
+### Servicios reales y videos de cejas (2026-11-13)
+- [x] T26 Beauty Room con lista real (Manicuría, Cejas, Pedicuría) y precios; sin "qué incluye"; frase "Aprovechá y armá tu combo"; WhatsApp con precio; Gift card $40.000 / $50.000 / $80.000; banners MANICURÍA y PEDICURÍA; foto de cejas `cejas-diseno-calido` (se borró `cejas-diseno`).
+- [x] T27 Bloque "Cejas en el depto" con dos videos 4:5 (`cejas-mapeo`, `cejas-henna`) sobre el grupo CEJAS.

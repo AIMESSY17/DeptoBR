@@ -2,7 +2,7 @@
 
 **Estado:** Aprobada para construir · **Versión:** 4.1 · **Fecha:** 2026-11-12 (v6 aprobada: dorado solo en el logo y limpieza de imágenes de la v5; antes, 2026-11-11, rediseño completo estilo poshjoyas.com.ar)
 **Equipo:** Javier (desarrollo) · Papadog (cliente/comercial)
-**Clienta:** DeptoBR — beauty room (uñas, cejas, pedicura) + dbrjoyas (joyas, relojes) + lentes. IG @deptobr. Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319.
+**Clienta:** DeptoBR — beauty room (manicuría, cejas, pedicuría) + dbrjoyas (joyas, relojes) + lentes. IG @deptobr. Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319.
 
 > QUÉ hace el sitio y POR QUÉ. El CÓMO está en `plan.md`.
 > **La referencia visual obligatoria es el boceto v6 en `diseno/`**: `boceto-v6-pagina.dc.html` = toda la página; `boceto-v6-interacciones.dc.html` = header, ficha, carrito, reserva y pantalla de carga. La v4 y la v5 quedan descartadas.
@@ -45,9 +45,9 @@ Panel admin para la clienta · login de compradoras · calendario de turnos prop
 1. **Barra de aviso crema** (30 px): "RETIRO EN EL DPTO 319 – ENVÍOS A COORDINAR – TURNOS POR WHATSAPP".
 2. **Header fijo blanco** (57 px, línea abajo): menú + lupa a la izquierda, logo centrado, bolsa del carrito con contador a la derecha. El menú abre un panel desde la izquierda (Joyas, Lentes, Todos los productos, Beauty Room, Gift card, Capacitaciones, El depto, WhatsApp, Instagram). La lupa abre la búsqueda (productos y servicios, sin importar tildes).
 3. **Hero** a ancho completo (560 px en celular; 85vh en escritorio) con la foto `joyas-manos-blazer` (manos con joyas y blazer). Velo negro al 12 %. Texto blanco chico al centro: "**TU RATITO,** TU ESTILO" (20 px, espaciado 0.18em) y "TU LUGAR" (10 px, 600). Abajo a la izquierda, con línea vertical blanca: "TURNOS POR WHATSAPP / RETIRO EN EL DPTO 319" y "**BEAUTY ROOM** · JOYAS / LENTES · CURSOS".
-4. **Banners de categorías** a ancho completo: foto de 470 px de alto + fila "NOMBRE →" de 56 px con línea abajo. JOYAS (`aros-crochet`) y LENTES (`lentes-modelo`, encuadre centrado en los lentes) filtran la grilla de productos; UÑAS (`unas-french-amarillo`), PEDICURA (`pedicura-violeta`) y CEJAS (`cejas-despues`) llevan al Beauty Room; GIFT CARD (`giftcard`) abre su ficha. Salen de `categorias` en `data/config.json`.
+4. **Banners de categorías** a ancho completo: foto de 470 px de alto + fila "NOMBRE →" de 56 px con línea abajo. JOYAS (`aros-crochet`) y LENTES (`lentes-modelo`, encuadre centrado en los lentes) filtran la grilla de productos; MANICURÍA (`unas-french-amarillo`), PEDICURÍA (`pedicura-violeta`) y CEJAS (`cejas-diseno-calido`, ya con filtro cálido; WebP q82, versiones -480 y -1600) llevan al Beauty Room; GIFT CARD (`giftcard`) abre su ficha. Salen de `categorias` en `data/config.json`.
 5. **Destacados:** grilla de 2 columnas (3 en tablet, 4 en escritorio): foto, etiqueta (NUEVO / ÚLTIMAS N / AGOTADO), nombre, precio en 600, "Retiro en el depto o envío a coordinar" y botón **COMPRAR** (suma 1 al carrito). Tocar la foto abre la ficha. Debajo, **VER TODOS LOS PRODUCTOS** (muestra el catálogo completo en la misma grilla). El título cambia a "Joyas", "Lentes" o "Todos los productos" según el filtro.
-6. **Beauty Room:** foto grande fija (`unas-french-amarillo`, sin carrusel) + "Uñas, pies y cejas · Turnos por WhatsApp" + lista de servicios: miniatura de 64 px, nombre, grupo · duración, precio y botón **RESERVAR**, que abre la ficha de reserva. Pedicura usa `pedicura-violeta`; Cejas, `camilla-cejas` en la miniatura y antes/después en la ficha.
+6. **Beauty Room:** foto grande fija (`unas-french-amarillo`, sin carrusel) + "Manicuría, cejas y pedicuría · Turnos por WhatsApp" + lista de servicios agrupada (miniatura de 64 px, nombre, grupo · duración, precio y botón **RESERVAR**) + frase "Aprovechá y armá tu combo" (Poppins 300, centrada). Precios con punto de miles ($39.000). Lista real, en este orden: MANICURÍA: Manicuría + Capping · 1h30' · $39.000; Extensión soft gel · 2h a 2h30' · $48.000. CEJAS: Perfilado de cejas · 30' · $22.000; Laminado · 1h · $38.000; Henna y perfilado · 1h · $35.000. PEDICURÍA: Pedicuría con semi · 1h 20' · $43.000; Pedicuría sin semi · 1h · $30.000. Fotos: manicuría `unas-french-amarillo`, cejas `cejas-diseno-calido`, pedicuría `pedicura-violeta`. Justo arriba del grupo CEJAS va el bloque **"Cejas en el depto"**: dos videos 4:5 (`cejas-mapeo`, `cejas-henna`, en `video/` con poster WebP) en grid de 2 columnas, gap 8 px, ancho máx. 720 px centrado, y el texto "Diseño con hilo y henna, a medida de tu rostro."; autoplay muted loop, play/pause con IntersectionObserver, solo posters con reduced-motion.
 7. **Capacitaciones:** video de cursos a ancho completo (470 px; 70vh en escritorio) + "Cursos presenciales en el Dpto 319 · Cupos limitados" + lista: fecha (día y mes), nombre, "Quedan N lugares" y **CONSULTAR** → WhatsApp con el nombre del curso.
 8. **El depto:** carrusel en lugar de la foto grande (mismo alto: 470 px en celular), con `beauty-room-trabajando` (primera), `camilla-cejas` y `espacio-sabado`; las fotos salen de `deptoCarrusel` en `data/config.json` (`[{ "img", "img480", "alt" }]`, sumar una foto = agregar un ítem). Deslizable con el dedo (scroll-snap), flechas finas en escritorio, puntitos abajo, autoplay cada 5 s que se pausa al tocar; WebP, lazy-load salvo el primer slide. "Un depto de verdad en Av. José Ingenieros 1205, Edificio Jerárquicos, Dpto 319. Baby & pet friendly.", horarios `[A CONFIRMAR]` · retiro · envíos y **CÓMO LLEGAR** (Google Maps).
 9. **Pie crema:** logo, Instagram, Cambios y devoluciones, Preguntas frecuentes, **Botón de arrepentimiento**, "Copyright DeptoBR - [CUIT] - 2026. Todos los derechos reservados." y "Defensa de las y los consumidores. Para reclamos **ingresá acá**."
@@ -64,7 +64,7 @@ Misma estética. Header de 72 px. Hero a ancho completo (85vh). Banners en grill
 - CA1.3 Al agregar: aviso "Agregado a tu carrito" (2 s), la bolsa se balancea y el contador sube.
 - CA1.4 Con al menos un producto aparece abajo la barra **"Ver carrito (N) · $total →"** (oculta con un panel abierto) y el botón de WhatsApp sube.
 - CA1.5 Precios en formato argentino (`$15.000`). Sin stock: "Agotado" y no se puede agregar.
-- CA1.6 Gift card: la ficha deja elegir entre los 3 montos.
+- CA1.6 Gift card: la ficha deja elegir entre los 3 montos: $40.000, $50.000 y $80.000.
 
 ### H2 — Carrito y pago
 - CA2.1 El carrito lista productos con foto, cantidad (+/−), eliminar y total; persiste al recargar.
@@ -72,7 +72,7 @@ Misma estética. Header de 72 px. Hero a ancho completo (85vh). Banners en grill
 - CA2.3 Fase 1: "Pagar" muestra "Próximamente". Fase 2: Mercado Pago Checkout Pro, entrega (retiro / envío `[A CONFIRMAR]`) y datos de contacto; precio y stock validados en el servidor.
 
 ### H3 — Reservar un servicio
-- CA3.1 RESERVAR abre la ficha del servicio: foto (en Cejas, **antes / después**), nombre, duración, precio, qué incluye, **Mañana / Tarde / Sábado**, botón "Reservar por WhatsApp" y la vista previa: "Hola! Quiero reservar *Servicio* (*duración*), me queda mejor *turno*."
+- CA3.1 RESERVAR abre la ficha del servicio: foto, nombre, duración, precio, **Mañana / Tarde / Sábado**, botón "Reservar por WhatsApp" y la vista previa: "Hola! Quiero reservar *Servicio* (*duración*, *$precio*), me queda mejor *turno*."
 
 ### H4 — Capacitaciones
 - CA4.1 Cada curso muestra fecha, nombre, cupos y CONSULTAR → WhatsApp con el nombre del curso.
@@ -104,4 +104,4 @@ Misma estética. Header de 72 px. Hero a ancho completo (85vh). Banners en grill
 | **F4 · Lanzamiento** | Dominio, pruebas con pago real, entrega. |
 
 ## 10. Pendientes de la clienta
-Montos de la gift card · precios de productos y servicios · duraciones reales · horarios · fechas y cupos de cursos · envíos · Mercado Pago · CUIT · políticas de cambio y preguntas frecuentes · dominio · una foto de uñas más grande (la actual tiene 685 px y en escritorio se ve blanda).
+Precios de productos · horarios · fechas y cupos de cursos · envíos · Mercado Pago · CUIT · políticas de cambio y preguntas frecuentes · dominio · una foto de uñas más grande (la actual tiene 685 px y en escritorio se ve blanda).

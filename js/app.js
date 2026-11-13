@@ -25,7 +25,7 @@
   function precio(n) { return typeof n === 'number' ? '$' + numero.format(n) : '$ [precio]'; }
 
   /* img/foto.webp → img/foto-480.webp (versión chica) */
-  function chica(src) { return src.replace(/\.webp$/, '-480.webp'); }
+  function chica(src) { return src.replace(/(-1600)?\.webp$/, '-480.webp'); }
   function srcset(src) { return chica(src) + ' 480w, ' + src + ' 1200w'; }
 
   function wa(mensaje) {
@@ -127,8 +127,11 @@
       var ia = orden.indexOf(a.grupo), ib = orden.indexOf(b.grupo);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
     });
+    var cejasVistas = false;
     $('#servicios').innerHTML = lista.map(function (v) {
-      return '<button class="servicio" type="button" data-servicio="' + esc(v.id) + '">' +
+      var antes = '';
+      if (v.grupo === 'cejas' && !cejasVistas) { cejasVistas = true; antes = bloqueCejas(); }
+      return antes + '<button class="servicio" type="button" data-servicio="' + esc(v.id) + '">' +
         '<img src="' + esc(chica(v.img)) + '" width="64" height="64" loading="lazy" alt="">' +
         '<span class="servicio__datos">' +
           '<span class="servicio__nombre">' + esc(v.nombre) + '</span>' +
@@ -138,6 +141,34 @@
         '<span class="btn--chico" aria-hidden="true">RESERVAR</span>' +
       '</button>';
     }).join('');
+    videosCejas();
+  }
+
+  /* "Cejas en el depto": dos videos 4:5 arriba del grupo CEJAS */
+  function bloqueCejas() {
+    function video(n, etiqueta) {
+      return '<video class="cejas-videos__video" muted loop playsinline preload="metadata"' + (reducido ? '' : ' autoplay') +
+        ' poster="video/cejas-' + n + '-poster.webp" src="video/cejas-' + n + '.mp4" aria-label="' + etiqueta + '"></video>';
+    }
+    return '<div class="cejas-videos">' +
+      '<span class="cejas-videos__titulo">Cejas en el depto</span>' +
+      '<div class="cejas-videos__grid">' + video('mapeo', 'Diseño de cejas con hilo') + video('henna', 'Preparación de henna para cejas') + '</div>' +
+      '<p class="cejas-videos__texto">Diseño con hilo y henna, a medida de tu rostro.</p>' +
+    '</div>';
+  }
+  /* Solo se reproducen a la vista; con reduced-motion quedan los posters */
+  function videosCejas() {
+    var vids = document.querySelectorAll('.cejas-videos__video');
+    if (!vids.length) return;
+    vids.forEach(function (v) { v.muted = true; });
+    if (reducido || !('IntersectionObserver' in window)) { vids.forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); }); return; }
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        var v = x.target;
+        if (x.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else v.pause();
+      });
+    }, { threshold: 0.25 });
+    vids.forEach(function (v) { io.observe(v); });
   }
 
   /* =========================================================
@@ -291,7 +322,7 @@
   }
   function mensajeServicio() {
     var v = fichaEstado.servicio;
-    return 'Hola! Quiero reservar ' + v.nombre + ' (' + v.dur + '), me queda mejor ' + fichaEstado.turno.toLowerCase() + '.';
+    return 'Hola! Quiero reservar ' + v.nombre + ' (' + v.dur + ', ' + precio(v.precio) + '), me queda mejor ' + fichaEstado.turno.toLowerCase() + '.';
   }
   function pintarServicio() {
     var v = fichaEstado.servicio;
@@ -301,13 +332,11 @@
           '<div><img src="' + esc(v.antesDespues.despues) + '" alt="' + esc(v.nombre) + ': después"><span class="despues">DESPUÉS</span></div>' +
         '</div>'
       : '<img class="hoja__img hoja__img--servicio" src="' + esc(v.img) + '" alt="' + esc(v.nombre) + '">';
-    var tilde = '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="#4A2A1E" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>';
     contenido.innerHTML = foto +
       '<div class="hoja__cuerpo hoja__cuerpo--servicio">' +
         '<span class="hoja__cat">BEAUTY ROOM</span>' +
         '<span class="hoja__nombre">' + esc(v.nombre) + '</span>' +
         '<span class="hoja__dur">' + esc(v.dur) + ' · <strong>' + esc(precio(v.precio)) + '</strong></span>' +
-        '<ul class="incluye">' + (v.incluye || []).map(function (i) { return '<li>' + tilde + esc(i) + '</li>'; }).join('') + '</ul>' +
         '<span class="hoja__pregunta" id="t-turno">¿Cuándo te queda mejor?</span>' +
         '<div class="turnos" role="group" aria-labelledby="t-turno">' +
           ['Mañana', 'Tarde', 'Sábado'].map(function (u) {
@@ -421,7 +450,7 @@
     contenido.innerHTML =
       '<div class="hoja__cuerpo hoja__cuerpo--sin-foto">' +
         '<label class="hoja__cat" for="buscar-campo">BUSCAR</label>' +
-        '<input class="buscar__campo" id="buscar-campo" type="search" placeholder="Aros, lentes, uñas…" autocomplete="off" enterkeyhint="search">' +
+        '<input class="buscar__campo" id="buscar-campo" type="search" placeholder="Aros, lentes, manicuría…" autocomplete="off" enterkeyhint="search">' +
         '<div id="buscar-res" aria-live="polite"></div>' +
       '</div>';
     abrirHoja('buscar', 'Buscar', $('#buscar-campo'));
@@ -434,7 +463,7 @@
       return !t || sinTildes(p.nombre + ' ' + p.cat + ' ' + p.desc).indexOf(t) !== -1;
     });
     var servs = datos.servicios.filter(function (v) {
-      return t && sinTildes(v.nombre + ' ' + v.grupo + ' ' + (v.incluye || []).join(' ')).indexOf(t) !== -1;
+      return t && sinTildes(v.nombre + ' ' + v.grupo).indexOf(t) !== -1;
     });
     if (!t) prods = prods.filter(function (p) { return p.destacado; });
     var html = servs.map(function (v) {

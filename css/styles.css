@@ -196,11 +196,13 @@ button:disabled { cursor: not-allowed; }
 }
 .servicio:last-child { border-bottom: 1px solid var(--linea); }
 .servicio__icono {
-  width: 64px; height: 64px; flex-shrink: 0; display: flex;
+  width: 48px; height: 48px; flex-shrink: 0; display: flex;
   align-items: center; justify-content: center;
-  background: var(--crema); color: var(--choco);
 }
-.servicio__icono svg { width: 48px; height: 48px; }
+.icono-servicio { display: block; object-fit: contain; }
+.servicio__icono .icono-servicio { width: 48px; height: 48px; }
+.hoja__nombre--icono { display: flex; align-items: center; gap: 10px; }
+.hoja__nombre--icono .icono-servicio { width: 32px; height: 32px; flex-shrink: 0; }
 .servicio__datos { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .servicio__nombre { font-size: 13px; }
 .servicio__sub { font-size: 11px; color: var(--gris); }

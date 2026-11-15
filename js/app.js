@@ -133,9 +133,9 @@
     });
     var cejasVistas = false;
     $('#servicios').innerHTML = lista.map(function (v) {
-      var antes = '';
-      if (v.grupo === 'cejas' && !cejasVistas) { cejasVistas = true; antes = bloqueCejas(); }
-      return antes + '<button class="servicio" type="button" data-servicio="' + esc(v.id) + '">' +
+      var ancla = '';
+      if (v.grupo === 'cejas' && !cejasVistas) { cejasVistas = true; ancla = ' id="grupo-cejas"'; }
+      return '<button class="servicio"' + ancla + ' type="button" data-servicio="' + esc(v.id) + '">' +
         '<span class="servicio__icono">' + iconoImg(v, 48) + '</span>' +
         '<span class="servicio__datos">' +
           '<span class="servicio__nombre">' + esc(v.nombre) + '</span>' +
@@ -145,6 +145,7 @@
         '<span class="btn--chico" aria-hidden="true">RESERVAR</span>' +
       '</button>';
     }).join('');
+    $('#cejas-depto').innerHTML = bloqueCejas();
     videosCejas();
   }
 
@@ -154,11 +155,12 @@
       return '<video class="cejas-videos__video" muted loop playsinline preload="metadata"' + (reducido ? '' : ' autoplay') +
         ' poster="video/cejas-' + n + '-poster.webp" src="video/cejas-' + n + '.mp4" aria-label="' + etiqueta + '"></video>';
     }
-    return '<div class="cejas-videos">' +
-      '<span class="cejas-videos__titulo">Cejas en el depto</span>' +
-      '<div class="cejas-videos__grid">' + video('mapeo', 'Diseño de cejas con hilo') + video('henna', 'Preparación de henna para cejas') + '</div>' +
-      '<p class="cejas-videos__texto">Diseño con hilo y henna, a medida de tu rostro.</p>' +
-    '</div>';
+    return '<div class="cejas-videos__grid">' + video('mapeo', 'Diseño de cejas con hilo') + video('henna', 'Preparación de henna para cejas') + '</div>' +
+      '<div class="cejas-videos__texto">' +
+        '<h2 class="cejas-videos__titulo">Cejas en el depto</h2>' +
+        '<p>Diseño con hilo y henna, a medida de tu rostro.</p>' +
+        '<a class="btn btn--sec" href="#grupo-cejas">RESERVAR CEJAS</a>' +
+      '</div>';
   }
   /* Solo se reproducen a la vista; con reduced-motion quedan los posters */
   function videosCejas() {
@@ -367,7 +369,7 @@
   }
   function totalPrecio(ls) {
     var faltan = ls.some(function (l) { return typeof l.p.precio !== 'number'; });
-    if (faltan) return '$ [total]';
+    if (faltan) return '';
     return precio(ls.reduce(function (s, l) { return s + l.p.precio * l.qty; }, 0));
   }
   function nombreLinea(p) {
@@ -388,6 +390,7 @@
       var pedido = 'Hola! Quiero hacer este pedido:\n' + ls.map(function (l) {
         return '· ' + l.qty + ' x ' + nombreLinea(l.p);
       }).join('\n');
+      if (totalPrecio(ls)) pedido += '\nTotal: ' + totalPrecio(ls);
       cuerpo =
         '<ul class="carrito__items">' + ls.map(function (l) {
           var resto = typeof l.p.stock === 'number' ? l.p.stock - l.qty : Infinity;
@@ -406,7 +409,7 @@
             '</div>' +
           '</li>';
         }).join('') + '</ul>' +
-        '<div class="carrito__total"><span>Total</span><span>' + esc(totalPrecio(ls)) + '</span></div>' +
+        (totalPrecio(ls) ? '<div class="carrito__total"><span>Total</span><span>' + esc(totalPrecio(ls)) + '</span></div>' : '') +
         '<button class="btn--grande" type="button" data-pagar>Pagar</button>' +
         '<p class="carrito__pronto" id="pronto" role="status"' + (fichaEstado.pronto ? '' : ' hidden') + '>Próximamente vas a poder pagar online acá. Mientras tanto, hacé tu pedido por WhatsApp.</p>' +
         '<span class="hoja__nota" style="text-align:center">Retiro en el Dpto 319 o envío a coordinar.</span>' +
@@ -531,7 +534,7 @@
     document.body.classList.toggle('con-barra', ver);
     if (!ver) return;
     $('#barra-izq').textContent = 'Ver carrito (' + n + ')';
-    $('#barra-der').textContent = totalPrecio(lineas()) + ' →';
+    $('#barra-der').textContent = (totalPrecio(lineas()) ? totalPrecio(lineas()) + ' ' : '') + '→';
   }
 
   /* =========================================================

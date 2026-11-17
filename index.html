@@ -27,8 +27,8 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
-  <link rel="preload" as="image" href="img/portada-depto-horizontal-poster.webp" media="(min-width: 768px)" fetchpriority="high">
-  <link rel="preload" as="image" href="img/portada-depto-vertical-poster.webp" media="(max-width: 767px)" fetchpriority="high">
+  <link rel="preload" as="image" href="img/portada-depto-horizontal.webp" media="(min-width: 1024px)" fetchpriority="high">
+  <link rel="preload" as="image" href="img/portada-depto-vertical.webp" media="(max-width: 1023px)" fetchpriority="high">
   <link rel="preload" as="image" href="img/logos/logo-completo.svg">
   <link rel="stylesheet" href="css/styles.css">
 
@@ -76,10 +76,9 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="t-hero">
       <picture class="hero__poster">
-        <source media="(min-width: 768px)" srcset="img/portada-depto-horizontal-poster.webp" width="1280" height="720">
-        <img class="hero__foto" src="img/portada-depto-vertical-poster.webp" width="576" height="1024" fetchpriority="high" alt="">
+        <source media="(min-width: 1024px)" srcset="img/portada-depto-horizontal.webp" width="1920" height="1080">
+        <img class="hero__foto" src="img/portada-depto-vertical.webp" width="1080" height="1350" fetchpriority="high" alt="Pasillo del depto con el logo dorado en la pared">
       </picture>
-      <video class="hero__foto hero__video" id="hero-video" muted loop playsinline autoplay preload="metadata" data-h="video/portada-depto-horizontal.mp4" data-v="video/portada-depto-vertical.mp4" aria-label="Pasillo del depto con el logo dorado en la pared"></video>
       <div class="hero__sombra" aria-hidden="true"></div>
       <h1 class="hero__texto" id="t-hero">
         <span class="hero__linea1"><span class="fuerte">TU RATITO,</span> TU ESTILO</span>
@@ -97,6 +96,7 @@
     <!-- DESTACADOS -->
     <section class="tienda" id="tienda" aria-labelledby="t-tienda">
       <h2 class="titulo" id="t-tienda">Destacados</h2>
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo" hidden></div>
       <div class="grilla" id="grilla" role="list"></div>
       <button class="btn btn--sec tienda__todos" type="button" id="ver-todos" data-filtro="todos">VER TODOS LOS PRODUCTOS</button>
     </section>

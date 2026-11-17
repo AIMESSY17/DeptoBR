@@ -79,6 +79,24 @@
      ========================================================= */
   var filtro = null; /* null = Destacados · 'todos' · 'Joyas' · 'Lentes' */
 
+  /* Subcategorías: chips que aparecen solo con JOYAS o LENTES activo */
+  var SUBCATS = {
+    Lentes: { campo: 'tipo', opciones: [['sol', 'De sol'], ['lectura', 'De lectura']] },
+    Joyas: { campo: 'material', opciones: [['acero-dorado', 'Acero dorado'], ['acero-blanco', 'Acero blanco'], ['acero-comun', 'Acero común'], ['plata-925', 'Plata 925'], ['fantasia', 'Fantasía']] }
+  };
+  var sub = null; /* valor de la subcategoría activa, null = todas */
+
+  function renderChips() {
+    var caja = $('#chips'), cfg = SUBCATS[filtro];
+    if (!cfg) { caja.hidden = true; caja.innerHTML = ''; return; }
+    var op = [[null, 'Todos']].concat(cfg.opciones);
+    caja.innerHTML = op.map(function (o) {
+      var on = o[0] === sub;
+      return '<button type="button" class="chip' + (on ? ' chip--on' : '') + '" data-sub="' + esc(o[0] || '') + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>';
+    }).join('');
+    caja.hidden = false;
+  }
+
   function tarjeta(p) {
     var et = etiquetaDe(p);
     var sin = agotado(p);
@@ -105,7 +123,10 @@
     } else {
       titulo = filtro;
       lista = datos.productos.filter(function (p) { return deTienda(p) && p.cat === filtro; });
+      var cfg = SUBCATS[filtro];
+      if (cfg && sub) lista = lista.filter(function (p) { return p[cfg.campo] === sub; });
     }
+    renderChips();
     $('#t-tienda').textContent = titulo;
     $('#grilla').innerHTML = lista.length ? lista.map(tarjeta).join('') : '<p class="grilla__vacia">Pronto vas a encontrar productos acá.</p>';
     $('#ver-todos').hidden = filtro === 'todos';
@@ -113,6 +134,7 @@
 
   function filtrar(f) {
     filtro = f === 'destacados' ? null : f;
+    sub = null;
     renderTienda();
   }
 
@@ -563,6 +585,11 @@
         if (m) m.focus();
         return;
       }
+      if (t.hasAttribute('data-sub')) {
+        sub = t.getAttribute('data-sub') || null;
+        renderTienda();
+        return;
+      }
       if (t.hasAttribute('data-filtro')) {
         filtrar(t.getAttribute('data-filtro'));
         if (t.hasAttribute('data-cerrar') || t.id === 'ver-todos') {
@@ -641,24 +668,6 @@
   /* =========================================================
      Video de cursos: solo se reproduce en pantalla
      ========================================================= */
-  /* Video del hero: cada pantalla descarga solo su versión (horizontal / vertical) */
-  function heroVideo() {
-    var v = document.getElementById('hero-video');
-    if (!v || reducido) { if (v) v.remove(); return; }
-    var mq = window.matchMedia('(min-width: 768px)');
-    var actual = '';
-    function poner() {
-      var src = mq.matches ? v.getAttribute('data-h') : v.getAttribute('data-v');
-      if (src === actual) return;
-      actual = src;
-      v.src = src;
-      v.load();
-      var p = v.play(); if (p && p.catch) p.catch(function () {});
-    }
-    poner();
-    if (mq.addEventListener) mq.addEventListener('change', poner); else mq.addListener(poner);
-  }
-
   function videos() {
     var vids = document.querySelectorAll('[data-video]');
     if (reducido || !('IntersectionObserver' in window)) return; /* queda el poster */
@@ -730,7 +739,6 @@
   /* =========================================================
      Inicio
      ========================================================= */
-  heroVideo();
   videos();
   actualizarContador();
 

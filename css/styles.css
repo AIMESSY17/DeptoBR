@@ -156,6 +156,13 @@ button:disabled { cursor: not-allowed; }
    Destacados
    ========================================================= */
 .tienda { padding: 24px var(--gutter) 40px; display: flex; flex-direction: column; gap: 22px; }
+.chips { display: flex; gap: 8px; overflow-x: auto; margin: 0 calc(var(--gutter) * -1); padding: 2px var(--gutter); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.chips::-webkit-scrollbar { display: none; }
+.chips[hidden] { display: none; }
+.chip { flex: none; font: inherit; font-size: 12px; letter-spacing: 0.06em; padding: 8px 16px; border: 1px solid var(--choco); background: transparent; color: var(--choco); cursor: pointer; white-space: nowrap; }
+.chip--on { background: var(--choco); color: var(--blanco); }
+.chip:focus-visible { outline: 2px solid var(--choco); outline-offset: 2px; }
+@media (min-width: 768px) { .chips { justify-content: center; flex-wrap: wrap; overflow: visible; margin: 0; padding: 2px 0; } }
 .grilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 14px; }
 .prod { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .prod__foto {
@@ -461,7 +468,7 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
   html { scroll-behavior: auto; }
   .hoja, .colgar-a, .colgar-b, .aparece { animation: none; }
   .wa, .cat__fila svg, .prod__foto img { transition: none; }
-  .hero__video, .cursos__media video { display: none; }
+  .cursos__media video { display: none; }
 }
 
 /* =========================================================

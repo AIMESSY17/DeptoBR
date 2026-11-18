@@ -14,7 +14,7 @@
   --gris-osc: #5E4A3E;     /* párrafos */
   --wa: #25D366;
   --fuente: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --alto-arriba: 88px;     /* barra de aviso 30 + header 57 + línea */
+  --alto-arriba: 125px;    /* barra de aviso 30 + header 57 + secciones 37 + línea */
   --gutter: 16px;
 }
 
@@ -109,6 +109,24 @@ button:disabled { cursor: not-allowed; }
   display: flex; align-items: center; justify-content: center;
 }
 .contador[hidden] { display: none; }
+
+/* Barra de secciones: fila de texto bajo el header, desliza en celular */
+.secciones {
+  height: 37px; border-top: 1px solid var(--linea);
+  display: flex; align-items: stretch; gap: 26px; padding: 0 var(--gutter);
+  overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.secciones::-webkit-scrollbar { display: none; }
+.secciones a {
+  flex-shrink: 0; display: flex; align-items: center;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em; white-space: nowrap;
+  text-decoration: none; color: var(--gris);
+  border-bottom: 1px solid transparent; margin-bottom: -1px;
+}
+.secciones a[aria-current="true"] { color: var(--choco); border-bottom-color: var(--choco); }
+@media (hover: hover) { .secciones a:hover { color: var(--choco); } }
+@media (min-width: 431px) { .secciones { justify-content: center; } }
 
 /* =========================================================
    Hero
@@ -544,7 +562,8 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
    Escritorio (≥ 1024 px): misma estética
    ========================================================= */
 @media (min-width: 1024px) {
-  :root { --alto-arriba: 103px; --gutter: 40px; }
+  :root { --alto-arriba: 143px; --gutter: 40px; }
+  .secciones { height: 40px; justify-content: center; gap: 48px; }
   .header { height: 72px; padding: 0 24px; }
   .header__logo img { height: 44px; }
 

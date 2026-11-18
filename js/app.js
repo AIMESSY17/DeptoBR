@@ -642,6 +642,36 @@
     else if (sel === '#') window.scrollTo({ top: 0, behavior: reducido ? 'auto' : 'smooth' });
   }
 
+  /* Barra de secciones: marca la sección visible */
+  function marcarSecciones() {
+    var links = Array.prototype.slice.call(document.querySelectorAll('#secciones [data-seccion]'));
+    var nav = $('#secciones');
+    function marcar() {
+      var corte = window.scrollY + (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) + 40;
+      var actual = links[0];
+      links.forEach(function (a) {
+        var sec = a.getAttribute('data-seccion') === 'inicio' ? null : document.getElementById(a.getAttribute('data-seccion'));
+        if (sec && sec.getBoundingClientRect().top + window.scrollY <= corte) actual = a;
+      });
+      links.forEach(function (a) {
+        if (a === actual) {
+          if (a.getAttribute('aria-current') !== 'true') {
+            a.setAttribute('aria-current', 'true');
+            if (nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: reducido ? 'auto' : 'smooth' });
+          }
+        } else a.removeAttribute('aria-current');
+      });
+    }
+    var pendiente = false;
+    window.addEventListener('scroll', function () {
+      if (pendiente) return;
+      pendiente = true;
+      window.requestAnimationFrame(function () { pendiente = false; marcar(); });
+    }, { passive: true });
+    window.addEventListener('resize', marcar);
+    marcar();
+  }
+
   function eventos() {
     document.addEventListener('click', function (e) {
       var t = e.target.closest('button, a');
@@ -853,6 +883,7 @@
     /* alias por si quedó algún link viejo a #capacitaciones */
     if (location.hash === '#capacitaciones') { history.replaceState(null, '', '#cursos'); irA('#cursos'); }
     eventos();
+    marcarSecciones();
     actualizarContador();
     actualizarBarra();
   }).catch(function (err) {

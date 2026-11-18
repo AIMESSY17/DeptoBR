@@ -84,11 +84,42 @@
     Lentes: { campo: 'tipo', opciones: [['sol', 'De sol'], ['lectura', 'De lectura']] },
     Joyas: { campo: 'material', opciones: [['acero-dorado', 'Acero dorado'], ['acero-blanco', 'Acero blanco'], ['acero-comun', 'Acero común'], ['plata-925', 'Plata 925'], ['fantasia', 'Fantasía']] }
   };
-  var sub = null; /* valor de la subcategoría activa, null = todas */
+  /* En "Todos los productos", Filtrar elige categoría */
+  SUBCATS.todos = { campo: 'cat', opciones: [['Joyas', 'Joyas'], ['Lentes', 'Lentes']] };
+  var sub = null;    /* valor de la subcategoría activa, null = todas */
+  var orden = 'rel'; /* rel · precio-asc · precio-desc · az */
+  var panel = null;  /* panel abierto en el listado: 'orden' | 'filtro' | null */
+  var ORDENES = [['rel', 'Destacados primero'], ['precio-asc', 'Precio: menor a mayor'], ['precio-desc', 'Precio: mayor a menor'], ['az', 'Nombre: A a Z']];
+
+  function ordenar(lista) {
+    if (orden === 'rel') return lista.slice().sort(function (a, b) { return (b.destacado ? 1 : 0) - (a.destacado ? 1 : 0); });
+    if (orden === 'az') return lista.slice().sort(function (a, b) { return a.nombre.localeCompare(b.nombre, 'es'); });
+    var dir = orden === 'precio-asc' ? 1 : -1;
+    return lista.slice().sort(function (a, b) {
+      var pa = typeof a.precio === 'number', pb = typeof b.precio === 'number';
+      if (pa !== pb) return pa ? -1 : 1; /* sin precio, al final */
+      return pa ? (a.precio - b.precio) * dir : 0;
+    });
+  }
+
+  function renderBarraListado() {
+    var cfg = SUBCATS[filtro];
+    var bOrden = $('#ordenar-btn'), bFiltro = $('#filtrar-btn');
+    bOrden.setAttribute('aria-expanded', String(panel === 'orden'));
+    bFiltro.setAttribute('aria-expanded', String(panel === 'filtro'));
+    bFiltro.hidden = !cfg;
+    $('#filtrar-n').textContent = sub ? ' (1)' : '';
+    var po = $('#panel-orden');
+    po.hidden = panel !== 'orden';
+    po.innerHTML = ORDENES.map(function (o) {
+      var on = o[0] === orden;
+      return '<button type="button" class="chip' + (on ? ' chip--on' : '') + '" data-orden="' + o[0] + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>';
+    }).join('');
+  }
 
   function renderChips() {
     var caja = $('#chips'), cfg = SUBCATS[filtro];
-    if (!cfg) { caja.hidden = true; caja.innerHTML = ''; return; }
+    if (!cfg || panel !== 'filtro') { caja.hidden = true; caja.innerHTML = ''; return; }
     var op = [[null, 'Todos']].concat(cfg.opciones);
     caja.innerHTML = op.map(function (o) {
       var on = o[0] === sub;
@@ -112,29 +143,51 @@
     '</article>';
   }
 
+  /* Tarjeta mínima del listado por categoría: foto grande, nombre y precio */
+  function tarjetaMin(p) {
+    var et = etiquetaDe(p);
+    var sin = agotado(p);
+    return '<article class="min' + (sin ? ' prod--agotado' : '') + '" role="listitem">' +
+      '<button class="min__btn" type="button" data-abrir="' + esc(p.id) + '">' +
+        '<span class="min__foto prod__foto">' +
+          '<img src="' + esc(chica(p.fotos[0])) + '" srcset="' + esc(srcset(p.fotos[0])) + '" sizes="(min-width: 1024px) 25vw, (min-width: 600px) 33vw, 50vw" width="480" height="600" loading="lazy" alt="">' +
+          (et ? '<span class="etiqueta">' + esc(et) + '</span>' : '') +
+        '</span>' +
+        '<span class="min__nombre">' + esc(p.nombre) + '</span>' +
+        '<span class="min__precio">' + (sin ? 'Agotado' : esc(precio(p.precio))) + '</span>' +
+      '</button>' +
+    '</article>';
+  }
+
   function renderTienda() {
     var lista, titulo;
     if (!filtro) {
       titulo = 'Destacados';
       lista = datos.productos.filter(function (p) { return p.destacado && deTienda(p); });
-    } else if (filtro === 'todos') {
-      titulo = 'Todos los productos';
-      lista = datos.productos.filter(deTienda);
     } else {
-      titulo = filtro;
-      lista = datos.productos.filter(function (p) { return deTienda(p) && p.cat === filtro; });
+      titulo = filtro === 'todos' ? 'Todos los productos' : filtro;
+      lista = datos.productos.filter(function (p) { return deTienda(p) && (filtro === 'todos' || p.cat === filtro); });
       var cfg = SUBCATS[filtro];
       if (cfg && sub) lista = lista.filter(function (p) { return p[cfg.campo] === sub; });
+      lista = ordenar(lista);
     }
+    var listado = !!filtro;
+    $('#tienda').classList.toggle('tienda--listado', listado);
+    $('#migas').hidden = !listado;
+    $('#migas-actual').textContent = titulo;
+    $('#barra-listado').hidden = !listado;
+    if (listado) renderBarraListado(); else $('#panel-orden').hidden = true;
     renderChips();
     $('#t-tienda').textContent = titulo;
-    $('#grilla').innerHTML = lista.length ? lista.map(tarjeta).join('') : '<p class="grilla__vacia">Pronto vas a encontrar productos acá.</p>';
+    $('#grilla').innerHTML = lista.length ? lista.map(listado ? tarjetaMin : tarjeta).join('') : '<p class="grilla__vacia">Pronto vas a encontrar productos acá.</p>';
     $('#ver-todos').hidden = filtro === 'todos';
   }
 
   function filtrar(f) {
     filtro = f === 'destacados' ? null : f;
     sub = null;
+    orden = 'rel';
+    panel = null;
     renderTienda();
   }
 
@@ -200,24 +253,45 @@
   }
 
   /* =========================================================
-     Capacitaciones
+     Cursos (inscripción por Google Form)
      ========================================================= */
-  var MESES = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
+  function listaUl(clase, items) {
+    return items && items.length
+      ? '<ul class="' + clase + '">' + items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>'
+      : '';
+  }
   function renderCursos() {
-    $('#lista-cursos').innerHTML = datos.cursos.map(function (c) {
-      var dia = '[dd]', mes = '[MES]';
-      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(c.fecha || '');
-      if (m) { dia = String(+m[3]); mes = MESES[+m[2] - 1]; }
-      var hayCupos = typeof c.cupos === 'number';
-      var lleno = hayCupos && c.cupos <= 0;
-      var quedan = !hayCupos ? 'Quedan [n] lugares' : lleno ? 'Cupo completo' : c.cupos === 1 ? 'Queda 1 lugar' : 'Quedan ' + c.cupos + ' lugares';
-      var interior =
-        '<span class="curso__fecha"><span class="curso__dia">' + esc(dia) + '</span><span class="curso__mes">' + esc(mes) + '</span></span>' +
-        '<span class="curso__datos"><span class="curso__nombre">' + esc(c.nombre) + '</span><span class="curso__quedan">' + esc(quedan) + '</span></span>';
-      if (lleno) return '<div class="curso curso--lleno">' + interior + '<span class="btn--chico btn--borde">COMPLETO</span></div>';
-      return '<a class="curso" href="' + esc(wa('Hola! Quiero consultar por la capacitación "' + c.nombre + '".')) + '" target="_blank" rel="noopener">' +
-        interior + '<span class="btn--chico btn--borde">CONSULTAR</span></a>';
+    var info = datos.cursosInfo || {};
+    var form = info.formularioInscripcion || '#';
+    if (info.instructora) $('#cursos-con').textContent = 'Con ' + info.instructora;
+    var tarjetas = datos.cursos.map(function (c) {
+      return '<article class="curso' + (c.destacado ? ' curso--destacado' : '') + '">' +
+        '<h3 class="curso__nombre">' + esc(c.nombre) + '</h3>' +
+        (c.subtitulo ? '<p class="curso__sub">' + esc(c.subtitulo) + '</p>' : '') +
+        listaUl('curso__incluye', c.incluye) +
+        (c.duracion ? '<span class="curso__dur">Duración: ' + esc(c.duracion) + '</span>' : '') +
+        '<span class="curso__precio">' + esc(c.precioTexto || precio(c.precio)) + '</span>' +
+        (c.formaPago ? '<span class="curso__pago">' + esc(c.formaPago) + '</span>' : '') +
+        '<a class="btn btn--pri curso__btn" href="' + esc(form) + '" target="_blank" rel="noopener" aria-label="Reservar mi lugar en ' + esc(c.nombre) + ' (abre el formulario en otra pestaña)">RESERVAR MI LUGAR</a>' +
+      '</article>';
     }).join('');
+    var s = info['seña'];
+    var sena = s
+      ? '<div class="cursos__sena">' +
+          '<h3 class="cursos__subtitulo">Seña para reservar</h3>' +
+          (s.resumen ? '<p class="cursos__resumen">' + esc(s.resumen) + '</p>' : '') +
+          '<dl class="cursos__datos">' +
+            (s.alias ? '<div><dt>Alias</dt><dd><span class="fuerte">' + esc(s.alias) + '</span> <button class="cursos__copiar" type="button" data-copiar="' + esc(s.alias) + '">COPIAR</button></dd></div>' : '') +
+            (s.titular ? '<div><dt>Titular</dt><dd>' + esc(s.titular) + '</dd></div>' : '') +
+          '</dl>' +
+          listaUl('cursos__condiciones', s.condiciones) +
+        '</div>'
+      : '';
+    $('#lista-cursos').innerHTML = '<div class="cursos__grilla">' + tarjetas + '</div>' + sena + listaUl('cursos__notas', info.notas);
+  }
+  function copiar(t, btn) {
+    var listo = function () { btn.textContent = 'COPIADO'; setTimeout(function () { btn.textContent = 'COPIAR'; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(listo, function () {});
   }
 
   /* =========================================================
@@ -453,7 +527,7 @@
   function abrirMenu() {
     var links = [
       ['JOYAS', '#tienda', 'Joyas'], ['LENTES', '#tienda', 'Lentes'], ['TODOS LOS PRODUCTOS', '#tienda', 'todos'],
-      ['BEAUTY ROOM', '#beauty'], ['GIFT CARD', '#', null, 'gift'], ['CAPACITACIONES', '#cursos'], ['EL DEPTO', '#depto']
+      ['BEAUTY ROOM', '#beauty'], ['GIFT CARD', '#', null, 'gift'], ['CURSOS', '#cursos'], ['EL DEPTO', '#depto']
     ];
     var c = datos.config;
     contenido.innerHTML =
@@ -585,6 +659,19 @@
         if (m) m.focus();
         return;
       }
+      if (t.hasAttribute('data-copiar')) { copiar(t.getAttribute('data-copiar'), t); return; }
+      if (t.hasAttribute('data-panel')) {
+        var pn = t.getAttribute('data-panel');
+        panel = panel === pn ? null : pn;
+        renderTienda();
+        return;
+      }
+      if (t.hasAttribute('data-orden')) {
+        orden = t.getAttribute('data-orden');
+        panel = null;
+        renderTienda();
+        return;
+      }
       if (t.hasAttribute('data-sub')) {
         sub = t.getAttribute('data-sub') || null;
         renderTienda();
@@ -592,7 +679,7 @@
       }
       if (t.hasAttribute('data-filtro')) {
         filtrar(t.getAttribute('data-filtro'));
-        if (t.hasAttribute('data-cerrar') || t.id === 'ver-todos') {
+        if (t.hasAttribute('data-cerrar') || t.id === 'ver-todos' || t.id === 'migas-inicio') {
           e.preventDefault();
           cerrarHoja();
           irA('#tienda');
@@ -752,6 +839,7 @@
     datos.servicios = r[1].servicios || [];
     datos.grupos = r[1].grupos || [];
     datos.cursos = r[2].cursos || [];
+    datos.cursosInfo = r[2];
     datos.config = r[3];
     datos.productos.forEach(function (p) { porId[p.id] = p; });
 
@@ -762,6 +850,8 @@
     renderTienda();
     renderServicios();
     renderCursos();
+    /* alias por si quedó algún link viejo a #capacitaciones */
+    if (location.hash === '#capacitaciones') { history.replaceState(null, '', '#cursos'); irA('#cursos'); }
     eventos();
     actualizarContador();
     actualizarBarra();

@@ -185,8 +185,35 @@ button:disabled { cursor: not-allowed; }
 .tienda__todos[hidden] { display: none; }
 .grilla__vacia { grid-column: 1 / -1; text-align: center; font-size: 13px; color: var(--gris); }
 
+/* Listado por categoría (Joyas, Lentes, Todos): más minimal que Destacados */
+.migas { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-bottom: -10px; }
+.migas[hidden] { display: none; }
+.migas button { border: 0; background: none; padding: 6px 0; font: inherit; color: var(--choco); }
+@media (hover: hover) { .migas button:hover { text-decoration: underline; } }
+.tienda--listado .titulo { text-align: left; font-size: 30px; font-weight: 600; line-height: 1.1; }
+.barra-listado { display: flex; gap: 24px; align-items: center; }
+.barra-listado[hidden] { display: none; }
+.barra-listado__btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0;
+  border: 0; background: none; font: inherit; font-size: 14px; color: var(--choco);
+}
+.barra-listado__btn[hidden] { display: none; }
+.barra-listado__btn[aria-expanded="true"] { text-decoration: underline; text-underline-offset: 4px; }
+.tienda--listado .chips { margin-top: -10px; }
+@media (min-width: 768px) { .tienda--listado .chips { justify-content: flex-start; } }
+.tienda--listado .grilla { gap: 28px 12px; }
+.min { min-width: 0; }
+.min__btn {
+  width: 100%; padding: 0; border: 0; background: none; text-align: left; color: var(--choco);
+  display: flex; flex-direction: column; gap: 4px; font: inherit;
+}
+.min__foto { display: block; aspect-ratio: 4 / 5; background: #F7F5F2; }
+.min__nombre { font-size: 13px; margin-top: 8px; line-height: 1.35; }
+.min__precio { font-size: 13px; font-weight: 600; }
+@media (hover: hover) { .min__btn:hover .min__foto img { opacity: 0.88; } }
+
 /* =========================================================
-   Bloques: Beauty Room, Capacitaciones, El depto
+   Bloques: Beauty Room, Cursos, El depto
    ========================================================= */
 .bloque { display: flex; flex-direction: column; padding-bottom: 40px; border-top: 1px solid var(--linea); }
 .bloque__foto { margin-top: 36px; height: 470px; overflow: hidden; background: var(--linea); }
@@ -224,7 +251,7 @@ button:disabled { cursor: not-allowed; }
 .cejas-videos__titulo { font-size: 16px; font-weight: 400; margin: 0; }
 .cejas-videos__texto p { margin: 0; font-size: 13px; color: var(--gris); }
 
-/* Capacitaciones */
+/* Cursos */
 .cursos__media { position: relative; margin-top: 36px; width: 100%; aspect-ratio: 4 / 5; max-height: 560px; overflow: hidden; background: var(--linea); }
 .cursos__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
@@ -248,19 +275,37 @@ button:disabled { cursor: not-allowed; }
 .carrusel__flecha--ant { left: 14px; }
 .carrusel__flecha--sig { right: 14px; }
 @media (hover: none) { .carrusel__flecha { display: none !important; } }
+/* Cursos: tarjetas */
+.cursos__con { display: block; text-align: center; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); margin-bottom: 6px; }
+.btn--pri { border: 0; background: var(--choco); color: var(--blanco); height: 44px; }
+@media (hover: hover) { .btn--pri:hover { background: #3A2017; } }
+.cursos__grilla { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 10px; }
 .curso {
-  text-decoration: none; color: var(--choco);
-  display: flex; align-items: center; gap: 14px;
-  padding: 14px 0; border-top: 1px solid var(--linea);
+  display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  padding: 20px 18px; border: 1px solid var(--linea); background: var(--blanco); color: var(--choco);
 }
-.curso:last-child { border-bottom: 1px solid var(--linea); }
-.curso__fecha { width: 44px; display: flex; flex-direction: column; align-items: center; line-height: 1.1; flex-shrink: 0; }
-.curso__dia { font-size: 20px; font-weight: 500; }
-.curso__mes { font-size: 9px; letter-spacing: 0.12em; }
-.curso__datos { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.curso__nombre { font-size: 13px; }
-.curso__quedan { font-size: 11px; color: var(--gris); }
-.curso--lleno { opacity: 0.6; }
+.curso--destacado { background: var(--crema); border-color: var(--choco); }
+.curso__nombre { margin: 0; font-size: 16px; font-weight: 500; line-height: 1.25; }
+.curso__sub { margin: 0; font-size: 13px; line-height: 1.5; color: var(--gris-osc); }
+.curso__incluye { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--gris-osc); }
+.curso__incluye li { position: relative; padding-left: 14px; line-height: 1.45; }
+.curso__incluye li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--choco); }
+.curso__dur { font-size: 12px; color: var(--gris); }
+.curso__precio { font-size: 26px; font-weight: 600; line-height: 1.1; margin-top: auto; padding-top: 8px; }
+.curso__pago { font-size: 11px; line-height: 1.45; color: var(--gris); }
+.curso__btn { margin-top: 8px; width: 100%; }
+
+/* Cursos: seña y notas */
+.cursos__sena { margin-top: 24px; padding: 20px 18px; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); display: flex; flex-direction: column; gap: 10px; }
+.cursos__subtitulo { margin: 0; font-size: 14px; font-weight: 500; }
+.cursos__resumen { margin: 0; font-size: 13px; line-height: 1.5; color: var(--gris-osc); }
+.cursos__datos { margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.cursos__datos div { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.cursos__datos dt { width: 56px; flex-shrink: 0; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gris); }
+.cursos__datos dd { margin: 0; flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cursos__copiar { border: 1px solid var(--choco); background: transparent; color: var(--choco); font-size: 9px; letter-spacing: 0.1em; padding: 5px 8px; min-height: 28px; }
+.cursos__condiciones, .cursos__notas { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 12px; line-height: 1.5; color: var(--gris-osc); }
+.cursos__notas { margin-top: 20px; color: var(--gris); }
 
 /* El depto */
 .depto { padding-bottom: 44px; }
@@ -476,6 +521,7 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
    ========================================================= */
 @media (min-width: 600px) {
   .grilla { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cursos__grilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bloque__contenido { padding-left: 32px; padding-right: 32px; }
 }
 
@@ -536,10 +582,14 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
   .depto__contenido { gap: 14px; }
   .depto__texto { font-size: 14px; max-width: 420px; }
 
-  /* Capacitaciones: video a ancho completo + lista centrada */
+  /* Cursos: video a ancho completo + tarjetas centradas */
   .cursos { padding-bottom: 64px; }
   .cursos__media { margin-top: 0; aspect-ratio: 16 / 9; max-height: 640px; }
-  .cursos .bloque__contenido { width: 100%; max-width: 720px; margin: 0 auto; padding-top: 40px; }
+  .cursos .bloque__contenido { width: 100%; max-width: 1040px; margin: 0 auto; padding-top: 40px; }
+  .cursos__sena, .cursos__notas { max-width: 720px; width: 100%; margin-left: auto; margin-right: auto; }
+  .tienda--listado .titulo { font-size: 40px; }
+  .tienda--listado .grilla { gap: 40px 16px; }
+  .min__nombre, .min__precio { font-size: 14px; }
 
   .pie { padding: 56px 40px 64px; }
 

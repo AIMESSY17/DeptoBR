@@ -95,7 +95,21 @@
 
     <!-- DESTACADOS -->
     <section class="tienda" id="tienda" aria-labelledby="t-tienda">
+      <nav class="migas" id="migas" aria-label="Estás en" hidden>
+        <button type="button" id="migas-inicio" data-filtro="destacados">Inicio</button>
+        <span aria-hidden="true">.</span>
+        <span id="migas-actual" aria-current="page"></span>
+      </nav>
       <h2 class="titulo" id="t-tienda">Destacados</h2>
+      <div class="barra-listado" id="barra-listado" hidden>
+        <button type="button" class="barra-listado__btn" id="ordenar-btn" data-panel="orden" aria-expanded="false" aria-controls="panel-orden">
+          <svg width="16" height="14" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 1v12M1 10l3 3 3-3M12 13V1M9 4l3-3 3 3"/></svg>Ordenar
+        </button>
+        <button type="button" class="barra-listado__btn" id="filtrar-btn" data-panel="filtro" aria-expanded="false" aria-controls="chips">
+          <svg width="16" height="14" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 4h14M1 10h14"/><circle cx="10" cy="4" r="2" fill="#fff"/><circle cx="5" cy="10" r="2" fill="#fff"/></svg>Filtrar<span id="filtrar-n"></span>
+        </button>
+      </div>
+      <div class="chips" id="panel-orden" role="group" aria-label="Ordenar productos" hidden></div>
       <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo" hidden></div>
       <div class="grilla" id="grilla" role="list"></div>
       <button class="btn btn--sec tienda__todos" type="button" id="ver-todos" data-filtro="todos">VER TODOS LOS PRODUCTOS</button>
@@ -117,18 +131,19 @@
     <!-- CEJAS EN EL DEPTO (videos) -->
     <section class="cejas-videos" id="cejas-depto" aria-label="Cejas en el depto"></section>
 
-    <!-- CAPACITACIONES -->
+    <!-- CURSOS -->
     <section class="bloque cursos" id="cursos" aria-labelledby="t-cursos">
       <div class="cursos__media">
         <picture>
           <source media="(min-width: 768px)" srcset="video/cursos-horizontal-poster.webp" width="1280" height="720">
           <img class="cursos__video" src="video/cursos-vertical-poster.webp" width="720" height="898" loading="lazy" alt="">
         </picture>
-        <video class="cursos__video" muted loop playsinline preload="metadata" data-video data-h="video/cursos-horizontal.mp4" data-v="video/cursos-vertical.mp4" aria-label="Clase de capacitación en el depto"></video>
+        <video class="cursos__video" muted loop playsinline preload="metadata" data-video data-h="video/cursos-horizontal.mp4" data-v="video/cursos-vertical.mp4" aria-label="Clase de un curso en el depto"></video>
       </div>
       <div class="bloque__contenido">
-        <h2 class="titulo" id="t-cursos">Capacitaciones</h2>
-        <span class="bajada">Cursos presenciales en el Dpto 319 · Cupos limitados</span>
+        <span class="cursos__con" id="cursos-con"></span>
+        <h2 class="titulo" id="t-cursos">Cursos</h2>
+        <span class="bajada">Teórico online + práctica presencial en el Dpto 319 · Cupos limitados</span>
         <div class="lista-cursos" id="lista-cursos"></div>
       </div>
     </section>

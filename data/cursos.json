@@ -1,7 +1,81 @@
 {
-  "_ayuda": "Capacitaciones. fecha: 'AAAA-MM-DD' o null para '[dd] [MES]'. cupos: lugares que quedan (null = 'Quedan [n] lugares'; 0 = 'Cupo completo'). CONSULTAR abre WhatsApp con el nombre del curso.",
+  "_ayuda": "Cursos (antes 'Capacitaciones'). Inscripción real por Google Form, no por WhatsApp. precio es número (para ordenar/calcular); precioTexto es lo que se muestra. incluye es una lista de líneas cortas para la tarjeta.",
+  "instructora": "Romi",
+  "formularioInscripcion": "https://docs.google.com/forms/d/e/1FAIpQLSeBt48fOnPz-K1vcbMsCd6paGsgfeKmlM7n_sU96aebtdYf6w/viewform",
   "cursos": [
-    { "id": "curso-semi", "nombre": "Curso de semipermanente", "fecha": "2026-12-14", "modalidad": "Presencial · En el Dpto 319", "cupos": null },
-    { "id": "curso-cejas", "nombre": "Perfilado de cejas", "fecha": "2026-12-21", "modalidad": "Presencial · En el Dpto 319", "cupos": null }
+    {
+      "id": "curso-completo",
+      "nombre": "Curso completo",
+      "subtitulo": "Manicuría perfecta (con y sin torno) + esmaltado semi y técnicas de capping",
+      "incluye": [
+        "Materiales incluidos",
+        "Teórico online por Meet · 2 h",
+        "Práctica presencial · 2 días, 3 h por día"
+      ],
+      "duracion": "8 horas",
+      "precio": 220000,
+      "precioTexto": "$220.000",
+      "formaPago": "Transferencia, o tarjeta de crédito hasta 6 cuotas (+10%)",
+      "destacado": true
+    },
+    {
+      "id": "curso-inicial",
+      "nombre": "Inicial / Principiantes",
+      "subtitulo": "Manicuría perfecta sin torno + esmaltado semipermanente",
+      "incluye": [
+        "Materiales incluidos",
+        "Teórico online por Meet · 2 h",
+        "Práctica presencial · 2 días, 2 a 3 h por día (traer modelo)"
+      ],
+      "duracion": "7 horas",
+      "precio": 160000,
+      "precioTexto": "$160.000",
+      "formaPago": "Transferencia, o tarjeta de crédito hasta 6 cuotas (+10%)",
+      "destacado": false
+    },
+    {
+      "id": "curso-softgel",
+      "nombre": "Manicuría + soft gel",
+      "subtitulo": "Manicuría perfecta (con y sin torno) + extensión en soft gel",
+      "incluye": [
+        "Materiales incluidos",
+        "Teórico online por Meet · 2 h",
+        "Práctica presencial"
+      ],
+      "duracion": "5 horas",
+      "precio": 100000,
+      "precioTexto": "$100.000",
+      "formaPago": "Transferencia, o tarjeta de crédito (con interés de Mercado Pago)",
+      "destacado": false
+    },
+    {
+      "id": "curso-pedicura",
+      "nombre": "Pedicura profesional",
+      "subtitulo": "Pedicura en seco (belleza de pies) y full pedicure en húmedo con semi",
+      "incluye": [
+        "Materiales incluidos",
+        "Teórico y práctica combinados, presencial"
+      ],
+      "duracion": "2 días (2 a 3 h por día)",
+      "precio": 195000,
+      "precioTexto": "$195.000",
+      "formaPago": "Transferencia",
+      "destacado": false
+    }
+  ],
+  "seña": {
+    "resumen": "Para reservar el lugar: 50% del total del curso (transferencia).",
+    "alias": "deptobr",
+    "titular": "Romina Paola Dávila (Mercado Pago)",
+    "condiciones": [
+      "La seña no se reintegra por arrepentimiento o por no poder asistir.",
+      "La seña se descuenta del total del curso.",
+      "El curso se cancela el día anterior al teórico si no se llega al mínimo de inscriptas."
+    ]
+  },
+  "notas": [
+    "Al finalizar se entrega certificado de manicura profesional (físico o digital, a elección).",
+    "Compromiso de enviar un mínimo de 3 prácticas reales por foto, dentro de los 3 meses de terminado el curso.",
+    "Los cursos se pueden combinar a elección: la manicuría básica va incluida en todos, se suma el curso de interés."
   ]
 }

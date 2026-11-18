@@ -287,7 +287,7 @@
           listaUl('cursos__condiciones', s.condiciones) +
         '</div>'
       : '';
-    $('#lista-cursos').innerHTML = '<div class="cursos__grilla">' + tarjetas + '</div>' + sena + listaUl('cursos__notas', info.notas);
+    $('#lista-cursos').innerHTML = '<div class="cursos__grilla">' + tarjetas + '</div>';
   }
   function copiar(t, btn) {
     var listo = function () { btn.textContent = 'COPIADO'; setTimeout(function () { btn.textContent = 'COPIAR'; }, 1800); };

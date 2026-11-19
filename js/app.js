@@ -84,8 +84,11 @@
     Lentes: { campo: 'tipo', opciones: [['sol', 'De sol'], ['lectura', 'De lectura']] },
     Joyas: { campo: 'material', opciones: [['acero-dorado', 'Acero dorado'], ['acero-blanco', 'Acero blanco'], ['acero-comun', 'Acero común'], ['fantasia', 'Fantasía']] }
   };
-  /* En "Todos los productos", Filtrar elige categoría */
-  SUBCATS.todos = { campo: 'cat', opciones: [['Joyas', 'Joyas'], ['Lentes', 'Lentes']] };
+  /* En Destacados y en "Todos los productos", Filtrar elige primero la categoría */
+  var CATS = [['Joyas', 'Joyas'], ['Lentes', 'Lentes']];
+  function eligeCat() { return !filtro || filtro === 'todos'; }
+  /* Categoría efectiva del listado: la del filtro o la elegida con los chips */
+  function catActiva() { return eligeCat() ? cat : filtro; }
   /* Material: "material" (uno solo) o "materiales" (array, joyas mixtas) */
   function materialesDe(p) {
     return Array.isArray(p.materiales) && p.materiales.length ? p.materiales : p.material ? [p.material] : [];
@@ -94,6 +97,7 @@
     var o = SUBCATS.Joyas.opciones.filter(function (x) { return x[0] === v; })[0];
     return o ? o[1] : v;
   }
+  var cat = null;    /* categoría elegida con chips en Destacados/Todos, null = todas */
   var sub = null;    /* valor de la subcategoría activa, null = todas */
   var orden = 'rel'; /* rel · precio-asc · precio-desc · az */
   var panel = null;  /* panel abierto en el listado: 'orden' | 'filtro' | null */
@@ -111,12 +115,13 @@
   }
 
   function renderBarraListado() {
-    var cfg = SUBCATS[filtro];
     var bOrden = $('#ordenar-btn'), bFiltro = $('#filtrar-btn');
+    bOrden.hidden = !filtro; /* en Destacados solo se filtra */
     bOrden.setAttribute('aria-expanded', String(panel === 'orden'));
     bFiltro.setAttribute('aria-expanded', String(panel === 'filtro'));
-    bFiltro.hidden = !cfg;
-    $('#filtrar-n').textContent = sub ? ' (1)' : '';
+    bFiltro.hidden = !eligeCat() && !SUBCATS[filtro];
+    var n = (eligeCat() && cat ? 1 : 0) + (sub ? 1 : 0);
+    $('#filtrar-n').textContent = n ? ' (' + n + ')' : '';
     var po = $('#panel-orden');
     po.hidden = panel !== 'orden';
     po.innerHTML = ORDENES.map(function (o) {
@@ -126,12 +131,17 @@
   }
 
   function renderChips() {
-    var caja = $('#chips'), cfg = SUBCATS[filtro];
-    if (!cfg || panel !== 'filtro') { caja.hidden = true; caja.innerHTML = ''; return; }
-    var op = [[null, 'Todos']].concat(cfg.opciones);
-    caja.innerHTML = op.map(function (o) {
-      var on = o[0] === sub;
-      return '<button type="button" class="chip' + (on ? ' chip--on' : '') + '" data-sub="' + esc(o[0] || '') + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>';
+    pintarChips($('#chips-cat'), eligeCat() && panel === 'filtro' ? CATS : null, cat, 'cat');
+    var cfg = SUBCATS[catActiva()];
+    pintarChips($('#chips'), cfg && panel === 'filtro' ? cfg.opciones : null, sub, 'sub');
+  }
+
+  /* Una fila de chips: "Todos" + opciones; attr = data-cat | data-sub */
+  function pintarChips(caja, opciones, actual, attr) {
+    if (!opciones) { caja.hidden = true; caja.innerHTML = ''; return; }
+    caja.innerHTML = [[null, 'Todos']].concat(opciones).map(function (o) {
+      var on = o[0] === actual;
+      return '<button type="button" class="chip' + (on ? ' chip--on' : '') + '" data-' + attr + '="' + esc(o[0] || '') + '" aria-pressed="' + on + '">' + esc(o[1]) + '</button>';
     }).join('');
     caja.hidden = false;
   }
@@ -169,22 +179,23 @@
 
   function renderTienda() {
     var lista, titulo;
-    if (!filtro) {
-      titulo = 'Destacados';
-      lista = datos.productos.filter(function (p) { return p.destacado && deTienda(p); });
-    } else {
-      titulo = filtro === 'todos' ? 'Todos los productos' : filtro;
-      lista = datos.productos.filter(function (p) { return deTienda(p) && (filtro === 'todos' || p.cat === filtro); });
-      var cfg = SUBCATS[filtro];
-      if (cfg && sub) lista = lista.filter(function (p) { return cfg.campo === 'material' ? materialesDe(p).indexOf(sub) !== -1 : p[cfg.campo] === sub; });
-      lista = ordenar(lista);
-    }
+    var c = catActiva(), cfg = SUBCATS[c];
+    titulo = !filtro ? 'Destacados' : filtro === 'todos' ? 'Todos los productos' : filtro;
+    /* Destacados sin filtro: solo los marcados. Con filtro: todos los que
+       coinciden, con los destacados primero (orden 'rel') */
+    var filtrando = !!(c || sub);
+    lista = datos.productos.filter(function (p) {
+      if (!deTienda(p)) return false;
+      if (!filtro && !filtrando) return p.destacado;
+      return !c || p.cat === c;
+    });
+    if (cfg && sub) lista = lista.filter(function (p) { return cfg.campo === 'material' ? materialesDe(p).indexOf(sub) !== -1 : p[cfg.campo] === sub; });
+    lista = ordenar(lista);
     var listado = !!filtro;
     $('#tienda').classList.toggle('tienda--listado', listado);
     $('#migas').hidden = !listado;
     $('#migas-actual').textContent = titulo;
-    $('#barra-listado').hidden = !listado;
-    if (listado) renderBarraListado(); else $('#panel-orden').hidden = true;
+    renderBarraListado();
     renderChips();
     $('#t-tienda').textContent = titulo;
     $('#grilla').innerHTML = lista.length ? lista.map(listado ? tarjetaMin : tarjeta).join('') : '<p class="grilla__vacia">Pronto vas a encontrar productos acá.</p>';
@@ -193,6 +204,7 @@
 
   function filtrar(f) {
     filtro = f === 'destacados' ? null : f;
+    cat = null;
     sub = null;
     orden = 'rel';
     panel = null;
@@ -729,6 +741,12 @@
       if (t.hasAttribute('data-orden')) {
         orden = t.getAttribute('data-orden');
         panel = null;
+        renderTienda();
+        return;
+      }
+      if (t.hasAttribute('data-cat')) {
+        cat = t.getAttribute('data-cat') || null;
+        sub = null;
         renderTienda();
         return;
       }

@@ -108,15 +108,16 @@
         <span id="migas-actual" aria-current="page"></span>
       </nav>
       <h2 class="titulo" id="t-tienda">Destacados</h2>
-      <div class="barra-listado" id="barra-listado" hidden>
+      <div class="barra-listado" id="barra-listado">
         <button type="button" class="barra-listado__btn" id="ordenar-btn" data-panel="orden" aria-expanded="false" aria-controls="panel-orden">
           <svg width="16" height="14" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 1v12M1 10l3 3 3-3M12 13V1M9 4l3-3 3 3"/></svg>Ordenar
         </button>
-        <button type="button" class="barra-listado__btn" id="filtrar-btn" data-panel="filtro" aria-expanded="false" aria-controls="chips">
+        <button type="button" class="barra-listado__btn" id="filtrar-btn" data-panel="filtro" aria-expanded="false" aria-controls="chips-cat chips">
           <svg width="16" height="14" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 4h14M1 10h14"/><circle cx="10" cy="4" r="2" fill="#fff"/><circle cx="5" cy="10" r="2" fill="#fff"/></svg>Filtrar<span id="filtrar-n"></span>
         </button>
       </div>
       <div class="chips" id="panel-orden" role="group" aria-label="Ordenar productos" hidden></div>
+      <div class="chips" id="chips-cat" role="group" aria-label="Filtrar por categoría" hidden></div>
       <div class="chips" id="chips" role="group" aria-label="Filtrar por tipo" hidden></div>
       <div class="grilla" id="grilla" role="list"></div>
       <button class="btn btn--sec tienda__todos" type="button" id="ver-todos" data-filtro="todos">VER TODOS LOS PRODUCTOS</button>

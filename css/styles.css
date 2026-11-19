@@ -218,6 +218,8 @@ button:disabled { cursor: not-allowed; }
 .barra-listado__btn[hidden] { display: none; }
 .barra-listado__btn[aria-expanded="true"] { text-decoration: underline; text-underline-offset: 4px; }
 .tienda--listado .chips { margin-top: -10px; }
+.tienda:not(.tienda--listado) .barra-listado { justify-content: center; margin-top: -12px; }
+.chips + .chips { margin-top: -10px; }
 @media (min-width: 768px) { .tienda--listado .chips { justify-content: flex-start; } }
 .tienda--listado .grilla { gap: 28px 12px; }
 .min { min-width: 0; }

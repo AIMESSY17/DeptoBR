@@ -82,7 +82,7 @@
   /* Subcategorías: chips que aparecen solo con JOYAS o LENTES activo */
   var SUBCATS = {
     Lentes: { campo: 'tipo', opciones: [['sol', 'De sol'], ['lectura', 'De lectura']] },
-    Joyas: { campo: 'material', opciones: [['acero-dorado', 'Acero dorado'], ['acero-blanco', 'Acero blanco'], ['acero-comun', 'Acero común'], ['plata-925', 'Plata 925'], ['fantasia', 'Fantasía']] }
+    Joyas: { campo: 'material', opciones: [['acero', 'Acero'], ['oro', 'Oro'], ['fantasia', 'Fantasía']] }
   };
   /* En "Todos los productos", Filtrar elige categoría */
   SUBCATS.todos = { campo: 'cat', opciones: [['Joyas', 'Joyas'], ['Lentes', 'Lentes']] };

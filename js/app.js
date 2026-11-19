@@ -82,10 +82,18 @@
   /* Subcategorías: chips que aparecen solo con JOYAS o LENTES activo */
   var SUBCATS = {
     Lentes: { campo: 'tipo', opciones: [['sol', 'De sol'], ['lectura', 'De lectura']] },
-    Joyas: { campo: 'material', opciones: [['acero', 'Acero'], ['oro', 'Oro'], ['fantasia', 'Fantasía']] }
+    Joyas: { campo: 'material', opciones: [['acero-dorado', 'Acero dorado'], ['acero-blanco', 'Acero blanco'], ['acero-comun', 'Acero común'], ['fantasia', 'Fantasía']] }
   };
   /* En "Todos los productos", Filtrar elige categoría */
   SUBCATS.todos = { campo: 'cat', opciones: [['Joyas', 'Joyas'], ['Lentes', 'Lentes']] };
+  /* Material: "material" (uno solo) o "materiales" (array, joyas mixtas) */
+  function materialesDe(p) {
+    return Array.isArray(p.materiales) && p.materiales.length ? p.materiales : p.material ? [p.material] : [];
+  }
+  function nombreMaterial(v) {
+    var o = SUBCATS.Joyas.opciones.filter(function (x) { return x[0] === v; })[0];
+    return o ? o[1] : v;
+  }
   var sub = null;    /* valor de la subcategoría activa, null = todas */
   var orden = 'rel'; /* rel · precio-asc · precio-desc · az */
   var panel = null;  /* panel abierto en el listado: 'orden' | 'filtro' | null */
@@ -139,7 +147,7 @@
       '<span class="prod__nombre">' + esc(p.nombre) + '</span>' +
       '<span class="prod__precio">' + (sin ? 'Agotado' : esc(precio(p.precio))) + '</span>' +
       '<span class="prod__nota">Retiro en el depto o envío a coordinar</span>' +
-      '<button class="btn--chico" type="button" data-sumar="' + esc(p.id) + '"' + (sin ? ' disabled' : '') + ' aria-label="Comprar ' + esc(p.nombre) + '">' + (sin ? 'AGOTADO' : 'COMPRAR') + '</button>' +
+      '<button class="btn--chico" type="button" ' + (materialesDe(p).length > 1 ? 'data-abrir' : 'data-sumar') + '="' + esc(p.id) + '"' + (sin ? ' disabled' : '') + ' aria-label="Comprar ' + esc(p.nombre) + '">' + (sin ? 'AGOTADO' : 'COMPRAR') + '</button>' +
     '</article>';
   }
 
@@ -168,7 +176,7 @@
       titulo = filtro === 'todos' ? 'Todos los productos' : filtro;
       lista = datos.productos.filter(function (p) { return deTienda(p) && (filtro === 'todos' || p.cat === filtro); });
       var cfg = SUBCATS[filtro];
-      if (cfg && sub) lista = lista.filter(function (p) { return p[cfg.campo] === sub; });
+      if (cfg && sub) lista = lista.filter(function (p) { return cfg.campo === 'material' ? materialesDe(p).indexOf(sub) !== -1 : p[cfg.campo] === sub; });
       lista = ordenar(lista);
     }
     var listado = !!filtro;
@@ -354,7 +362,7 @@
   function abrirProducto(id) {
     var p = porId[id];
     if (!p) return;
-    fichaEstado = { id: id, qty: 1 };
+    fichaEstado = { id: id, qty: 1, mat: materialesDe(p)[0] || '' };
     pintarProducto();
     abrirHoja('producto', p.nombre);
   }
@@ -369,11 +377,19 @@
           return '<button class="turno" type="button" data-monto="' + esc(g.id) + '" aria-pressed="' + (g.id === p.id) + '">' + esc(montoDe(g, i)) + '</button>';
         }).join('') + '</div>'
       : '';
+    var mats = materialesDe(p);
+    var material = mats.length > 1
+      ? '<div class="hoja__materiales" role="group" aria-label="Elegí el material">' + mats.map(function (m) {
+          var on = m === fichaEstado.mat;
+          return '<button type="button" class="chip' + (on ? ' chip--on' : '') + '" data-material="' + esc(m) + '" aria-pressed="' + on + '">' + esc(nombreMaterial(m)) + '</button>';
+        }).join('') + '</div>'
+      : mats.length ? '<span class="hoja__material">' + esc(nombreMaterial(mats[0])) + '</span>' : '';
     contenido.innerHTML =
       '<img class="hoja__img" src="' + esc(p.fotos[0]) + '" width="960" height="1200" alt="' + esc(p.nombre) + '">' +
       '<div class="hoja__cuerpo">' +
         '<span class="hoja__cat">' + esc((p.cat || '').toUpperCase()) + '</span>' +
         '<span class="hoja__nombre">' + esc(p.nombre) + '</span>' +
+        material +
         '<span class="hoja__precio">' + (sin ? 'Agotado' : esc(esGift ? montoDe(p, gifts().indexOf(p)) : precio(p.precio))) + '</span>' +
         '<span class="hoja__desc">' + esc(p.desc) + '</span>' +
         montos +
@@ -387,7 +403,7 @@
           '<button class="btn--grande" type="button" data-ficha="agregar"' + (sin || resto <= 0 ? ' disabled' : '') + '>' +
             (sin ? 'Agotado' : resto <= 0 ? 'Ya tenés todo el stock' : 'Agregar al carrito') + '</button>' +
         '</div>' +
-        '<a class="hoja__link" href="' + esc(wa('Hola! Quiero consultar por ' + p.nombre + '.')) + '" target="_blank" rel="noopener">Consultar por WhatsApp</a>' +
+        '<a class="hoja__link" href="' + esc(wa('Hola! Quiero consultar por ' + nombreConMaterial(p, fichaEstado.mat) + '.')) + '" target="_blank" rel="noopener">Consultar por WhatsApp</a>' +
         (esGift ? '' : similares(p)) +
       '</div>';
   }
@@ -460,7 +476,7 @@
 
   /* ---------- Carrito ---------- */
   function lineas() {
-    return Carrito.items().map(function (i) { return { p: porId[i.id], qty: i.qty }; })
+    return Carrito.items().map(function (i) { return { p: porId[i.id], qty: i.qty, mat: i.mat || '' }; })
       .filter(function (l) { return l.p; });
   }
   function totalPrecio(ls) {
@@ -468,8 +484,14 @@
     if (faltan) return '';
     return precio(ls.reduce(function (s, l) { return s + l.p.precio * l.qty; }, 0));
   }
-  function nombreLinea(p) {
-    return p.lista === 'gift' ? p.nombre + ' (' + montoDe(p, gifts().indexOf(p)) + ')' : p.nombre;
+  /* "Esclavas Trébol - Acero dorado": el elegido, o el único que tenga */
+  function nombreConMaterial(p, mat) {
+    var mats = materialesDe(p);
+    var m = mat && mats.indexOf(mat) !== -1 ? mat : mats.length === 1 ? mats[0] : '';
+    return m ? p.nombre + ' - ' + nombreMaterial(m) : p.nombre;
+  }
+  function nombreLinea(l) {
+    return l.p.lista === 'gift' ? l.p.nombre + ' (' + montoDe(l.p, gifts().indexOf(l.p)) + ')' : nombreConMaterial(l.p, l.mat);
   }
   function abrirCarrito() {
     fichaEstado = { pronto: false };
@@ -484,23 +506,24 @@
         '<a class="btn btn--sec" href="#tienda" data-cerrar>VER LOS PRODUCTOS</a>';
     } else {
       var pedido = 'Hola! Quiero hacer este pedido:\n' + ls.map(function (l) {
-        return '· ' + l.qty + ' x ' + nombreLinea(l.p);
+        return '· ' + l.qty + ' x ' + nombreLinea(l);
       }).join('\n');
       if (totalPrecio(ls)) pedido += '\nTotal: ' + totalPrecio(ls);
       cuerpo =
         '<ul class="carrito__items">' + ls.map(function (l) {
-          var resto = typeof l.p.stock === 'number' ? l.p.stock - l.qty : Infinity;
+          var resto = typeof l.p.stock === 'number' ? l.p.stock - Carrito.cantidad(l.p.id) : Infinity;
+          var ids = ' data-id="' + esc(l.p.id) + '" data-mat="' + esc(l.mat) + '"';
           return '<li class="item">' +
             '<img src="' + esc(chica(l.p.fotos[0])) + '" width="72" height="90" alt="">' +
             '<div class="item__datos">' +
-              '<div class="item__fila"><span class="item__nombre">' + esc(nombreLinea(l.p)) + '</span><span class="item__precio">' + esc(precio(l.p.precio)) + '</span></div>' +
+              '<div class="item__fila"><span class="item__nombre">' + esc(nombreLinea(l)) + '</span><span class="item__precio">' + esc(precio(l.p.precio)) + '</span></div>' +
               '<div class="item__acciones">' +
                 '<div class="cantidad">' +
-                  '<button type="button" data-item="menos" data-id="' + esc(l.p.id) + '" aria-label="Restar ' + esc(l.p.nombre) + '">−</button>' +
+                  '<button type="button" data-item="menos"' + ids + ' aria-label="Restar ' + esc(nombreLinea(l)) + '">−</button>' +
                   '<span class="cantidad__n">' + l.qty + '</span>' +
-                  '<button type="button" data-item="mas" data-id="' + esc(l.p.id) + '" aria-label="Sumar ' + esc(l.p.nombre) + '"' + (resto <= 0 ? ' disabled' : '') + '>+</button>' +
+                  '<button type="button" data-item="mas"' + ids + ' aria-label="Sumar ' + esc(nombreLinea(l)) + '"' + (resto <= 0 ? ' disabled' : '') + '>+</button>' +
                 '</div>' +
-                '<button class="item__quitar" type="button" data-item="quitar" data-id="' + esc(l.p.id) + '">Eliminar</button>' +
+                '<button class="item__quitar" type="button" data-item="quitar"' + ids + ' aria-label="Eliminar ' + esc(nombreLinea(l)) + '">Eliminar</button>' +
               '</div>' +
             '</div>' +
           '</li>';
@@ -594,10 +617,10 @@
      ========================================================= */
   var toast = $('#toast'), bolsa = $('#bolsa'), tToast = null, vaivenes = 0;
 
-  function sumar(id, n) {
+  function sumar(id, n, mat) {
     var p = porId[id];
     if (!p || agotado(p)) return;
-    var sumado = Carrito.agregar(id, n, typeof p.stock === 'number' ? p.stock : undefined);
+    var sumado = Carrito.agregar(id, n, typeof p.stock === 'number' ? p.stock : undefined, mat);
     avisar(sumado > 0 ? 'Agregado a tu carrito' : 'No hay más stock de este producto');
   }
 
@@ -689,6 +712,13 @@
         if (m) m.focus();
         return;
       }
+      if (t.hasAttribute('data-material')) {
+        fichaEstado.mat = t.getAttribute('data-material');
+        pintarProducto();
+        var mt = contenido.querySelector('[data-material="' + fichaEstado.mat + '"]');
+        if (mt) mt.focus();
+        return;
+      }
       if (t.hasAttribute('data-copiar')) { copiar(t.getAttribute('data-copiar'), t); return; }
       if (t.hasAttribute('data-panel')) {
         var pn = t.getAttribute('data-panel');
@@ -728,7 +758,7 @@
         var p = porId[fichaEstado.id];
         if (f === 'menos') fichaEstado.qty = Math.max(1, fichaEstado.qty - 1);
         if (f === 'mas') fichaEstado.qty = Math.min(disponible(p), fichaEstado.qty + 1);
-        if (f === 'agregar') { var n = fichaEstado.qty; cerrarHoja(); sumar(p.id, n); return; }
+        if (f === 'agregar') { var n = fichaEstado.qty, mat = materialesDe(p).length > 1 ? fichaEstado.mat : ''; cerrarHoja(); sumar(p.id, n, mat); return; }
         pintarProducto();
         var foco = contenido.querySelector('[data-ficha="' + f + '"]:not([disabled])') || contenido.querySelector('[data-ficha="agregar"]');
         if (foco) foco.focus();
@@ -737,11 +767,12 @@
 
       var it = t.getAttribute('data-item');
       if (it) {
-        var id = t.getAttribute('data-id');
-        if (it === 'menos') Carrito.fijar(id, Carrito.cantidad(id) - 1);
-        if (it === 'mas') { var pr = porId[id]; Carrito.agregar(id, 1, typeof pr.stock === 'number' ? pr.stock : undefined); }
-        if (it === 'quitar') Carrito.quitar(id);
-        var otro = contenido.querySelector('[data-item="' + it + '"][data-id="' + id + '"]:not([disabled])') || contenido.querySelector('[data-pagar]') || contenido.querySelector('a, button');
+        var id = t.getAttribute('data-id'), im = t.getAttribute('data-mat') || '';
+        var linea = Carrito.items().filter(function (x) { return x.id === id && (x.mat || '') === im; })[0];
+        if (it === 'menos' && linea) Carrito.fijar(id, linea.qty - 1, im);
+        if (it === 'mas') { var pr = porId[id]; Carrito.agregar(id, 1, typeof pr.stock === 'number' ? pr.stock : undefined, im); }
+        if (it === 'quitar') Carrito.quitar(id, im);
+        var otro = contenido.querySelector('[data-item="' + it + '"][data-id="' + id + '"][data-mat="' + im + '"]:not([disabled])') || contenido.querySelector('[data-pagar]') || contenido.querySelector('a, button');
         if (otro) otro.focus();
         return;
       }

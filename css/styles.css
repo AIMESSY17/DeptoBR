@@ -410,6 +410,8 @@ body.con-barra .wa { bottom: calc(90px + env(safe-area-inset-bottom)); }
 .hoja__cat { font-size: 12px; font-weight: 600; color: var(--choco); letter-spacing: 0.14em; }
 .hoja__nombre { font-weight: 300; font-size: 24px; line-height: 1.1; }
 .hoja__precio { font-size: 22px; font-weight: 600; }
+.hoja__materiales { display: flex; flex-wrap: wrap; gap: 8px; }
+.hoja__material { font-size: 12px; letter-spacing: 0.06em; color: var(--gris-osc); }
 .hoja__desc { font-size: 15px; line-height: 1.6; color: var(--gris-osc); }
 .hoja__nota { font-size: 13px; color: var(--gris); }
 .hoja__dur { font-size: 15px; color: var(--gris); }

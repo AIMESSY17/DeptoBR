@@ -3,7 +3,12 @@
   "deptoCarrusel": [
     { "img": "img/beauty-room-trabajando.webp", "img480": "img/beauty-room-trabajando-480.webp", "alt": "Trabajando en el Beauty Room del depto" },
     { "img": "img/camilla-cejas.webp", "img480": "img/camilla-cejas-480.webp", "alt": "Camilla y lámpara del espacio de trabajo del depto" },
-    { "img": "img/espacio-sabado.webp", "img480": "img/espacio-sabado-480.webp", "alt": "El espacio del depto un sábado de turnos" }
+    { "img": "img/espacio-sabado.webp", "img480": "img/espacio-sabado-480.webp", "alt": "El espacio del depto un sábado de turnos" },
+    { "img": "img/depto-lampara-torno.webp", "img480": "img/depto-lampara-torno-480.webp", "alt": "Lámpara y torno de uñas en el detalle de la mesa de trabajo" },
+    { "img": "img/depto-fresas-torno.webp", "img480": "img/depto-fresas-torno-480.webp", "alt": "Fresas del torno para manicuría" },
+    { "img": "img/depto-paleta-colores.webp", "img480": "img/depto-paleta-colores-480.webp", "alt": "Paleta con los colores de esmaltado semipermanente" },
+    { "img": "img/depto-detalle-dorado.webp", "img480": "img/depto-detalle-dorado-480.webp", "alt": "Detalle dorado de la decoración del depto" },
+    { "img": "img/depto-estanteria-esmaltes.webp", "img480": "img/depto-estanteria-esmaltes-480.webp", "alt": "Estantería de esmaltes bajo el cartel dorado del depto" }
   ],
   "whatsapp": "5492974058183",
   "instagram": "deptobr",

@@ -216,6 +216,12 @@ button:disabled { cursor: not-allowed; }
   border: 0; background: none; font: inherit; font-size: 14px; color: var(--choco);
 }
 .barra-listado__btn[hidden] { display: none; }
+.barra-listado__todos { background: var(--crema); padding: 0 14px; font-weight: 500; }
+@media (hover: hover) { .barra-listado__todos:hover { background: var(--linea); } }
+.barra-listado__btn:focus-visible { outline: 2px solid var(--choco); outline-offset: 2px; }
+.barra-listado { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.barra-listado::-webkit-scrollbar { display: none; }
+.barra-listado__btn { flex: none; }
 .barra-listado__btn[aria-expanded="true"] { text-decoration: underline; text-underline-offset: 4px; }
 .tienda--listado .chips { margin-top: -10px; }
 .tienda:not(.tienda--listado) .barra-listado { justify-content: center; margin-top: -12px; }

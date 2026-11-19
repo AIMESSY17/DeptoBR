@@ -200,6 +200,7 @@
     $('#t-tienda').textContent = titulo;
     $('#grilla').innerHTML = lista.length ? lista.map(listado ? tarjetaMin : tarjeta).join('') : '<p class="grilla__vacia">Pronto vas a encontrar productos acá.</p>';
     $('#ver-todos').hidden = filtro === 'todos';
+    $('#ver-todos-barra').hidden = filtro === 'todos';
   }
 
   function filtrar(f) {
@@ -757,7 +758,7 @@
       }
       if (t.hasAttribute('data-filtro')) {
         filtrar(t.getAttribute('data-filtro'));
-        if (t.hasAttribute('data-cerrar') || t.id === 'ver-todos' || t.id === 'migas-inicio') {
+        if (t.hasAttribute('data-cerrar') || t.id === 'ver-todos' || t.id === 'ver-todos-barra' || t.id === 'migas-inicio') {
           e.preventDefault();
           cerrarHoja();
           irA('#tienda');
